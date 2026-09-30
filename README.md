@@ -7,10 +7,10 @@
 Скопируй и вставь в **V2RayN / Nekoray / Hiddify / Clash / Remnawave / Streisand**:
 
 ```
-https://raw.githubusercontent.com/sever-xd/vpn-auto-sub/main/subscription.txt
+https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.txt
 ```
 
-
+> ⚠️ Замени `YOUR_USERNAME` на свой логин GitHub после создания репозитория!
 
 ## 📊 Статистика
 
