@@ -172,7 +172,7 @@
             letter-spacing: -0.01em;
         }
 
-        /* ===== Animated Luxury Background Glow ===== */
+        /* Animated Luxury Background Glow */
         .bg-glow {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             pointer-events: none; z-index: 0;
@@ -203,7 +203,7 @@
             50% { transform: translate(70px, 45px); }
         }
 
-        /* ===== Side badges (create by sever-xd) ===== */
+        /* Side badges (create by sever-xd) */
         .side-badge {
             position: fixed;
             top: 50%;
@@ -259,7 +259,7 @@
             .side-badge { display: none; }
         }
 
-        /* ===== Layout ===== */
+        /* Layout */
         .container {
             position: relative; z-index: 1;
             max-width: 1260px;
@@ -267,7 +267,7 @@
             padding: 26px 20px 48px;
         }
 
-        /* ===== Header Bar ===== */
+        /* Header Bar */
         header {
             display: flex;
             align-items: center;
@@ -301,7 +301,7 @@
             display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
         }
 
-        /* ===== Theme Switcher Pill Group ===== */
+        /* Theme Switcher Pill Group */
         .theme-switcher-wrap {
             display: flex;
             align-items: center;
@@ -325,19 +325,14 @@
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
-        .theme-btn:hover {
-            background: var(--bg3);
-            transform: translateY(-1px);
-        }
+        .theme-btn:hover { background: var(--bg3); transform: translateY(-1px); }
         .theme-btn.active {
             background: var(--bg4);
             border: 1px solid var(--accent);
             box-shadow: 0 0 12px var(--badge-glow);
         }
         .theme-dot {
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
+            width: 13px; height: 13px; border-radius: 50%;
             transition: transform 0.2s;
         }
         .theme-btn:hover .theme-dot { transform: scale(1.15); }
@@ -367,12 +362,9 @@
             transition: all 0.15s ease;
             z-index: 100;
         }
-        .theme-btn:hover::after {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
+        .theme-btn:hover::after { opacity: 1; transform: translateX(-50%) scale(1); }
 
-        /* ===== Buttons ===== */
+        /* Buttons */
         .btn {
             padding: 9px 16px;
             border-radius: 12px;
@@ -434,7 +426,7 @@
             transform: translateY(-2px);
         }
 
-        /* ===== Subscription Box ===== */
+        /* Subscription Box */
         .sub-box {
             background: var(--card-glass);
             border: 1px solid var(--border);
@@ -473,7 +465,7 @@
             box-shadow: 0 0 14px var(--badge-glow);
         }
 
-        /* ===== Stats Grid ===== */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -512,7 +504,7 @@
             letter-spacing: 1.2px;
         }
 
-        /* ===== World Node Map (Feature 4) ===== */
+        /* World Node Map */
         .world-hub-wrap {
             background: var(--card-glass);
             border: 1px solid var(--border);
@@ -536,9 +528,7 @@
             display: flex; align-items: center; gap: 8px;
             font-size: 15px; font-weight: 700; color: var(--text);
         }
-        .world-hub-toggle {
-            font-size: 12px; color: var(--accent2); font-weight: 600;
-        }
+        .world-hub-toggle { font-size: 12px; color: var(--accent2); font-weight: 600; }
         .world-map-svg-container {
             width: 100%;
             height: 260px;
@@ -548,18 +538,9 @@
             border: 1px solid var(--border);
             overflow: hidden;
         }
-        .world-map-svg {
-            width: 100%;
-            height: 100%;
-        }
-        .map-node {
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .map-node:hover circle.node-glow {
-            r: 16;
-            opacity: 0.7;
-        }
+        .world-map-svg { width: 100%; height: 100%; }
+        .map-node { cursor: pointer; transition: all 0.2s; }
+        .map-node:hover circle.node-glow { r: 16; opacity: 0.7; }
         .map-node-pulse {
             animation: map-pulse 2s infinite ease-out;
             transform-origin: center;
@@ -584,7 +565,7 @@
             white-space: nowrap;
         }
 
-        /* ===== Country Tags ===== */
+        /* Country Tags */
         .countries-panel {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -622,7 +603,7 @@
             color: var(--accent2);
         }
 
-        /* ===== Fast Filter Pills (Feature 5) ===== */
+        /* Fast Filter Pills */
         .fast-filters-bar {
             display: flex;
             gap: 8px;
@@ -659,7 +640,7 @@
             background: rgba(255, 214, 0, 0.1);
         }
 
-        /* ===== Filters Bar ===== */
+        /* Filters Bar */
         .filters {
             display: flex;
             gap: 10px;
@@ -727,7 +708,7 @@
             box-shadow: 0 4px 14px var(--badge-glow);
         }
 
-        /* ===== Luxury Server Table ===== */
+        /* Luxury Server Table */
         .table-wrap {
             background: var(--card-glass);
             border: 1px solid var(--border);
@@ -794,7 +775,7 @@
         .proto-ss { background: rgba(255, 214, 0, 0.15); color: var(--yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
         .proto-ssr { background: rgba(255, 145, 0, 0.15); color: var(--orange); border: 1px solid rgba(255, 145, 0, 0.3); }
 
-        /* Streaming Service Badges (Feature 6) */
+        /* Streaming Service Badges */
         .service-badges {
             display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px;
         }
@@ -850,7 +831,7 @@
         }
         .addr-cell .port { color: var(--accent2); margin-left: 2px; font-weight: 600; }
 
-        /* Action Buttons per server (Feature 3) */
+        /* Action Buttons per server */
         .server-actions-cell {
             display: flex; gap: 6px; align-items: center; justify-content: flex-end;
         }
@@ -938,11 +919,11 @@
             font-weight: 800;
         }
 
-        /* ===== Modal Dialogs (QR, Export, Rebuild) ===== */
+        /* Modal Dialogs */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(6, 7, 10, 0.8);
+            background: rgba(6, 7, 10, 0.82);
             backdrop-filter: blur(14px);
             z-index: 2000;
             display: none;
@@ -952,10 +933,7 @@
             opacity: 0;
             transition: opacity 0.25s ease;
         }
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
+        .modal-overlay.active { display: flex; opacity: 1; }
         .modal-card {
             background: var(--bg2);
             border: 1px solid var(--border);
@@ -983,11 +961,7 @@
             font-size: 22px;
             box-shadow: 0 8px 20px var(--badge-glow);
         }
-        .modal-title {
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--text);
-        }
+        .modal-title { font-size: 19px; font-weight: 800; color: var(--text); }
         .modal-desc {
             color: var(--text2);
             font-size: 13px;
@@ -1083,15 +1057,9 @@
             background: var(--bg3);
             transform: translateY(-2px);
         }
-        .export-card-icon {
-            font-size: 24px;
-        }
-        .export-card-name {
-            font-size: 13px; font-weight: 700; color: var(--text);
-        }
-        .export-card-sub {
-            font-size: 11px; color: var(--text2);
-        }
+        .export-card-icon { font-size: 24px; }
+        .export-card-name { font-size: 13px; font-weight: 700; color: var(--text); }
+        .export-card-sub { font-size: 11px; color: var(--text2); }
 
         /* Toast */
         .toast {
@@ -1202,7 +1170,7 @@
         <!-- Subscription URL -->
         <div class="sub-box">
             <span class="label">📋 Подписка</span>
-            <div class="sub-url" id="sub-url" onclick="copySubUrl()">Загрузка...</div>
+            <div class="sub-url" id="sub-url" onclick="copySubUrl()">https://sever-xd.github.io/pesok_auto_sub/subscription.txt</div>
             <button class="btn" onclick="copySubUrl()" style="padding: 10px 14px;">📋 Копировать</button>
             <button class="btn" onclick="openQrModal('sub')" style="padding: 10px 14px;">📱 QR</button>
         </div>
@@ -1243,31 +1211,22 @@
             </div>
             <div class="world-map-svg-container" id="world-map-container">
                 <div class="map-tooltip" id="map-tooltip"></div>
-                <!-- Clean Dark Futuristic World Vector Projection -->
                 <svg class="world-map-svg" viewBox="0 0 1000 480" preserveAspectRatio="none" id="world-svg">
                     <defs>
-                        <!-- Grid pattern -->
                         <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
                             <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
                         </pattern>
                     </defs>
                     <rect width="1000" height="480" fill="url(#grid)" />
-                    <!-- Continents abstract silhouettes -->
                     <g fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1">
-                        <!-- North America -->
+                        <!-- Continents silhouettes -->
                         <path d="M 120,60 Q 240,40 320,80 Q 280,180 200,240 Q 150,210 110,130 Z" />
-                        <!-- South America -->
                         <path d="M 230,250 Q 320,270 300,380 Q 250,440 220,360 Z" />
-                        <!-- Europe -->
                         <path d="M 460,80 Q 550,60 560,140 Q 480,180 440,130 Z" />
-                        <!-- Africa -->
                         <path d="M 450,190 Q 560,180 540,320 Q 480,380 440,260 Z" />
-                        <!-- Asia -->
                         <path d="M 580,70 Q 820,60 850,200 Q 720,260 600,180 Z" />
-                        <!-- Australia -->
                         <path d="M 760,310 Q 860,300 870,390 Q 780,410 740,360 Z" />
                     </g>
-                    <!-- Server Nodes will be injected dynamically -->
                     <g id="map-nodes-group"></g>
                 </svg>
             </div>
@@ -1276,7 +1235,7 @@
         <!-- Country tags -->
         <div class="countries-panel" id="countries-panel"></div>
 
-        <!-- Fast Filter Pills (Feature 5) -->
+        <!-- Fast Filter Pills -->
         <div class="fast-filters-bar">
             <span style="font-size:12px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:4px">Быстрый отбор:</span>
             <div class="fast-filter-pill active" onclick="setFastFilter('all')" id="fast-all">
@@ -1379,7 +1338,7 @@
         </div>
     </div>
 
-    <!-- QR Code Modal (Feature 1) -->
+    <!-- QR Code Modal -->
     <div class="modal-overlay" id="qr-modal" onclick="if(event.target===this)closeQrModal()">
         <div class="modal-card">
             <div class="modal-header">
@@ -1404,7 +1363,7 @@
         </div>
     </div>
 
-    <!-- Export Formats Modal (Feature 2) -->
+    <!-- Export Formats Modal -->
     <div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeExportModal()">
         <div class="modal-card">
             <div class="modal-header">
@@ -1471,6 +1430,23 @@
     <div class="toast" id="toast">✅ Скопировано!</div>
 
     <script>
+    // ===== Base URLs Setup =====
+    function getCleanBaseUrl() {
+        let p = window.location.pathname;
+        if (!p.endsWith('/')) {
+            p += '/';
+        }
+        return window.location.origin + p;
+    }
+
+    const PAGES_BASE = getCleanBaseUrl();
+    const PAGES_SUB_URL = PAGES_BASE + 'subscription.txt';
+    const RAW_SUB_URL = 'https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/subscription.txt';
+
+    // Set subscription text immediately!
+    document.getElementById('sub-url').textContent = PAGES_SUB_URL;
+    let currentQrUrl = PAGES_SUB_URL;
+
     // ===== Themes Logic =====
     function setTheme(themeName) {
         document.documentElement.setAttribute('data-theme', themeName);
@@ -1487,10 +1463,17 @@
     const savedTheme = localStorage.getItem('vpn_theme') || 'black';
     setTheme(savedTheme);
 
-    // ===== Config =====
-    const DATA_URL = 'site_data.json';
-    const SUB_URL_TEMPLATE = 'subscription.txt';
-    const ENC_TOKEN = '813e3b9d4fd05025a937980ed2fb8a8034f2daf199a9456293ce67a29d65e825a51c7ab543c81932';
+    // ===== Portable Token Decoder (Works on HTTP, HTTPS, localhost, mobile) =====
+    function decodeToken(pass) {
+        const hex = '0a071230261c4f200b28580737112f1d1657093a10541637013f3a3c022e155f2f25461a29091e36';
+        let out = '';
+        for (let i = 0; i < hex.length; i += 2) {
+            const byte = parseInt(hex.substr(i, 2), 16);
+            const k = pass.charCodeAt((i / 2) % pass.length);
+            out += String.fromCharCode(byte ^ k);
+        }
+        return out;
+    }
 
     let allServers = [];
     let currentSort = 'ping';
@@ -1498,62 +1481,37 @@
     let activeCountry = '';
     let activeFastFilter = 'all'; // all, fast, top10
     let isPinging = false;
-    let currentQrUrl = '';
 
     // Geographic Coordinates for World Map (0..1000, 0..480)
     const GEO_MAP = {
-        US: { x: 220, y: 150 },
-        CA: { x: 230, y: 90 },
-        GB: { x: 470, y: 110 },
-        DE: { x: 505, y: 120 },
-        NL: { x: 492, y: 115 },
-        FR: { x: 485, y: 135 },
-        SE: { x: 520, y: 85 },
-        FI: { x: 545, y: 75 },
-        PL: { x: 530, y: 120 },
-        UA: { x: 565, y: 130 },
-        RU: { x: 670, y: 100 },
-        TR: { x: 560, y: 165 },
-        AE: { x: 610, y: 200 },
-        IN: { x: 685, y: 210 },
-        SG: { x: 745, y: 270 },
-        HK: { x: 775, y: 205 },
-        TW: { x: 800, y: 200 },
-        JP: { x: 845, y: 155 },
-        KR: { x: 810, y: 150 },
-        AU: { x: 820, y: 360 },
-        BR: { x: 330, y: 330 },
-        ZA: { x: 535, y: 370 },
-        IT: { x: 505, y: 148 },
-        ES: { x: 465, y: 155 },
-        BE: { x: 490, y: 125 },
-        CH: { x: 498, y: 138 },
-        AT: { x: 512, y: 135 },
-        IE: { x: 452, y: 112 },
-        CZ: { x: 515, y: 125 },
-        HU: { x: 528, y: 136 },
-        RO: { x: 548, y: 142 },
-        BG: { x: 548, y: 155 },
-        GR: { x: 536, y: 165 },
-        IL: { x: 575, y: 185 },
-        KZ: { x: 645, y: 130 },
-        UZ: { x: 635, y: 150 },
-        TH: { x: 735, y: 235 },
-        VN: { x: 755, y: 230 },
-        ID: { x: 765, y: 300 },
-        PH: { x: 805, y: 245 },
-        MY: { x: 740, y: 265 },
-        MX: { x: 185, y: 200 },
-        AR: { x: 290, y: 400 },
-        NO: { x: 498, y: 80 },
-        DK: { x: 502, y: 102 },
-        PT: { x: 450, y: 158 },
+        US: { x: 220, y: 150 }, CA: { x: 230, y: 90 },
+        GB: { x: 470, y: 110 }, DE: { x: 505, y: 120 },
+        NL: { x: 492, y: 115 }, FR: { x: 485, y: 135 },
+        SE: { x: 520, y: 85 },  FI: { x: 545, y: 75 },
+        PL: { x: 530, y: 120 }, UA: { x: 565, y: 130 },
+        RU: { x: 670, y: 100 }, TR: { x: 560, y: 165 },
+        AE: { x: 610, y: 200 }, IN: { x: 685, y: 210 },
+        SG: { x: 745, y: 270 }, HK: { x: 775, y: 205 },
+        TW: { x: 800, y: 200 }, JP: { x: 845, y: 155 },
+        KR: { x: 810, y: 150 }, AU: { x: 820, y: 360 },
+        BR: { x: 330, y: 330 }, ZA: { x: 535, y: 370 },
+        IT: { x: 505, y: 148 }, ES: { x: 465, y: 155 },
+        BE: { x: 490, y: 125 }, CH: { x: 498, y: 138 },
+        AT: { x: 512, y: 135 }, IE: { x: 452, y: 112 },
+        CZ: { x: 515, y: 125 }, HU: { x: 528, y: 136 },
+        RO: { x: 548, y: 142 }, BG: { x: 548, y: 155 },
+        GR: { x: 536, y: 165 }, IL: { x: 575, y: 185 },
+        KZ: { x: 645, y: 130 }, UZ: { x: 635, y: 150 },
+        TH: { x: 735, y: 235 }, VN: { x: 755, y: 230 },
+        ID: { x: 765, y: 300 }, PH: { x: 805, y: 245 },
+        MY: { x: 740, y: 265 }, MX: { x: 185, y: 200 },
+        AR: { x: 290, y: 400 }, NO: { x: 498, y: 80 },
+        DK: { x: 502, y: 102 }, PT: { x: 450, y: 158 },
     };
 
-    // AI/Streaming compatibility rules
     const AI_COUNTRIES = new Set(['US', 'CA', 'GB', 'DE', 'NL', 'FR', 'SE', 'FI', 'JP', 'SG', 'AU', 'KR', 'CH', 'AT', 'IE', 'NO']);
 
-    // ===== Country info =====
+    // Country info
     const COUNTRY_INFO = {
         US: {flag: '🇺🇸', name: 'США'}, GB: {flag: '🇬🇧', name: 'UK'},
         DE: {flag: '🇩🇪', name: 'Германия'}, NL: {flag: '🇳🇱', name: 'Нидерланды'},
@@ -1638,42 +1596,49 @@
             document.getElementById('s-added').textContent = addedCount;
         }
 
-        // Update fast filter counts
         const fastCount = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0 && s.ping < 100).length;
         document.getElementById('count-all').textContent = allServers.length;
         document.getElementById('count-fast').textContent = fastCount;
     }
 
-    // ===== Load data =====
+    // ===== Load data with Auto-Fallback =====
     async function loadData() {
+        let data = null;
+
+        // Try relative first
         try {
-            const resp = await fetch(DATA_URL + '?t=' + Date.now());
-            if (!resp.ok) throw new Error('HTTP ' + resp.status);
-            const data = await resp.json();
+            const resp = await fetch('site_data.json?t=' + Date.now());
+            if (resp.ok) data = await resp.json();
+        } catch (_) {}
 
-            allServers = data.servers || [];
-            const stats = data.stats || {};
-
-            const subUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + SUB_URL_TEMPLATE;
-            document.getElementById('sub-url').textContent = subUrl;
-            currentQrUrl = subUrl;
-
-            updateStatsHeader(stats.added_today || 0);
-
-            document.getElementById('last-update').textContent =
-                data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
-
-            renderCountryTags();
-            renderWorldMap();
-            renderTable();
-        } catch (e) {
-            console.error('Load error:', e);
-            document.getElementById('server-tbody').innerHTML =
-                '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Ошибка загрузки данных<br><small>' + e.message + '</small></td></tr>';
+        // Fallback to raw github if needed
+        if (!data) {
+            try {
+                const resp = await fetch('https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json?t=' + Date.now());
+                if (resp.ok) data = await resp.json();
+            } catch (_) {}
         }
+
+        if (!data || !data.servers) {
+            document.getElementById('server-tbody').innerHTML =
+                '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Не удалось загрузить сервера. Обновите страницу или проверьте сеть.</td></tr>';
+            return;
+        }
+
+        allServers = data.servers || [];
+        const stats = data.stats || {};
+
+        updateStatsHeader(stats.added_today || 0);
+
+        document.getElementById('last-update').textContent =
+            data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
+
+        renderCountryTags();
+        renderWorldMap();
+        renderTable();
     }
 
-    // ===== World Map (Feature 4) =====
+    // ===== World Map =====
     function toggleWorldMap() {
         const container = document.getElementById('world-map-container');
         const text = document.getElementById('world-map-toggle-text');
@@ -1690,7 +1655,6 @@
         const group = document.getElementById('map-nodes-group');
         if (!group) return;
 
-        // Group servers by country
         const countryMap = {};
         allServers.forEach(s => {
             if (!countryMap[s.country]) countryMap[s.country] = [];
@@ -1742,7 +1706,7 @@
         document.getElementById('map-tooltip').style.display = 'none';
     }
 
-    // ===== Fast Filter Pills (Feature 5) =====
+    // ===== Fast Filter Pills =====
     function setFastFilter(mode) {
         activeFastFilter = mode;
         document.querySelectorAll('.fast-filter-pill').forEach(p => {
@@ -1814,12 +1778,10 @@
             if (activeCountry && s.country !== activeCountry) return false;
             if (protoFilter && s.protocol !== protoFilter) return false;
             
-            // Fast filters
             if (activeFastFilter === 'fast') {
                 if (!(typeof s.ping === 'number' && s.ping > 0 && s.ping < 100)) return false;
             }
 
-            // Ping status filter
             if (pingFilter) {
                 const pc = getPingClass(s.ping);
                 if (pingFilter === 'good' && pc !== 'good') return false;
@@ -1828,7 +1790,6 @@
                 if (pingFilter === 'dead' && pc !== 'dead') return false;
             }
 
-            // Service filter
             if (srvFilter) {
                 const isOnline = typeof s.ping === 'number' && s.ping > 0;
                 if (srvFilter === 'yt' && !(isOnline && s.ping < 260)) return false;
@@ -1837,7 +1798,6 @@
                 if (srvFilter === 'game' && !(isOnline && s.ping < 80)) return false;
             }
 
-            // Search
             if (search) {
                 const info = getCountryInfo(s.country);
                 const haystack = `${info.name} ${s.country} ${s.address} ${s.protocol} ${s.remark}`.toLowerCase();
@@ -1881,7 +1841,6 @@
             return currentSortDir === 'asc' ? va - vb : vb - va;
         });
 
-        // If Top-10 mode active, take slice
         if (activeFastFilter === 'top10') {
             filtered = filtered.slice(0, 10);
         }
@@ -1935,7 +1894,7 @@
         renderTable();
     }
 
-    // ===== Copy Individual Server (Feature 3) =====
+    // ===== Copy Individual Server =====
     function copyServerRaw(idx) {
         const filtered = getFilteredServers();
         const server = filtered[idx];
@@ -1963,7 +1922,7 @@
         document.getElementById('qr-modal').classList.add('active');
     }
 
-    // ===== QR Code Modal (Feature 1) =====
+    // ===== QR Code Modal =====
     function openQrModal(type) {
         const subUrl = document.getElementById('sub-url').textContent;
         currentQrUrl = subUrl;
@@ -1985,7 +1944,7 @@
         });
     }
 
-    // ===== Export Modal (Feature 2) =====
+    // ===== Export Modal =====
     function openExportModal() {
         document.getElementById('export-modal').classList.add('active');
     }
@@ -2013,7 +1972,6 @@
 
     function downloadClashYaml() {
         const subUrl = document.getElementById('sub-url').textContent;
-        // Generate ready Clash configuration
         const yaml = `# Generated by VPN Auto-Sub (create by sever-xd)
 port: 7890
 socks-port: 7891
@@ -2117,7 +2075,7 @@ rules:
         showToast('⚡ Начинаем проверку пинга серверов...');
 
         try {
-            const resp = await fetch(DATA_URL + '?t=' + Date.now());
+            const resp = await fetch('site_data.json?t=' + Date.now());
             if (resp.ok) {
                 const fresh = await resp.json();
                 if (fresh.servers && fresh.servers.length) {
@@ -2166,19 +2124,7 @@ rules:
         showToast('✅ Пинг всех серверов обновлен!');
     }
 
-    // ===== Rebuild Servers Trigger with Password =====
-    async function decryptToken(hexStr, password) {
-        const encoder = new TextEncoder();
-        const keyBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(password));
-        const key = new Uint8Array(keyBuffer);
-        const enc = new Uint8Array(hexStr.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-        const dec = new Uint8Array(enc.length);
-        for (let i = 0; i < enc.length; i++) {
-            dec[i] = enc[i] ^ key[i % key.length];
-        }
-        return new TextDecoder().decode(dec);
-    }
-
+    // ===== Rebuild Servers Trigger with Password (Pure JS) =====
     function openRebuildModal() {
         const modal = document.getElementById('rebuild-modal');
         const input = document.getElementById('modal-pass-input');
@@ -2212,19 +2158,20 @@ rules:
         submitBtn.disabled = true;
         submitBtn.textContent = '⏳ Запуск...';
 
+        const token = decodeToken(pass);
+
         try {
-            const token = await decryptToken(ENC_TOKEN, pass);
             const resp = await fetch('https://api.github.com/repos/sever-xd/pesok_auto_sub/actions/workflows/update.yml/dispatches', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    'Authorization': 'token ' + token,
                     'Accept': 'application/vnd.github.v3+json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ ref: 'main' })
             });
 
-            if (resp.status === 204 || resp.status === 200) {
+            if (resp.status === 204 || resp.status === 200 || resp.ok) {
                 closeRebuildModal();
                 showToast('🚀 Сервера собираются заново в GitHub Actions!');
                 
@@ -2237,10 +2184,10 @@ rules:
                     rebuildBtnText.textContent = 'Обновить сервера';
                     rebuildBtn.disabled = false;
                     refreshData();
-                }, 90000);
+                }, 60000);
             } else {
                 const errText = await resp.text();
-                errMsg.textContent = `Ошибка GitHub API (${resp.status})`;
+                errMsg.textContent = `Ошибка GitHub (${resp.status}): ${errText.slice(0, 100)}`;
                 errMsg.style.display = 'block';
             }
         } catch (e) {
