@@ -1,10 +1,10 @@
 {
-  "last_update": "2026-09-30T18:12:02.683378+00:00",
+  "last_update": "2026-09-30T17:54:38.656427+00:00",
   "stats": {
     "total": 107,
-    "added_today": 0,
+    "added_today": 107,
     "removed_expired": 0,
-    "kept_from_previous": 107,
+    "kept_from_previous": 0,
     "date": "2026-09-30",
     "countries": {
       "US": 3,
@@ -133,7 +133,8 @@
       "remark": "github.com/freefq - 广东省移动 7",
       "country": "US",
       "fingerprint": "7bda156b4db94fa0081574b8c4267b20",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -143,7 +144,8 @@
       "remark": "北京市+惟译天创信息技术有限公司",
       "country": "US",
       "fingerprint": "8af3fd6b088b4d4a214a79856f242f44",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -153,7 +155,8 @@
       "remark": "🇺🇸US-198.98.53.130-0065",
       "country": "US",
       "fingerprint": "837171a28542f205615e281e391131cc",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -163,7 +166,8 @@
       "remark": "github.com/freefq - 美国Fastly全球Anycast节点 13",
       "country": "GB",
       "fingerprint": "4d960bf5cca1a52b32b6edcadf6c2930",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 144
     },
     {
       "protocol": "ss",
@@ -173,7 +177,8 @@
       "remark": "🇬🇧GB-82.38.31.181-0095",
       "country": "GB",
       "fingerprint": "c3aee2db7f0a436cdf7a6431198a18a9",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -183,7 +188,8 @@
       "remark": "🇬🇧GB-51.89.22.228-0177",
       "country": "GB",
       "fingerprint": "8f089a2c1f1e156d45d88516002c1fb1",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -193,7 +199,8 @@
       "remark": "🇩🇪_DE_德国",
       "country": "DE",
       "fingerprint": "c4aa943b47b2e13a5866aaae6b5ce156",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 57
     },
     {
       "protocol": "trojan",
@@ -203,7 +210,8 @@
       "remark": "🇩🇪_DE_德国",
       "country": "DE",
       "fingerprint": "ad109e32b6274f83db88d54a7a0d8f1a",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 72
     },
     {
       "protocol": "ss",
@@ -213,7 +221,8 @@
       "remark": "🇩🇪DE-209.46.102.22-0113",
       "country": "DE",
       "fingerprint": "622d0897a092b926b79dc810be907910",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -223,7 +232,8 @@
       "remark": "🇳🇱 荷兰 | NLD",
       "country": "NL",
       "fingerprint": "cca363d7af5de2c56a803981d44fdbdb",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -233,7 +243,8 @@
       "remark": "🇳🇱NL-193.29.139.151-0085",
       "country": "NL",
       "fingerprint": "ffc0c5f21f1dae115eeab5f2db173c3f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -243,7 +254,8 @@
       "remark": "🇳🇱NL-2.59.170.20-0256",
       "country": "NL",
       "fingerprint": "88017e97d83722917055f829aa3f1aaa",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -253,7 +265,8 @@
       "remark": "🇫🇷 法国 | FRA",
       "country": "FR",
       "fingerprint": "8e245eb4bfd54766d762ca0f4204ac45",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 71
     },
     {
       "protocol": "vless",
@@ -263,7 +276,8 @@
       "remark": "🇫🇷 法国 | FRA",
       "country": "FR",
       "fingerprint": "730681a9c44d814a3846ef4c1a32881f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 71
     },
     {
       "protocol": "vmess",
@@ -273,7 +287,8 @@
       "remark": "🇫🇷FR-51.77.212.145-0344",
       "country": "FR",
       "fingerprint": "3f9501f7594cea1011fab89ac1473151",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -283,7 +298,8 @@
       "remark": "🇯🇵 日本 | JPN",
       "country": "JP",
       "fingerprint": "041508dd3600622984f6da2f35448fa0",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 323
     },
     {
       "protocol": "ss",
@@ -293,7 +309,8 @@
       "remark": "🇯🇵JP-149.22.87.204-0120",
       "country": "JP",
       "fingerprint": "6e1c98f1bb3b2b783bb5721a3adbfafe",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -303,7 +320,8 @@
       "remark": "🇯🇵JP-172.111.146.64-0142",
       "country": "JP",
       "fingerprint": "f8e78c8ec5282ef4c9f00e40a1643c48",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -313,7 +331,8 @@
       "remark": "🇸🇬 新加坡 | SGP",
       "country": "SG",
       "fingerprint": "fc984c6a2888ad0cbea9cdda958648eb",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 214
     },
     {
       "protocol": "ss",
@@ -323,7 +342,8 @@
       "remark": "🇸🇬SG-68.183.227.4-0123",
       "country": "SG",
       "fingerprint": "3462811ae0e4a9e4aff1c0f1c7686c26",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 221
     },
     {
       "protocol": "vmess",
@@ -333,7 +353,8 @@
       "remark": "🇸🇬SG-139.99.61.53-0305",
       "country": "SG",
       "fingerprint": "37a30bb159ef32670c1aeb100d4ba4b4",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 192
     },
     {
       "protocol": "vless",
@@ -343,7 +364,8 @@
       "remark": "🇰🇷 韩国 | KOR",
       "country": "KR",
       "fingerprint": "89c4760b677a95ce5b9336c04a0da3aa",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 353
     },
     {
       "protocol": "ss",
@@ -353,7 +375,8 @@
       "remark": "🇰🇷KR-211.178.105.134-0149",
       "country": "KR",
       "fingerprint": "91c4ce989c7897bac0b016d13f3acc64",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 313
     },
     {
       "protocol": "vmess",
@@ -363,7 +386,8 @@
       "remark": "🇰🇷KR-152.67.218.38-0021",
       "country": "KR",
       "fingerprint": "39d1877f2bdc2a37fb2fc08da72d5de6",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -373,7 +397,8 @@
       "remark": "🇭🇰_HK_中国香港",
       "country": "HK",
       "fingerprint": "07c484583825fe01d0c58aedf2277c76",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 2871
     },
     {
       "protocol": "vless",
@@ -383,7 +408,8 @@
       "remark": "🇭🇰 香港 | HKG",
       "country": "HK",
       "fingerprint": "8eafd6b975b43740c30a9767a260639e",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 233
     },
     {
       "protocol": "ss",
@@ -393,7 +419,8 @@
       "remark": "🇭🇰HK-103.149.182.79-0184",
       "country": "HK",
       "fingerprint": "cd8a9c490176c8bfed03738e5867b572",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 245
     },
     {
       "protocol": "ss",
@@ -403,7 +430,8 @@
       "remark": "🇨🇦CA-137.184.174.93-0158",
       "country": "CA",
       "fingerprint": "3fecb42e90b4920c6cc5bdba8a552c0f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -413,7 +441,8 @@
       "remark": "🇨🇦CA-134.195.198.147-0882",
       "country": "CA",
       "fingerprint": "5261a31ea3d94e0d199c612fe3e0dfca",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 154
     },
     {
       "protocol": "trojan",
@@ -423,7 +452,8 @@
       "remark": "🇨🇦CA-148.113.141.99-1005",
       "country": "CA",
       "fingerprint": "ba519bf572bb8dd397400043ed2426b2",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 152
     },
     {
       "protocol": "vmess",
@@ -433,7 +463,8 @@
       "remark": "🇦🇺AU-103.224.212.142-0239",
       "country": "AU",
       "fingerprint": "0926aff5da54083300a95fd03b6a214e",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -443,7 +474,8 @@
       "remark": "🇦🇺AU-185.167.116.253-0263",
       "country": "AU",
       "fingerprint": "9fd8d400c0754a65b16acf333f395f0f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -453,7 +485,8 @@
       "remark": "🇦🇺AU-103.224.212.216-1260",
       "country": "AU",
       "fingerprint": "f2e6e4320af052602b89fba5959fd3f4",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 490
     },
     {
       "protocol": "vmess",
@@ -463,7 +496,8 @@
       "remark": "🇫🇮FI-65.109.184.152-1463",
       "country": "FI",
       "fingerprint": "67b0c76405565d826d9928afbf0ec906",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 71
     },
     {
       "protocol": "ss",
@@ -473,7 +507,8 @@
       "remark": "🇫🇮FI-37.143.129.230-4065",
       "country": "FI",
       "fingerprint": "f16f5de4c31cb939d2a63bda4b8cd916",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -483,7 +518,8 @@
       "remark": "🇫🇮[www.v2nodes.com] vless-FI-1...",
       "country": "FI",
       "fingerprint": "6f7e43c2e7c6257ab7da47e21baa7b5e",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -493,7 +529,8 @@
       "remark": "🇸🇪 瑞典 | SWE",
       "country": "SE",
       "fingerprint": "a59e9cb91f29348749bde647c57f3f60",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 44
     },
     {
       "protocol": "ss",
@@ -503,7 +540,8 @@
       "remark": "🇸🇪SE-51.20.86.152-0125",
       "country": "SE",
       "fingerprint": "8303c4d49757efd4b5d5f4da9d658b44",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 42
     },
     {
       "protocol": "trojan",
@@ -513,7 +551,8 @@
       "remark": "🇸🇪SE-13.48.202.26-1650",
       "country": "SE",
       "fingerprint": "b7e21d721419e3a91ef1c44dfc836109",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -523,7 +562,8 @@
       "remark": "🇹🇷 土耳其 | TUR",
       "country": "TR",
       "fingerprint": "1a4a8792a29b094a2b209ea803e0ff66",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -533,7 +573,8 @@
       "remark": "🇹🇷TR-202.78.162.5-0873",
       "country": "TR",
       "fingerprint": "07c89769fc3fe968c0de479de5184a28",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -543,7 +584,8 @@
       "remark": "🇹🇷[www.v2nodes.com] vless-TR-1...",
       "country": "TR",
       "fingerprint": "740ace9d8d6bc069cc7e85c7f07a3cfe",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -553,7 +595,8 @@
       "remark": "🇮🇳 印度 | IND",
       "country": "IN",
       "fingerprint": "e9d73fb5c18e7b086acf6e9914aad6b8",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -563,7 +606,8 @@
       "remark": "🇮🇳IN-152.67.8.205-0138",
       "country": "IN",
       "fingerprint": "cc866d42bdfa81d8261d687b15c12193",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -573,7 +617,8 @@
       "remark": "🇮🇳IN-152.67.160.174-0963",
       "country": "IN",
       "fingerprint": "fad9720e616cc324b0b4fe2fdf77ac68",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 215
     },
     {
       "protocol": "vmess",
@@ -583,7 +628,8 @@
       "remark": "🇦🇪AE-20.233.12.144-0023",
       "country": "AE",
       "fingerprint": "96dab5e9a42b0e279c31b9becb402246",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -593,7 +639,8 @@
       "remark": "🇦🇪AE-109.169.72.249-2439",
       "country": "AE",
       "fingerprint": "5db60e934165c8acbf008b718f94d290",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -603,7 +650,8 @@
       "remark": "🇦🇹AT-212.113.106.243-7097",
       "country": "AT",
       "fingerprint": "4e07cef720471c3d88bed314d0a2fa4d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -613,7 +661,8 @@
       "remark": "🇦🇹[www.v2nodes.com] vless-AT-1...",
       "country": "AT",
       "fingerprint": "43ae4a9ec0b9d1adb890819db967fa57",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -623,7 +672,8 @@
       "remark": "🇧🇪 比利时 | BEL",
       "country": "BE",
       "fingerprint": "36de82c6f78f00060848e20ad7b96973",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 232
     },
     {
       "protocol": "vmess",
@@ -633,7 +683,8 @@
       "remark": "🇧🇪BE-37.120.236.251-0824",
       "country": "BE",
       "fingerprint": "34fd71e196b4d7b4de0d91f14fe524e2",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 68
     },
     {
       "protocol": "ss",
@@ -643,7 +694,8 @@
       "remark": "🇧🇬BG-213.183.63.221-0297",
       "country": "BG",
       "fingerprint": "d5bf5952c47a849b418d5eb57014714b",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -653,7 +705,8 @@
       "remark": "🇧🇬BG-95.164.33.62-0692",
       "country": "BG",
       "fingerprint": "67a35df589ed66402d01b42dffb2a5e5",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -663,7 +716,8 @@
       "remark": "🇧🇷BR-78.111.102.232-0661",
       "country": "BR",
       "fingerprint": "7a2eca8ad923b7c056c23ebec78f5d14",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -673,7 +727,8 @@
       "remark": "🇧🇷[www.v2nodes.com] vless-BR-4...",
       "country": "BR",
       "fingerprint": "2b52b3ef6ce71a9d8d9704b3d86c9b76",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 38
     },
     {
       "protocol": "trojan",
@@ -683,7 +738,8 @@
       "remark": "🇨🇭CH-152.67.71.149-2467",
       "country": "CH",
       "fingerprint": "9f4f0cff86d7a828b4941a7bb2e0704f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -693,7 +749,8 @@
       "remark": "🇨🇭CH-156.146.62.160-4038",
       "country": "CH",
       "fingerprint": "8441cbb8b545a287d89326252c328a92",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -703,7 +760,8 @@
       "remark": "🇨🇿CZ-46.8.8.220-0193",
       "country": "CZ",
       "fingerprint": "98feffaac9e0783bcb762332e8cb316a",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 180
     },
     {
       "protocol": "trojan",
@@ -713,7 +771,8 @@
       "remark": "🇨🇿CZ-92.118.149.85-2604",
       "country": "CZ",
       "fingerprint": "4681dc81563685847934aaf348aa911d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -723,7 +782,8 @@
       "remark": "🇩🇰DK-192.36.27.94-4068",
       "country": "DK",
       "fingerprint": "8c74c423dce135172ecdb753ed7c1ee0",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -733,7 +793,8 @@
       "remark": "🇩🇰DK-192.36.27.116-7165",
       "country": "DK",
       "fingerprint": "d8212af8b772ce47ae538bd9cf3f4a8e",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -743,7 +804,8 @@
       "remark": "🇪🇪EE-176.112.146.190-0630",
       "country": "EE",
       "fingerprint": "3d12a4d97a6b03cfa7ecebaf9b1c7230",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -753,7 +815,8 @@
       "remark": "🇪🇪EE-138.124.183.222-2105",
       "country": "EE",
       "fingerprint": "0b79b5b3d1a018b0f54a2dfd36c1ffd2",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -763,7 +826,8 @@
       "remark": "🇪🇸ES-5.188.181.201-0161",
       "country": "ES",
       "fingerprint": "bcbeded2ef1004325c76702590cc533d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -773,7 +837,8 @@
       "remark": "🇪🇸[www.v2nodes.com] vless-ES-1...",
       "country": "ES",
       "fingerprint": "7bc4a714f96df348ecedd801fae4983f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -783,7 +848,8 @@
       "remark": "🇬🇷GR-192.71.166.102-3666",
       "country": "GR",
       "fingerprint": "292d07756770700cccf69067307690bb",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -793,7 +859,8 @@
       "remark": "🇬🇷[www.v2nodes.com] vless-GR-3...",
       "country": "GR",
       "fingerprint": "8147543712b529ee4b2d910947c187f8",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 103
     },
     {
       "protocol": "vless",
@@ -803,7 +870,8 @@
       "remark": "🇭🇺[www.v2nodes.com] vless-HU-1...",
       "country": "HU",
       "fingerprint": "fdcdce5a6f1d6021c680ea91c73f271f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 1142
     },
     {
       "protocol": "vless",
@@ -813,7 +881,8 @@
       "remark": "🇭🇺[www.v2nodes.com] vless-HU-6...",
       "country": "HU",
       "fingerprint": "c0aae95b3f959dbaf416b73d17fab64b",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 78
     },
     {
       "protocol": "trojan",
@@ -823,7 +892,8 @@
       "remark": "🇮🇩ID-103.176.78.153-4327",
       "country": "ID",
       "fingerprint": "680e9a76adbcc26a8cffb820b0931de6",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -833,7 +903,8 @@
       "remark": "🇮🇩ID-41.216.177.41-4485",
       "country": "ID",
       "fingerprint": "2ad25f889e19e12f4c4bc2d241fd5096",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -843,7 +914,8 @@
       "remark": "🇮🇪 爱尔兰 | IRL",
       "country": "IE",
       "fingerprint": "c5127089c0c361381078df707a738c14",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 79
     },
     {
       "protocol": "vmess",
@@ -853,7 +925,8 @@
       "remark": "🇮🇪IE-185.108.128.60-0651",
       "country": "IE",
       "fingerprint": "48fd7a3253800022a4a1c30c4b3b054c",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -863,7 +936,8 @@
       "remark": "🇮🇱[www.v2nodes.com] vless-IL-1...",
       "country": "IL",
       "fingerprint": "58b8474004978257131eed1342259034",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 120
     },
     {
       "protocol": "vless",
@@ -873,7 +947,8 @@
       "remark": "🇮🇹 意大利 | ITA",
       "country": "IT",
       "fingerprint": "573910335b08952d67df5c3574876ddd",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -883,7 +958,8 @@
       "remark": "🇮🇹IT-57.131.48.45-0116",
       "country": "IT",
       "fingerprint": "3f365b065c35f215480b98edb8f71466",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -893,7 +969,8 @@
       "remark": "🇰🇿KZ-38.107.234.57-0914",
       "country": "KZ",
       "fingerprint": "2c1b90cab116b49de7544e5922afb46a",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 147
     },
     {
       "protocol": "vless",
@@ -903,7 +980,8 @@
       "remark": "🇰🇿[www.v2nodes.com] vless-KZ-1...",
       "country": "KZ",
       "fingerprint": "8f63affde988c25ef59fb8833d167c4d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -913,7 +991,8 @@
       "remark": "🇱🇹 立陶宛 | LTU",
       "country": "LT",
       "fingerprint": "11177af9874f86d6923d57ba96e0cc38",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -923,7 +1002,8 @@
       "remark": "🇱🇹LT-85.206.165.36-0652",
       "country": "LT",
       "fingerprint": "2b711e374026e11227a4c9e3344d4ad4",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 94
     },
     {
       "protocol": "ss",
@@ -933,7 +1013,8 @@
       "remark": "🇱🇻LV-185.135.86.86-7197",
       "country": "LV",
       "fingerprint": "393ab927cfa1cc9b43c819d929a0e563",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -943,7 +1024,8 @@
       "remark": "🇱🇻LV-185.135.86.173-7198",
       "country": "LV",
       "fingerprint": "0312801095152fafba98bdc259ddf3af",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -953,7 +1035,8 @@
       "remark": "🇲🇽MX-190.103.179.23-4029",
       "country": "MX",
       "fingerprint": "3be79e7e6f2c0d210106d37d6ee2d708",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -963,7 +1046,8 @@
       "remark": "🇲🇽[www.v2nodes.com] vless-MX-1...",
       "country": "MX",
       "fingerprint": "9831b32a2139961ff5c4b8f01535b448",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 225
     },
     {
       "protocol": "trojan",
@@ -973,7 +1057,8 @@
       "remark": "🇲🇾MY-47.250.84.25-4804",
       "country": "MY",
       "fingerprint": "1bd404891ee8217c023a5e960b29ec99",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 243
     },
     {
       "protocol": "trojan",
@@ -983,7 +1068,8 @@
       "remark": "🇲🇾[www.v2nodes.com] trojan-MY-...",
       "country": "MY",
       "fingerprint": "1bd404891ee8217c023a5e960b29ec99",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 244
     },
     {
       "protocol": "ss",
@@ -993,7 +1079,8 @@
       "remark": "🇳🇴NO-185.213.23.63-0133",
       "country": "NO",
       "fingerprint": "6b0b839f99eddb7cef8a5be7df2b333a",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 135
     },
     {
       "protocol": "vmess",
@@ -1003,7 +1090,8 @@
       "remark": "🇳🇴NO-46.29.218.84-0650",
       "country": "NO",
       "fingerprint": "235f2700a22df749a93a039a6a4ddaa8",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -1013,7 +1101,8 @@
       "remark": "🇵🇭PH-120.28.10.46-0743",
       "country": "PH",
       "fingerprint": "415e67193199b79c05f58c389c0955d2",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 254
     },
     {
       "protocol": "vmess",
@@ -1023,7 +1112,8 @@
       "remark": "🇵🇭PH-61.245.11.60-0916",
       "country": "PH",
       "fingerprint": "4e557022d00ab23e3a5abd7fb39a76de",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -1033,7 +1123,8 @@
       "remark": "🇵🇱PL-51.68.139.22-0343",
       "country": "PL",
       "fingerprint": "1493963c67958f4e3e91ec934587e89f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -1043,7 +1134,8 @@
       "remark": "🇵🇱PL-51.77.53.200-1998",
       "country": "PL",
       "fingerprint": "2cffa60de8f598c4604a86150d272163",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -1053,7 +1145,8 @@
       "remark": "🇷🇴RO-194.14.217.115-7158",
       "country": "RO",
       "fingerprint": "742f6775a042afb68ca7e2d06b5e1f28",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -1063,7 +1156,8 @@
       "remark": "🇷🇴[www.v2nodes.com] vless-RO-1...",
       "country": "RO",
       "fingerprint": "aba33ca04c41c2485d8208dde38b923d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -1073,7 +1167,8 @@
       "remark": "🇷🇺 俄罗斯 | RUS",
       "country": "RU",
       "fingerprint": "8454ed6f66a30fcb99c10780d974a4ec",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -1083,7 +1178,8 @@
       "remark": "🇷🇺RU-185.173.94.213-0215",
       "country": "RU",
       "fingerprint": "b188026f89fe127266c55df967b50f98",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "trojan",
@@ -1093,7 +1189,8 @@
       "remark": "🇹🇭 泰国 | THA",
       "country": "TH",
       "fingerprint": "bba6e9254b2b7808f714b7a5df0cf174",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 264
     },
     {
       "protocol": "trojan",
@@ -1103,7 +1200,8 @@
       "remark": "🇹🇭 泰国 | THA #1",
       "country": "TH",
       "fingerprint": "bba6e9254b2b7808f714b7a5df0cf174",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 237
     },
     {
       "protocol": "vless",
@@ -1113,7 +1211,8 @@
       "remark": "🇹🇼 🇨🇳 台湾 | TWN",
       "country": "TW",
       "fingerprint": "0723ccbb3301bfabf9057498f1cc2ac2",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 262
     },
     {
       "protocol": "trojan",
@@ -1123,7 +1222,8 @@
       "remark": "🇹🇼 🇨🇳 台湾 | TWN",
       "country": "TW",
       "fingerprint": "0a1464d7abd00874c3d8d6eeb2a0ba1e",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 448
     },
     {
       "protocol": "ss",
@@ -1133,7 +1233,8 @@
       "remark": "🇺🇦UA-5.188.6.8-6889",
       "country": "UA",
       "fingerprint": "392c3abd31e560df4ad502b78cb22084",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vless",
@@ -1143,7 +1244,8 @@
       "remark": "🇺🇦[www.v2nodes.com] vless-UA-4...",
       "country": "UA",
       "fingerprint": "1d83afb93746bcee51adf8852a56983d",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 93
     },
     {
       "protocol": "vmess",
@@ -1153,7 +1255,8 @@
       "remark": "🇺🇿UZ-37.110.209.228-0744",
       "country": "UZ",
       "fingerprint": "747f9593bfa9f0b6a8bcd9deef482d74",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 76
     },
     {
       "protocol": "vmess",
@@ -1163,7 +1266,8 @@
       "remark": "🇻🇳VN-103.166.183.226-0330",
       "country": "VN",
       "fingerprint": "bdcbb18ac4e4dd66c252e42e09a5e05f",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": 220
     },
     {
       "protocol": "trojan",
@@ -1173,7 +1277,8 @@
       "remark": "🇻🇳VN-103.81.85.238-2449",
       "country": "VN",
       "fingerprint": "8bcfddad56020eb770b6ce9013f651bd",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "ss",
@@ -1183,7 +1288,8 @@
       "remark": "🇿🇦ZA-139.84.247.164-0129",
       "country": "ZA",
       "fingerprint": "1353124b3974132c3181a8a71404f24c",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     },
     {
       "protocol": "vmess",
@@ -1193,7 +1299,8 @@
       "remark": "🇿🇦ZA-129.151.164.152-1462",
       "country": "ZA",
       "fingerprint": "ce50b5df18249b4d7f10db7efcf66671",
-      "added_date": "2026-09-30"
+      "added_date": "2026-09-30",
+      "ping": -1
     }
   ]
 }
