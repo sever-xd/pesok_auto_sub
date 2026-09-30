@@ -1,10 +1,10 @@
 {
-  "last_update": "2026-09-30T18:40:39.029248+00:00",
+  "last_update": "2026-09-30T17:54:38.656427+00:00",
   "stats": {
     "total": 107,
-    "added_today": 0,
+    "added_today": 107,
     "removed_expired": 0,
-    "kept_from_previous": 107,
+    "kept_from_previous": 0,
     "date": "2026-09-30",
     "countries": {
       "US": 3,
@@ -133,7 +133,8 @@
       "country": "US",
       "fingerprint": "7bda156b4db94fa0081574b8c4267b20",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://eyJ2IjogIjIiLCAicHMiOiAiZ2l0aHViLmNvbS9mcmVlZnEgLSBcdTVlN2ZcdTRlMWNcdTc3MDFcdTc5ZmJcdTUyYTggNyIsICJhZGQiOiAiZGF0YS11cy12MS5zaHdqZmt3LmNuIiwgInBvcnQiOiAiMjA0MDEiLCAiYWlkIjogMCwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAidGxzIjogIiIsICJpZCI6ICJiMTQ3OGUyNC00OTE2LTNhYmUtOGYxNy0xNTkzMTAxMmVjYmUiLCAic25pIjogIiIsICJob3N0IjogImRhdGEtdXMtdjEuc2h3amZrdy5jbiIsICJwYXRoIjogIi9kZWJpYW4ifQ=="
     },
     {
       "protocol": "vless",
@@ -143,7 +144,8 @@
       "country": "US",
       "fingerprint": "8af3fd6b088b4d4a214a79856f242f44",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vless://0afc6426-606c-48e7-bd70-3c424a416842@us22.sofast.live:58011?encryption=none&security=&type=tcp#%E5%8C%97%E4%BA%AC%E5%B8%82+%E6%83%9F%E8%AF%91%E5%A4%A9%E5%88%9B%E4%BF%A1%E6%81%AF%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8"
     },
     {
       "protocol": "ss",
@@ -153,7 +155,8 @@
       "country": "US",
       "fingerprint": "837171a28542f205615e281e391131cc",
       "added_date": "2026-09-30",
-      "ping": 9
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTplRGZON1NPRFFjZUlPbUlBYnRKSnRL@198.98.53.130:443#%F0%9F%87%BA%F0%9F%87%B8US-198.98.53.130-0065"
     },
     {
       "protocol": "vmess",
@@ -163,7 +166,8 @@
       "country": "GB",
       "fingerprint": "4d960bf5cca1a52b32b6edcadf6c2930",
       "added_date": "2026-09-30",
-      "ping": 10
+      "ping": 144,
+      "raw": "vmess://eyJhZGQiOiAiZ292LnVrIiwgInYiOiAiMiIsICJwcyI6ICJnaXRodWIuY29tL2ZyZWVmcSAtIFx1N2Y4ZVx1NTZmZEZhc3RseVx1NTE2OFx1NzQwM0FueWNhc3RcdTgyODJcdTcwYjkgMTMiLCAicG9ydCI6IDQ0MywgImlkIjogIjc3ODQ4ODI0LTkzYjctNGI4OS1mZmQwLWU5MWFmZmY0MDZjZSIsICJhaWQiOiAiMCIsICJuZXQiOiAid3MiLCAidHlwZSI6ICIiLCAiaG9zdCI6ICJ6aGVzaGlzY3AuY29tIiwgInBhdGgiOiAiLzc3ODQ4ODI0IiwgInRscyI6ICJ0bHMifQ=="
     },
     {
       "protocol": "ss",
@@ -173,7 +177,8 @@
       "country": "GB",
       "fingerprint": "c3aee2db7f0a436cdf7a6431198a18a9",
       "added_date": "2026-09-30",
-      "ping": 106
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.181:8080#%F0%9F%87%AC%F0%9F%87%A7GB-82.38.31.181-0095"
     },
     {
       "protocol": "trojan",
@@ -183,7 +188,8 @@
       "country": "GB",
       "fingerprint": "8f089a2c1f1e156d45d88516002c1fb1",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://67e200f1-4ff5-42ca-8425-3f16f7986c29@51.89.22.228:443?security=tls&sni=t1.samsung.bforward2.uk#%F0%9F%87%AC%F0%9F%87%A7GB-51.89.22.228-0177"
     },
     {
       "protocol": "vmess",
@@ -193,7 +199,8 @@
       "country": "DE",
       "fingerprint": "c4aa943b47b2e13a5866aaae6b5ce156",
       "added_date": "2026-09-30",
-      "ping": 92
+      "ping": 57,
+      "raw": "vmess://eyJhZGQiOiIzMS43Ny44Ljk3IiwiYWlkIjowLCJpZCI6ImQyZDg2MDFiLWMxNGItNDJjNi1iOGVhLTMzODg5YmNlMTUyYSIsIm5ldCI6InRjcCIsInBvcnQiOjExMCwicHMiOiLwn4ep8J+Hql9ERV/lvrflm70iLCJzZWN1cml0eSI6ImF1dG8ifQ=="
     },
     {
       "protocol": "trojan",
@@ -203,7 +210,8 @@
       "country": "DE",
       "fingerprint": "ad109e32b6274f83db88d54a7a0d8f1a",
       "added_date": "2026-09-30",
-      "ping": 100
+      "ping": 72,
+      "raw": "trojan://UX82473651@alive-flea.rooster465.autos:443?security=tls#%F0%9F%87%A9%F0%9F%87%AA_DE_%E5%BE%B7%E5%9B%BD"
     },
     {
       "protocol": "ss",
@@ -213,7 +221,8 @@
       "country": "DE",
       "fingerprint": "622d0897a092b926b79dc810be907910",
       "added_date": "2026-09-30",
-      "ping": 94
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNToxaGhycXJva2ozYWc=@209.46.102.22:8388#%F0%9F%87%A9%F0%9F%87%AADE-209.46.102.22-0113"
     },
     {
       "protocol": "vless",
@@ -223,7 +232,8 @@
       "country": "NL",
       "fingerprint": "cca363d7af5de2c56a803981d44fdbdb",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vless://4abdfe42-aec7-4b66-974d-3f891e2e8184@80.85.141.32:8443?&security=reality&flow=xtls-rprx-vision&pbk=j97RCvxVfMu5XWcXuAc4s8TnBTdl8PQrNFrZDQpAkng&sid=b415b8d7a6106ace&fp=chrome&sni=nlll.gaz-service.shop&type=tcp&headerType=none&host=nlll.gaz-service.shop&path=%2F#%F0%9F%87%B3%F0%9F%87%B1%20%E8%8D%B7%E5%85%B0%20%7C%20NLD"
     },
     {
       "protocol": "ss",
@@ -233,7 +243,8 @@
       "country": "NL",
       "fingerprint": "ffc0c5f21f1dae115eeab5f2db173c3f",
       "added_date": "2026-09-30",
-      "ping": 96
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGNRVjhrYTNQYTNB@193.29.139.151:8080#%F0%9F%87%B3%F0%9F%87%B1NL-193.29.139.151-0085"
     },
     {
       "protocol": "trojan",
@@ -243,7 +254,8 @@
       "country": "NL",
       "fingerprint": "88017e97d83722917055f829aa3f1aaa",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://64de1de7-e3bb-3dc4-ab04-d1e601e18ac5@hn.xiaohouzi.club:49438?security=tls&sni=hn.xiaohouzi.club#%F0%9F%87%B3%F0%9F%87%B1NL-2.59.170.20-0256"
     },
     {
       "protocol": "ss",
@@ -253,7 +265,8 @@
       "country": "FR",
       "fingerprint": "8e245eb4bfd54766d762ca0f4204ac45",
       "added_date": "2026-09-30",
-      "ping": 86
+      "ping": 71,
+      "raw": "ss://YWVzLTI1Ni1nY206ZEhISVV5QnV2YTNjclVCUndwT1hDQQ@51.83.6.5:20076#%F0%9F%87%AB%F0%9F%87%B7%20%E6%B3%95%E5%9B%BD%20%7C%20FRA"
     },
     {
       "protocol": "vless",
@@ -263,7 +276,8 @@
       "country": "FR",
       "fingerprint": "730681a9c44d814a3846ef4c1a32881f",
       "added_date": "2026-09-30",
-      "ping": 161
+      "ping": 71,
+      "raw": "vless://069a2bbd-3fc9-470f-a251-c836a96ed04a@34.155.146.201:443?&security=reality&pbk=SVT2WeXMIrumlh5VG1lbHN6YbqL7-u2iRkv1js8XEU4&sid=3f95392a418ec8fd&fp=chrome&sni=www.cloudflare.com&type=tcp&headerType=none&host=www.cloudflare.com&path=%2F#%F0%9F%87%AB%F0%9F%87%B7%20%E6%B3%95%E5%9B%BD%20%7C%20FRA"
     },
     {
       "protocol": "vmess",
@@ -273,7 +287,8 @@
       "country": "FR",
       "fingerprint": "3f9501f7594cea1011fab89ac1473151",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICI1MS43Ny4yMTIuMTQ1IiwKICAgICJhaWQiOiAwLAogICAgImhvc3QiOiAiIiwKICAgICJpZCI6ICI1ZjZlNDJiYi0yZmQxLTQ3OGItOGYwZi1lNTJiMmQ2Zjc2NTIiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvdm1lc3MiLAogICAgInBvcnQiOiA4MCwKICAgICJwcyI6ICLwn4er8J+Ht0ZSLTUxLjc3LjIxMi4xNDUtMDM0NCIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogZmFsc2UsCiAgICAic25pIjogIjUxLjc3LjIxMi4xNDUiCn0="
     },
     {
       "protocol": "vless",
@@ -283,7 +298,8 @@
       "country": "JP",
       "fingerprint": "041508dd3600622984f6da2f35448fa0",
       "added_date": "2026-09-30",
-      "ping": 195
+      "ping": 323,
+      "raw": "vless://8079ccd4-4b4b-44e2-92f0-8f0367ad9c24@bgroup.jp1.ilovegairport.com:443?&security=reality&flow=xtls-rprx-vision&pbk=BJihKW3qLbtwFO_WAZ3htkU5VpWcMoFYX9tqlLmKiUY&sid=f3f3bbfe1c&fp=firefox&sni=ap-northeast-1.console.aws.amazon.com&type=tcp&headerType=none&host=ap-northeast-1.console.aws.amazon.com&path=%2F#%F0%9F%87%AF%F0%9F%87%B5%20%E6%97%A5%E6%9C%AC%20%7C%20JPN"
     },
     {
       "protocol": "ss",
@@ -293,7 +309,8 @@
       "country": "JP",
       "fingerprint": "6e1c98f1bb3b2b783bb5721a3adbfafe",
       "added_date": "2026-09-30",
-      "ping": 156
+      "ping": -1,
+      "raw": "ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@149.22.87.204:443#%F0%9F%87%AF%F0%9F%87%B5JP-149.22.87.204-0120"
     },
     {
       "protocol": "vmess",
@@ -303,7 +320,8 @@
       "country": "JP",
       "fingerprint": "f8e78c8ec5282ef4c9f00e40a1643c48",
       "added_date": "2026-09-30",
-      "ping": 157
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxNzIuMTExLjE0Ni42NCIsCiAgICAiYWlkIjogMCwKICAgICJob3N0IjogIiIsCiAgICAiaWQiOiAiMDViOGM3ODMtN2Y1OS00N2Y5LTk5MjMtMDZhNDY1Njc5ZjZhIiwKICAgICJuZXQiOiAid3MiLAogICAgInBhdGgiOiAiLyIsCiAgICAicG9ydCI6IDgwLAogICAgInBzIjogIvCfh6/wn4e1SlAtMTcyLjExMS4xNDYuNjQtMDE0MiIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "vless",
@@ -313,7 +331,8 @@
       "country": "SG",
       "fingerprint": "fc984c6a2888ad0cbea9cdda958648eb",
       "added_date": "2026-09-30",
-      "ping": 220
+      "ping": 214,
+      "raw": "vless://ab61daa1-b7fb-486e-8946-b1da9a444685@139.59.225.43:443?&security=tls&fp=chrome&sni=cf2us.3rr0r.online&type=ws&headerType=none&host=cf2us.3rr0r.online&path=%2Fproxyip%3DProxyIP.SG.CMLiussss.Net#%F0%9F%87%B8%F0%9F%87%AC%20%E6%96%B0%E5%8A%A0%E5%9D%A1%20%7C%20SGP"
     },
     {
       "protocol": "ss",
@@ -323,7 +342,8 @@
       "country": "SG",
       "fingerprint": "3462811ae0e4a9e4aff1c0f1c7686c26",
       "added_date": "2026-09-30",
-      "ping": 224
+      "ping": 221,
+      "raw": "ss://cmM0LW1kNToxNGZGUHJiZXpFM0hEWnpzTU9yNg==@68.183.227.4:8080#%F0%9F%87%B8%F0%9F%87%ACSG-68.183.227.4-0123"
     },
     {
       "protocol": "vmess",
@@ -333,7 +353,8 @@
       "country": "SG",
       "fingerprint": "37a30bb159ef32670c1aeb100d4ba4b4",
       "added_date": "2026-09-30",
-      "ping": 228
+      "ping": 192,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxMzkuOTkuNjEuNTMiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogIjYwZjMwZTI2LTBhZjctNGI2NC1iYTk0LTcxNDUwZWQ3N2UyMyIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi92bWVzcyIsCiAgICAicG9ydCI6IDgwLAogICAgInBzIjogIvCfh7jwn4esU0ctMTM5Ljk5LjYxLjUzLTAzMDUiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IGZhbHNlLAogICAgInNuaSI6ICIxMzkuOTkuNjEuNTMiCn0="
     },
     {
       "protocol": "vless",
@@ -343,7 +364,8 @@
       "country": "KR",
       "fingerprint": "89c4760b677a95ce5b9336c04a0da3aa",
       "added_date": "2026-09-30",
-      "ping": 269
+      "ping": 353,
+      "raw": "vless://81c4547b-e5d8-4af8-baf0-91c5c0c05a9b@icn-a-01.auuas.com:1891?&security=reality&flow=xtls-rprx-vision&pbk=mKvw6P0pTdasFPgyT3d_rHJSJfA-aaCxV8krGByqQS0&sid=8378f267&fp=ios&sni=www.npmjs.com&type=tcp&headerType=none&host=www.npmjs.com&path=%2F#%F0%9F%87%B0%F0%9F%87%B7%20%E9%9F%A9%E5%9B%BD%20%7C%20KOR"
     },
     {
       "protocol": "ss",
@@ -353,7 +375,8 @@
       "country": "KR",
       "fingerprint": "91c4ce989c7897bac0b016d13f3acc64",
       "added_date": "2026-09-30",
-      "ping": 191
+      "ping": 313,
+      "raw": "ss://YWVzLTI1Ni1jZmI6cXdlclJFV1FAQA==@211.178.105.134:6123#%F0%9F%87%B0%F0%9F%87%B7KR-211.178.105.134-0149"
     },
     {
       "protocol": "vmess",
@@ -363,7 +386,8 @@
       "country": "KR",
       "fingerprint": "39d1877f2bdc2a37fb2fc08da72d5de6",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxNTIuNjcuMjE4LjM4IiwKICAgICJhaWQiOiAwLAogICAgImhvc3QiOiAiIiwKICAgICJpZCI6ICJiNWU5NDgwYS1iN2FhLTQwYTQtZjlhNy01Mjk5YjVlMzYzYjQiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh7Dwn4e3S1ItMTUyLjY3LjIxOC4zOC0wMDIxIiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     },
     {
       "protocol": "vmess",
@@ -373,7 +397,8 @@
       "country": "HK",
       "fingerprint": "07c484583825fe01d0c58aedf2277c76",
       "added_date": "2026-09-30",
-      "ping": 769
+      "ping": 2871,
+      "raw": "vmess://eyJhZGQiOiJ2Ni5oZGFjZC5jb20iLCJhaWQiOjIsImlkIjoiY2JiM2Y4NzctZDFmYi0zNDRjLTg3YTktZDE1M2JmZmQ1NDg0IiwibmV0IjoidGNwIiwicG9ydCI6MzA4MDYsInBzIjoi8J+HrfCfh7BfSEtf5Lit5Zu96aaZ5rivIiwic2VjdXJpdHkiOiJhdXRvIn0="
     },
     {
       "protocol": "vless",
@@ -383,7 +408,8 @@
       "country": "HK",
       "fingerprint": "8eafd6b975b43740c30a9767a260639e",
       "added_date": "2026-09-30",
-      "ping": 206
+      "ping": 233,
+      "raw": "vless://ab61daa1-b7fb-486e-8946-b1da9a444685@156.224.79.105:443?&security=tls&fp=chrome&sni=cf2us.3rr0r.online&type=ws&headerType=none&host=cf2us.3rr0r.online&path=%2Fproxyip%3DProxyIP.HK.CMLiussss.Net#%F0%9F%87%AD%F0%9F%87%B0%20%E9%A6%99%E6%B8%AF%20%7C%20HKG"
     },
     {
       "protocol": "ss",
@@ -393,7 +419,8 @@
       "country": "HK",
       "fingerprint": "cd8a9c490176c8bfed03738e5867b572",
       "added_date": "2026-09-30",
-      "ping": 208
+      "ping": 245,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zjphc2QxMjM0NTY=@103.149.182.79:8388#%F0%9F%87%AD%F0%9F%87%B0HK-103.149.182.79-0184"
     },
     {
       "protocol": "ss",
@@ -403,7 +430,8 @@
       "country": "CA",
       "fingerprint": "3fecb42e90b4920c6cc5bdba8a552c0f",
       "added_date": "2026-09-30",
-      "ping": 31
+      "ping": -1,
+      "raw": "ss://cmM0LW1kNToxNGZGUHJiZXpFM0hEWnpzTU9yNg==@137.184.174.93:8080#%F0%9F%87%A8%F0%9F%87%A6CA-137.184.174.93-0158"
     },
     {
       "protocol": "vmess",
@@ -413,7 +441,8 @@
       "country": "CA",
       "fingerprint": "5261a31ea3d94e0d199c612fe3e0dfca",
       "added_date": "2026-09-30",
-      "ping": 18
+      "ping": 154,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxMzQuMTk1LjE5OC4xNDciLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJ2ay5jb20iLAogICAgImlkIjogIjAzZmNjNjE4LWI5M2QtNjc5Ni02YWVkLThhMzhjOTc1ZDU4MSIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi9saW5rdndzIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh6jwn4emQ0EtMTM0LjE5NS4xOTguMTQ3LTA4ODIiLAogICAgInRscyI6ICJ0bHMiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "trojan",
@@ -423,7 +452,8 @@
       "country": "CA",
       "fingerprint": "ba519bf572bb8dd397400043ed2426b2",
       "added_date": "2026-09-30",
-      "ping": 15
+      "ping": 152,
+      "raw": "trojan://HdsUZmsHQW@148.113.141.99:443?security=tls#%F0%9F%87%A8%F0%9F%87%A6CA-148.113.141.99-1005"
     },
     {
       "protocol": "vmess",
@@ -433,7 +463,8 @@
       "country": "AU",
       "fingerprint": "0926aff5da54083300a95fd03b6a214e",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICJodm9vdS0xMDQyLXYyLTEudHlvLWQta2NkLmFwLmNqaGguYmVhdXR5IiwKICAgICJhaWQiOiAwLAogICAgImhvc3QiOiAiczMuY2poaC5iZWF1dHkiLAogICAgImlkIjogImZjNTQxMzAyLTdhODQtNDk1Ny04ZTkzLWI5NzQwOTRjYzdhMCIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4ODgsCiAgICAicHMiOiAi8J+HpvCfh7pBVS0xMDMuMjI0LjIxMi4xNDItMDIzOSIsCiAgICAidGxzIjogInRscyIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "ss",
@@ -443,7 +474,8 @@
       "country": "AU",
       "fingerprint": "9fd8d400c0754a65b16acf333f395f0f",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6S25KR2FkM0ZxVHZqcWJhWA==@185.167.116.253:9014#%F0%9F%87%A6%F0%9F%87%BAAU-185.167.116.253-0263"
     },
     {
       "protocol": "trojan",
@@ -453,7 +485,8 @@
       "country": "AU",
       "fingerprint": "f2e6e4320af052602b89fba5959fd3f4",
       "added_date": "2026-09-30",
-      "ping": 135
+      "ping": 490,
+      "raw": "trojan://255c924c-1314-4084-9a9e-1d1a82a5cf49@us2.trojanvh.xyz:80?security=tls#%F0%9F%87%A6%F0%9F%87%BAAU-103.224.212.216-1260"
     },
     {
       "protocol": "vmess",
@@ -463,7 +496,8 @@
       "country": "FI",
       "fingerprint": "67b0c76405565d826d9928afbf0ec906",
       "added_date": "2026-09-30",
-      "ping": 115
+      "ping": 71,
+      "raw": "vmess://ewogICAgImFkZCI6ICI2NS4xMDkuMTg0LjE1MiIsCiAgICAiYWlkIjogMCwKICAgICJob3N0IjogIiIsCiAgICAiaWQiOiAiNWNmODM2YzgtYmI3ZC00ZWFjLWYwZWUtYmM3MjFmYjc0NTNiIiwKICAgICJuZXQiOiAid3MiLAogICAgInBhdGgiOiAiLyIsCiAgICAicG9ydCI6IDQ0MywKICAgICJwcyI6ICLwn4er8J+HrkZJLTY1LjEwOS4xODQuMTUyLTE0NjMiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "ss",
@@ -473,7 +507,8 @@
       "country": "FI",
       "fingerprint": "f16f5de4c31cb939d2a63bda4b8cd916",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@37.143.129.230:989#%F0%9F%87%AB%F0%9F%87%AEFI-37.143.129.230-4065"
     },
     {
       "protocol": "vless",
@@ -483,7 +518,8 @@
       "country": "FI",
       "fingerprint": "6f7e43c2e7c6257ab7da47e21baa7b5e",
       "added_date": "2026-09-30",
-      "ping": 116
+      "ping": -1,
+      "raw": "vless://8df2e661-6f46-471b-9133-7fc13a0daa35@65.109.28.164:443?#%F0%9F%87%AB%F0%9F%87%AE%5Bwww.v2nodes.com%5D%20vless-FI-1..."
     },
     {
       "protocol": "vless",
@@ -493,7 +529,8 @@
       "country": "SE",
       "fingerprint": "a59e9cb91f29348749bde647c57f3f60",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": 44,
+      "raw": "vless://e4be912f-68e8-4d51-80a4-1342b646f8e0@34.51.187.118:443?&security=reality&pbk=fV003yDr_sb_Wkgz6MxnIUJMgD15osWhzU-HZ5fLPFg&sid=79ff7d51e3c56323&fp=chrome&sni=www.cloudflare.com&type=tcp&headerType=none&host=www.cloudflare.com&path=%2F#%F0%9F%87%B8%F0%9F%87%AA%20%E7%91%9E%E5%85%B8%20%7C%20SWE"
     },
     {
       "protocol": "ss",
@@ -503,7 +540,8 @@
       "country": "SE",
       "fingerprint": "8303c4d49757efd4b5d5f4da9d658b44",
       "added_date": "2026-09-30",
-      "ping": 100
+      "ping": 42,
+      "raw": "ss://YWVzLTI1Ni1jZmI6YW1hem9uc2tyMDU=@51.20.86.152:443#%F0%9F%87%B8%F0%9F%87%AASE-51.20.86.152-0125"
     },
     {
       "protocol": "trojan",
@@ -513,7 +551,8 @@
       "country": "SE",
       "fingerprint": "b7e21d721419e3a91ef1c44dfc836109",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://telegram-id-privatevpns@13.48.202.26:22222?security=tls&sni=trj.rollingnext.co.uk#%F0%9F%87%B8%F0%9F%87%AASE-13.48.202.26-1650"
     },
     {
       "protocol": "vless",
@@ -523,7 +562,8 @@
       "country": "TR",
       "fingerprint": "1a4a8792a29b094a2b209ea803e0ff66",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vless://0436b522-fba1-4424-8881-808594916247@93.190.9.135:3090?&type=grpc&serviceName=&mode=gun#%F0%9F%87%B9%F0%9F%87%B7%20%E5%9C%9F%E8%80%B3%E5%85%B6%20%7C%20TUR"
     },
     {
       "protocol": "vmess",
@@ -533,7 +573,8 @@
       "country": "TR",
       "fingerprint": "07c89769fc3fe968c0de479de5184a28",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIyMDIuNzguMTYyLjUiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJpcnNvZnQuc3l0ZXMubmV0IiwKICAgICJpZCI6ICIyZmY5N2M2ZC04NTU3LTQyYTQtYjQzZi0xOWM3N2M1OTU5ZWEiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh7nwn4e3VFItMjAyLjc4LjE2Mi41LTA4NzMiLAogICAgInRscyI6ICJ0bHMiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "vless",
@@ -543,7 +584,8 @@
       "country": "TR",
       "fingerprint": "740ace9d8d6bc069cc7e85c7f07a3cfe",
       "added_date": "2026-09-30",
-      "ping": 229
+      "ping": -1,
+      "raw": "vless://bc4c0c9f-ab46-4f2c-8305-ab8b3d019fd7@19990ed1bb252449.ironly4l.ir:443?sni=storage-p2.googleapis.com&fp=chrome&security=tls#%F0%9F%87%B9%F0%9F%87%B7%5Bwww.v2nodes.com%5D%20vless-TR-1..."
     },
     {
       "protocol": "vless",
@@ -553,7 +595,8 @@
       "country": "IN",
       "fingerprint": "e9d73fb5c18e7b086acf6e9914aad6b8",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vless://d90087c3-54f5-4283-a13f-615260c8b0c7@139.84.220.85:443?&security=reality&flow=xtls-rprx-vision&pbk=hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ&fp=chrome&sni=googleapis.com&type=tcp&headerType=none&host=googleapis.com&path=%2F#%F0%9F%87%AE%F0%9F%87%B3%20%E5%8D%B0%E5%BA%A6%20%7C%20IND"
     },
     {
       "protocol": "vmess",
@@ -563,7 +606,8 @@
       "country": "IN",
       "fingerprint": "cc866d42bdfa81d8261d687b15c12193",
       "added_date": "2026-09-30",
-      "ping": 204
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxNTIuNjcuOC4yMDUiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogIjlkYjRjNzA4LWFlZjgtNDM1OS04MjFiLTM4ZTQ3OTkwYmUwZCIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4MCwKICAgICJwcyI6ICLwn4eu8J+Hs0lOLTE1Mi42Ny44LjIwNS0wMTM4IiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiBmYWxzZSwKICAgICJzbmkiOiAiMTUyLjY3LjguMjA1Igp9"
     },
     {
       "protocol": "trojan",
@@ -573,7 +617,8 @@
       "country": "IN",
       "fingerprint": "fad9720e616cc324b0b4fe2fdf77ac68",
       "added_date": "2026-09-30",
-      "ping": 226
+      "ping": 215,
+      "raw": "trojan://54080134-2cba-4535-8599-95650bd9aa54@152.67.160.174:443?security=tls#%F0%9F%87%AE%F0%9F%87%B3IN-152.67.160.174-0963"
     },
     {
       "protocol": "vmess",
@@ -583,7 +628,8 @@
       "country": "AE",
       "fingerprint": "96dab5e9a42b0e279c31b9becb402246",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIyMC4yMzMuMTIuMTQ0IiwKICAgICJhaWQiOiAwLAogICAgImhvc3QiOiAiIiwKICAgICJpZCI6ICI0ODkzZWQzZS04YTVmLTQ4ZGMtYWExZS1iYmMyZTY3YTA2NWIiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh6bwn4eqQUUtMjAuMjMzLjEyLjE0NC0wMDIzIiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     },
     {
       "protocol": "ss",
@@ -593,7 +639,8 @@
       "country": "AE",
       "fingerprint": "5db60e934165c8acbf008b718f94d290",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpHIXlCd1BXSDNWYW8=@109.169.72.249:809#%F0%9F%87%A6%F0%9F%87%AAAE-109.169.72.249-2439"
     },
     {
       "protocol": "ss",
@@ -603,7 +650,8 @@
       "country": "AT",
       "fingerprint": "4e07cef720471c3d88bed314d0a2fa4d",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3NWRyQUw3UGZDSXdRMnljVXVvRHNWMkxz@212.113.106.243:13022#%F0%9F%87%A6%F0%9F%87%B9AT-212.113.106.243-7097"
     },
     {
       "protocol": "vless",
@@ -613,7 +661,8 @@
       "country": "AT",
       "fingerprint": "43ae4a9ec0b9d1adb890819db967fa57",
       "added_date": "2026-09-30",
-      "ping": 89
+      "ping": -1,
+      "raw": "vless://bc659d88-a1e0-076c-a49a-7b51b26a7a7f@31.77.227.6:52006?sni=bigdick.gamegrow.ru&flow=xtls-rprx-vision-udp443-udp443&fp=chrome&security=tls#%F0%9F%87%A6%F0%9F%87%B9%5Bwww.v2nodes.com%5D%20vless-AT-1..."
     },
     {
       "protocol": "vless",
@@ -623,7 +672,8 @@
       "country": "BE",
       "fingerprint": "36de82c6f78f00060848e20ad7b96973",
       "added_date": "2026-09-30",
-      "ping": 86
+      "ping": 232,
+      "raw": "vless://6d341f6e-7b9d-4ae3-999b-00333de7bdfb@35.240.62.249:443?&security=reality&pbk=v6QpErcVOVKIYLm53R3bAP8zIKCFr4HAJWW0VwBKtws&sid=31f187650d9530bb&fp=chrome&sni=www.cloudflare.com&type=tcp&headerType=none&host=www.cloudflare.com&path=%2F#%F0%9F%87%A7%F0%9F%87%AA%20%E6%AF%94%E5%88%A9%E6%97%B6%20%7C%20BEL"
     },
     {
       "protocol": "vmess",
@@ -633,7 +683,8 @@
       "country": "BE",
       "fingerprint": "34fd71e196b4d7b4de0d91f14fe524e2",
       "added_date": "2026-09-30",
-      "ping": 87
+      "ping": 68,
+      "raw": "vmess://ewogICAgImFkZCI6ICIzNy4xMjAuMjM2LjI1MSIsCiAgICAiYWlkIjogNjQsCiAgICAiaG9zdCI6ICJ3d3cuNDIwODgzMjYueHl6IiwKICAgICJpZCI6ICJlZDE2MmRhYS1lZTIwLTQ0ZWQtODMwZi1iNTIyYzUwMTM4N2EiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvcGF0aC8xNDMwMTMwOTI0MjUiLAogICAgInBvcnQiOiA0NDMsCiAgICAicHMiOiAi8J+Hp/Cfh6pCRS0zNy4xMjAuMjM2LjI1MS0wODI0IiwKICAgICJ0bHMiOiAidGxzIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     },
     {
       "protocol": "ss",
@@ -643,7 +694,8 @@
       "country": "BG",
       "fingerprint": "d5bf5952c47a849b418d5eb57014714b",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6VWtYUnNYdlI2YnVETUcyWQ==@213.183.63.221:9001#%F0%9F%87%A7%F0%9F%87%ACBG-213.183.63.221-0297"
     },
     {
       "protocol": "trojan",
@@ -653,7 +705,8 @@
       "country": "BG",
       "fingerprint": "67a35df589ed66402d01b42dffb2a5e5",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://0b1371aa-649d-41dc-9126-338c87936500@95.164.33.62:443?security=tls&sni=sourceforge.net&type=ws&path=/websocket&Host=sourceforge.net#%F0%9F%87%A7%F0%9F%87%ACBG-95.164.33.62-0692"
     },
     {
       "protocol": "vmess",
@@ -663,7 +716,8 @@
       "country": "BR",
       "fingerprint": "7a2eca8ad923b7c056c23ebec78f5d14",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICI3OC4xMTEuMTAyLjIzMiIsCiAgICAiYWlkIjogMCwKICAgICJob3N0IjogIiIsCiAgICAiaWQiOiAiOWMwNTBhODYtZDYxMi00OGYxLWVjMzItZTU3M2RmMDhhMWI3IiwKICAgICJuZXQiOiAiaHR0cCIsCiAgICAicGF0aCI6ICIiLAogICAgInBvcnQiOiAzMzg5LAogICAgInBzIjogIvCfh6fwn4e3QlItNzguMTExLjEwMi4yMzItMDY2MSIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "vless",
@@ -673,7 +727,8 @@
       "country": "BR",
       "fingerprint": "2b52b3ef6ce71a9d8d9704b3d86c9b76",
       "added_date": "2026-09-30",
-      "ping": 2
+      "ping": 38,
+      "raw": "vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@188.114.97.6:2082?#%F0%9F%87%A7%F0%9F%87%B7%5Bwww.v2nodes.com%5D%20vless-BR-4..."
     },
     {
       "protocol": "trojan",
@@ -683,7 +738,8 @@
       "country": "CH",
       "fingerprint": "9f4f0cff86d7a828b4941a7bb2e0704f",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://8a03bc28-2a33-42c4-be59-30464dbb9954@ch12.yukiss.eu.org:18818?security=tls#%F0%9F%87%A8%F0%9F%87%ADCH-152.67.71.149-2467"
     },
     {
       "protocol": "ss",
@@ -693,7 +749,8 @@
       "country": "CH",
       "fingerprint": "8441cbb8b545a287d89326252c328a92",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTEyOC1jZmI6c2hhZG93c29ja3M=@156.146.62.160:443#%F0%9F%87%A8%F0%9F%87%ADCH-156.146.62.160-4038"
     },
     {
       "protocol": "vmess",
@@ -703,7 +760,8 @@
       "country": "CZ",
       "fingerprint": "98feffaac9e0783bcb762332e8cb316a",
       "added_date": "2026-09-30",
-      "ping": 809
+      "ping": 180,
+      "raw": "vmess://ewogICAgImFkZCI6ICJzZy12LnNzaG1heC54eXoiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJzZy12LnNzaG1heC54eXoiLAogICAgImlkIjogIjBiYWFmMDE0LWFmMDQtNDAyOC1iZTUzLWY1Yzc1YmIyNzZhZSIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4MCwKICAgICJwcyI6ICLwn4eo8J+Hv0NaLTQ2LjguOC4yMjAtMDE5MyIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "trojan",
@@ -713,7 +771,8 @@
       "country": "CZ",
       "fingerprint": "4681dc81563685847934aaf348aa911d",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://3gLlCYBipVwr6Y5F@92.118.149.85:443?security=tls#%F0%9F%87%A8%F0%9F%87%BFCZ-92.118.149.85-2604"
     },
     {
       "protocol": "ss",
@@ -723,7 +782,8 @@
       "country": "DK",
       "fingerprint": "8c74c423dce135172ecdb753ed7c1ee0",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@192.36.27.94:989#%F0%9F%87%A9%F0%9F%87%B0DK-192.36.27.94-4068"
     },
     {
       "protocol": "ss",
@@ -733,7 +793,8 @@
       "country": "DK",
       "fingerprint": "d8212af8b772ce47ae538bd9cf3f4a8e",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@192.36.27.116:989#%F0%9F%87%A9%F0%9F%87%B0DK-192.36.27.116-7165"
     },
     {
       "protocol": "vmess",
@@ -743,7 +804,8 @@
       "country": "EE",
       "fingerprint": "3d12a4d97a6b03cfa7ecebaf9b1c7230",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxNzYuMTEyLjE0Ni4xOTAiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogImY5MjQ3ZGY0LTAyZDUtNGIzMS1hY2M1LTQwMjI2NTJjNTk1MyIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4MCwKICAgICJwcyI6ICLwn4eq8J+HqkVFLTE3Ni4xMTIuMTQ2LjE5MC0wNjMwIiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     },
     {
       "protocol": "trojan",
@@ -753,7 +815,8 @@
       "country": "EE",
       "fingerprint": "0b79b5b3d1a018b0f54a2dfd36c1ffd2",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://xxoo@138.124.183.222:443?security=tls&sni=138.124.183.222#%F0%9F%87%AA%F0%9F%87%AAEE-138.124.183.222-2105"
     },
     {
       "protocol": "ss",
@@ -763,7 +826,8 @@
       "country": "ES",
       "fingerprint": "bcbeded2ef1004325c76702590cc533d",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6cDl6NUJWQURIMllGczNNTg==@5.188.181.201:9040#%F0%9F%87%AA%F0%9F%87%B8ES-5.188.181.201-0161"
     },
     {
       "protocol": "vless",
@@ -773,7 +837,8 @@
       "country": "ES",
       "fingerprint": "7bc4a714f96df348ecedd801fae4983f",
       "added_date": "2026-09-30",
-      "ping": 84
+      "ping": -1,
+      "raw": "vless://ead0dd61-d398-40ad-80d6-a0e1e516d7d3@212.227.235.66:2053?sni=www.apple.com&fp=chrome&security=tls#%F0%9F%87%AA%F0%9F%87%B8%5Bwww.v2nodes.com%5D%20vless-ES-1..."
     },
     {
       "protocol": "ss",
@@ -783,7 +848,8 @@
       "country": "GR",
       "fingerprint": "292d07756770700cccf69067307690bb",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@192.71.166.102:989#%F0%9F%87%AC%F0%9F%87%B7GR-192.71.166.102-3666"
     },
     {
       "protocol": "vless",
@@ -793,7 +859,8 @@
       "country": "GR",
       "fingerprint": "8147543712b529ee4b2d910947c187f8",
       "added_date": "2026-09-30",
-      "ping": 120
+      "ping": 103,
+      "raw": "vless://04c808e2-0b59-47b0-a54b-32fc7ef1c902@85.90.197.156:443?sni=free.cndyw.ggff.net&type=ws&host=free.cndyw.ggff.net&path=pyip=bpb.yousef.isegaro.comfp=random&security=tls#%F0%9F%87%AC%F0%9F%87%B7%5Bwww.v2nodes.com%5D%20vless-GR-3..."
     },
     {
       "protocol": "vless",
@@ -803,7 +870,8 @@
       "country": "HU",
       "fingerprint": "fdcdce5a6f1d6021c680ea91c73f271f",
       "added_date": "2026-09-30",
-      "ping": 165
+      "ping": 1142,
+      "raw": "vless://7de5e70d-b95e-4019-affb-636151647b52@45.9.168.211:443?sni=mzone.hu.3cloudhost.com&flow=xtls-rprx-vision&fp=safari&security=tls#%F0%9F%87%AD%F0%9F%87%BA%5Bwww.v2nodes.com%5D%20vless-HU-1..."
     },
     {
       "protocol": "vless",
@@ -813,7 +881,8 @@
       "country": "HU",
       "fingerprint": "c0aae95b3f959dbaf416b73d17fab64b",
       "added_date": "2026-09-30",
-      "ping": 104
+      "ping": 78,
+      "raw": "vless://04c808e2-0b59-47b0-a54b-32fc7ef1c902@37.221.210.113:8443?sni=free.cndyw.ggff.net&type=ws&host=free.cndyw.ggff.net&path=pyip=bpb.yousef.isegaro.comfp=random&security=tls#%F0%9F%87%AD%F0%9F%87%BA%5Bwww.v2nodes.com%5D%20vless-HU-6..."
     },
     {
       "protocol": "trojan",
@@ -823,7 +892,8 @@
       "country": "ID",
       "fingerprint": "680e9a76adbcc26a8cffb820b0931de6",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://idc117okt@103.176.78.153:443?security=tls#%F0%9F%87%AE%F0%9F%87%A9ID-103.176.78.153-4327"
     },
     {
       "protocol": "trojan",
@@ -833,7 +903,8 @@
       "country": "ID",
       "fingerprint": "2ad25f889e19e12f4c4bc2d241fd5096",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://274c1b23-2bfe-40ac-943c-ebc1aa044b22@41.216.177.41:443?security=tls#%F0%9F%87%AE%F0%9F%87%A9ID-41.216.177.41-4485"
     },
     {
       "protocol": "trojan",
@@ -843,7 +914,8 @@
       "country": "IE",
       "fingerprint": "c5127089c0c361381078df707a738c14",
       "added_date": "2026-09-30",
-      "ping": 83
+      "ping": 79,
+      "raw": "trojan://Trojan@82164024@ie.tronsg.com:443?allowInsecure=1&sni=ie.tronsg.com#%F0%9F%87%AE%F0%9F%87%AA%20%E7%88%B1%E5%B0%94%E5%85%B0%20%7C%20IRL"
     },
     {
       "protocol": "vmess",
@@ -853,7 +925,8 @@
       "country": "IE",
       "fingerprint": "48fd7a3253800022a4a1c30c4b3b054c",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxODUuMTA4LjEyOC42MCIsCiAgICAiYWlkIjogNjQsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogIjVhYWIzOTM2LTE2ZDctNDM3Ny04YzMzLTBkNzdmMmQyOTVlZSIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA0NDMsCiAgICAicHMiOiAi8J+HrvCfh6pJRS0xODUuMTA4LjEyOC42MC0wNjUxIiwKICAgICJ0bHMiOiAidGxzIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     },
     {
       "protocol": "vless",
@@ -863,7 +936,8 @@
       "country": "IL",
       "fingerprint": "58b8474004978257131eed1342259034",
       "added_date": "2026-09-30",
-      "ping": 120
+      "ping": 120,
+      "raw": "vless://46b3a70b-b99f-4c6e-aa83-df6d842bb954@193.169.229.145:443?allowInsecure=1&sni=isr.vpnskyline.com&flow=xtls-rprx-vision&fp=chrome&security=tls#%F0%9F%87%AE%F0%9F%87%B1%5Bwww.v2nodes.com%5D%20vless-IL-1..."
     },
     {
       "protocol": "vless",
@@ -873,7 +947,8 @@
       "country": "IT",
       "fingerprint": "573910335b08952d67df5c3574876ddd",
       "added_date": "2026-09-30",
-      "ping": 270
+      "ping": -1,
+      "raw": "vless://4d4bfd21-88fc-4de7-87bd-c2ddaedc4078@34.154.251.151:443?&security=reality&pbk=jGfJxbIyf2aLRFQyT9NsJBu1CzJmrAa2sF19GNw46z8&sid=29615707650b941d&fp=chrome&sni=www.cloudflare.com&type=tcp&headerType=none&host=www.cloudflare.com&path=%2F#%F0%9F%87%AE%F0%9F%87%B9%20%E6%84%8F%E5%A4%A7%E5%88%A9%20%7C%20ITA"
     },
     {
       "protocol": "ss",
@@ -883,7 +958,8 @@
       "country": "IT",
       "fingerprint": "3f365b065c35f215480b98edb8f71466",
       "added_date": "2026-09-30",
-      "ping": 1114
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1nY206aXR6dnBuQDMyMQ==@57.131.48.45:8388#%F0%9F%87%AE%F0%9F%87%B9IT-57.131.48.45-0116"
     },
     {
       "protocol": "vmess",
@@ -893,7 +969,8 @@
       "country": "KZ",
       "fingerprint": "2c1b90cab116b49de7544e5922afb46a",
       "added_date": "2026-09-30",
-      "ping": 276
+      "ping": 147,
+      "raw": "vmess://ewogICAgImFkZCI6ICIzaC1rYXpha2hzdGFuMS4wOXZwbi5jb20iLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJ3cm1lbG13eGxmLmdrdGV2bHJxem53cXFvenkuZmFicGZzNjZnaXptbm9qaGN2cXh3bC5reXRyY2Z6cWxhODdndmd2czZjN2tqbnJ1YnVoLmNjIiwKICAgICJpZCI6ICI1NjdmNGJlNS0xMmFiLTQyZTEtYjhkOS1kYjZmZDFmZGQzMWMiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvdm1lc3MvIiwKICAgICJwb3J0IjogODAsCiAgICAicHMiOiAi8J+HsPCfh79LWi0zOC4xMDcuMjM0LjU3LTA5MTQiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "vless",
@@ -903,7 +980,8 @@
       "country": "KZ",
       "fingerprint": "8f63affde988c25ef59fb8833d167c4d",
       "added_date": "2026-09-30",
-      "ping": 331
+      "ping": -1,
+      "raw": "vless://4bdeee92-97e8-414d-bef6-ec1d5e2ab73b@kazartip.thewalkingded.life:443?sni=kazartip.thewalkingded.life&flow=xtls-rprx-vision&fp=chrome&security=tls#%F0%9F%87%B0%F0%9F%87%BF%5Bwww.v2nodes.com%5D%20vless-KZ-1..."
     },
     {
       "protocol": "vless",
@@ -913,7 +991,8 @@
       "country": "LT",
       "fingerprint": "11177af9874f86d6923d57ba96e0cc38",
       "added_date": "2026-09-30",
-      "ping": 112
+      "ping": -1,
+      "raw": "vless://d72f05b0-b182-4783-a6f2-21cecc7d841a@144.31.243.240:443?&security=reality&flow=xtls-rprx-vision&pbk=SibLV5WBGdljTiUCmKx77KhHQfErCwjDMD_ZLoha3js&sid=a1b2c3d4e5f67890&fp=firefox&sni=dzen.ru&type=tcp&headerType=none&host=dzen.ru&path=%2F#%F0%9F%87%B1%F0%9F%87%B9%20%E7%AB%8B%E9%99%B6%E5%AE%9B%20%7C%20LTU"
     },
     {
       "protocol": "vmess",
@@ -923,7 +1002,8 @@
       "country": "LT",
       "fingerprint": "2b711e374026e11227a4c9e3344d4ad4",
       "added_date": "2026-09-30",
-      "ping": 117
+      "ping": 94,
+      "raw": "vmess://ewogICAgImFkZCI6ICI4NS4yMDYuMTY1LjM2IiwKICAgICJhaWQiOiA2NCwKICAgICJob3N0IjogIiIsCiAgICAiaWQiOiAiYmE0OWFiMDUtNzhmOC00YjBiLTk0MDAtMTgyNmNjMmQzZjc1IiwKICAgICJuZXQiOiAid3MiLAogICAgInBhdGgiOiAiLyIsCiAgICAicG9ydCI6IDQ0MywKICAgICJwcyI6ICLwn4ex8J+HuUxULTg1LjIwNi4xNjUuMzYtMDY1MiIsCiAgICAidGxzIjogInRscyIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "ss",
@@ -933,7 +1013,8 @@
       "country": "LV",
       "fingerprint": "393ab927cfa1cc9b43c819d929a0e563",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpQaGlsRWhnS0pRNTQwTU5LN21Ob2lt@185.135.86.86:51348#%F0%9F%87%B1%F0%9F%87%BBLV-185.135.86.86-7197"
     },
     {
       "protocol": "ss",
@@ -943,7 +1024,8 @@
       "country": "LV",
       "fingerprint": "0312801095152fafba98bdc259ddf3af",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6R2VyZWdldFI4Y3ZRSHpZcg==@185.135.86.173:9030#%F0%9F%87%B1%F0%9F%87%BBLV-185.135.86.173-7198"
     },
     {
       "protocol": "ss",
@@ -953,7 +1035,8 @@
       "country": "MX",
       "fingerprint": "3be79e7e6f2c0d210106d37d6ee2d708",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@190.103.179.23:989#%F0%9F%87%B2%F0%9F%87%BDMX-190.103.179.23-4029"
     },
     {
       "protocol": "vless",
@@ -963,7 +1046,8 @@
       "country": "MX",
       "fingerprint": "9831b32a2139961ff5c4b8f01535b448",
       "added_date": "2026-09-30",
-      "ping": 148
+      "ping": 225,
+      "raw": "vless://a6d20e79-d326-42c1-bc20-f4cecc6dc42d@ul-mexico1.09vpn.com:8443?type=ws&path=/vless/security=tls#%F0%9F%87%B2%F0%9F%87%BD%5Bwww.v2nodes.com%5D%20vless-MX-1..."
     },
     {
       "protocol": "trojan",
@@ -973,7 +1057,8 @@
       "country": "MY",
       "fingerprint": "1bd404891ee8217c023a5e960b29ec99",
       "added_date": "2026-09-30",
-      "ping": 225
+      "ping": 243,
+      "raw": "trojan://5931134d1cde66bf83a54acdfebe7ab2@47.250.84.25:443?#%F0%9F%87%B2%F0%9F%87%BE%5Bwww.v2nodes.com%5D%20trojan-MY-..."
     },
     {
       "protocol": "trojan",
@@ -983,7 +1068,8 @@
       "country": "MY",
       "fingerprint": "1bd404891ee8217c023a5e960b29ec99",
       "added_date": "2026-09-30",
-      "ping": 226
+      "ping": 244,
+      "raw": "trojan://5931134d1cde66bf83a54acdfebe7ab2@47.250.84.25:443?#%F0%9F%87%B2%F0%9F%87%BE%5Bwww.v2nodes.com%5D%20trojan-MY-..."
     },
     {
       "protocol": "ss",
@@ -993,7 +1079,8 @@
       "country": "NO",
       "fingerprint": "6b0b839f99eddb7cef8a5be7df2b333a",
       "added_date": "2026-09-30",
-      "ping": 101
+      "ping": 135,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpBUmd2R1p5d0ErZ2FjZ0dWMjZCdm11MDUrd1ptUlcvaitBZFUrWjhCdDQ0PQ==@185.213.23.63:990#%F0%9F%87%B3%F0%9F%87%B4NO-185.213.23.63-0133"
     },
     {
       "protocol": "vmess",
@@ -1003,7 +1090,8 @@
       "country": "NO",
       "fingerprint": "235f2700a22df749a93a039a6a4ddaa8",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICI0Ni4yOS4yMTguODQiLAogICAgImFpZCI6IDY0LAogICAgImhvc3QiOiAiIiwKICAgICJpZCI6ICJmN2E0NTZkYS05ODg2LTRkZDctYjE5My00YzU5YTcyNjIxOWMiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh7Pwn4e0Tk8tNDYuMjkuMjE4Ljg0LTA2NTAiLAogICAgInRscyI6ICJ0bHMiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "vmess",
@@ -1013,7 +1101,8 @@
       "country": "PH",
       "fingerprint": "415e67193199b79c05f58c389c0955d2",
       "added_date": "2026-09-30",
-      "ping": 237
+      "ping": 254,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxMjAuMjguMTAuNDYiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJzYXpnYXIuc2VydmVpcmMuY29tIiwKICAgICJpZCI6ICJlY2JhNWIzMy1mNzY4LTRkOGEtYjAwNC1iMjllOGU1YzY3NmYiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogODAsCiAgICAicHMiOiAi8J+HtfCfh61QSC0xMjAuMjguMTAuNDYtMDc0MyIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "vmess",
@@ -1023,7 +1112,8 @@
       "country": "PH",
       "fingerprint": "4e557022d00ab23e3a5abd7fb39a76de",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIzaC1waGlsaXBwaW5lczEuMDl2cG4uY29tIiwKICAgICJhaWQiOiAwLAogICAgImhvc3QiOiAid3JtZWxtd3hsZi5na3RldmxycXpud3Fxb3p5LmZhYnBmczY2Z2l6bW5vamhjdnF4d2wua3l0cmNmenFsYTg3Z3ZndnM2Yzdram5ydWJ1aC5jYyIsCiAgICAiaWQiOiAiM2ZkMzVmYTItYTBjNi00ZjBjLTgzMTAtYzNjMDNhMjY4MTU1IiwKICAgICJuZXQiOiAid3MiLAogICAgInBhdGgiOiAiL3ZtZXNzLyIsCiAgICAicG9ydCI6IDgwLAogICAgInBzIjogIvCfh7Xwn4etUEgtNjEuMjQ1LjExLjYwLTA5MTYiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "vmess",
@@ -1033,7 +1123,8 @@
       "country": "PL",
       "fingerprint": "1493963c67958f4e3e91ec934587e89f",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICI1MS42OC4xMzkuMjIiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogImM2NzQ0YzQ0LTRlYjctNDhkNS1hODc5LWExMDQ3NGUyYmEzNCIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi92bWVzcyIsCiAgICAicG9ydCI6IDgwLAogICAgInBzIjogIvCfh7Xwn4exUEwtNTEuNjguMTM5LjIyLTAzNDMiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IGZhbHNlLAogICAgInNuaSI6ICI1MS42OC4xMzkuMjIiCn0="
     },
     {
       "protocol": "ss",
@@ -1043,7 +1134,8 @@
       "country": "PL",
       "fingerprint": "2cffa60de8f598c4604a86150d272163",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1nY206UENubkg2U1FTbmZvUzI3@51.77.53.200:8091#%F0%9F%87%B5%F0%9F%87%B1PL-51.77.53.200-1998"
     },
     {
       "protocol": "ss",
@@ -1053,7 +1145,8 @@
       "country": "RO",
       "fingerprint": "742f6775a042afb68ca7e2d06b5e1f28",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@194.14.217.115:989#%F0%9F%87%B7%F0%9F%87%B4RO-194.14.217.115-7158"
     },
     {
       "protocol": "vless",
@@ -1063,7 +1156,8 @@
       "country": "RO",
       "fingerprint": "aba33ca04c41c2485d8208dde38b923d",
       "added_date": "2026-09-30",
-      "ping": 137
+      "ping": -1,
+      "raw": "vless://834e5553-d80e-4078-8d7e-482fafe9bbaf@dl2.musicworldtg.com:2018?sni=gemini.com&fp=chrome&security=tls#%F0%9F%87%B7%F0%9F%87%B4%5Bwww.v2nodes.com%5D%20vless-RO-1..."
     },
     {
       "protocol": "vless",
@@ -1073,7 +1167,8 @@
       "country": "RU",
       "fingerprint": "8454ed6f66a30fcb99c10780d974a4ec",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vless://ff2936d3-caa4-4b79-bb96-1475bd39ceda@113.30.154.60:443?&security=reality&flow=xtls-rprx-vision&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&fp=random&sni=sellflow.org&type=tcp&headerType=none&host=sellflow.org&path=%2F#%F0%9F%87%B7%F0%9F%87%BA%20%E4%BF%84%E7%BD%97%E6%96%AF%20%7C%20RUS"
     },
     {
       "protocol": "vmess",
@@ -1083,7 +1178,8 @@
       "country": "RU",
       "fingerprint": "b188026f89fe127266c55df967b50f98",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxODUuMTczLjk0LjIxMyIsCiAgICAiYWlkIjogNjQsCiAgICAiaG9zdCI6ICJ3d3cuNjkyOTYxMzQueHl6IiwKICAgICJpZCI6ICI4ZDc4YzJhOC1hY2FhLTQ2N2QtOTIzNC1kMjYwNjYyNDUwNmQiLAogICAgIm5ldCI6ICJ3cyIsCiAgICAicGF0aCI6ICIvIiwKICAgICJwb3J0IjogNDQzLAogICAgInBzIjogIvCfh7fwn4e6UlUtMTg1LjE3My45NC4yMTMtMDIxNSIsCiAgICAidGxzIjogInRscyIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogdHJ1ZSwKICAgICJzbmkiOiAiIgp9"
     },
     {
       "protocol": "trojan",
@@ -1093,7 +1189,8 @@
       "country": "TH",
       "fingerprint": "bba6e9254b2b7808f714b7a5df0cf174",
       "added_date": "2026-09-30",
-      "ping": 284
+      "ping": 264,
+      "raw": "trojan://Trojan%4082164024@th1.zestapp778.com:443?allowInsecure=1&sni=th1.zestapp778.com#%F0%9F%87%B9%F0%9F%87%AD%20%E6%B3%B0%E5%9B%BD%20%7C%20THA%20%231"
     },
     {
       "protocol": "trojan",
@@ -1103,7 +1200,8 @@
       "country": "TH",
       "fingerprint": "bba6e9254b2b7808f714b7a5df0cf174",
       "added_date": "2026-09-30",
-      "ping": 258
+      "ping": 237,
+      "raw": "trojan://Trojan%4082164024@th1.zestapp778.com:443?allowInsecure=1&sni=th1.zestapp778.com#%F0%9F%87%B9%F0%9F%87%AD%20%E6%B3%B0%E5%9B%BD%20%7C%20THA%20%231"
     },
     {
       "protocol": "vless",
@@ -1113,7 +1211,8 @@
       "country": "TW",
       "fingerprint": "0723ccbb3301bfabf9057498f1cc2ac2",
       "added_date": "2026-09-30",
-      "ping": 188
+      "ping": 262,
+      "raw": "vless://ab61daa1-b7fb-486e-8946-b1da9a444685@43.213.230.249:443?&security=tls&fp=chrome&sni=cf2us.3rr0r.online&type=ws&headerType=none&host=cf2us.3rr0r.online&path=%2Fproxyip%3DProxyIP.TW.CMLiussss.Net#%F0%9F%87%B9%F0%9F%87%BC%20%F0%9F%87%A8%F0%9F%87%B3%20%E5%8F%B0%E6%B9%BE%20%7C%20TWN"
     },
     {
       "protocol": "trojan",
@@ -1123,7 +1222,8 @@
       "country": "TW",
       "fingerprint": "0a1464d7abd00874c3d8d6eeb2a0ba1e",
       "added_date": "2026-09-30",
-      "ping": 219
+      "ping": 448,
+      "raw": "trojan://9efd3f19-c7cb-4fa9-8d66-0598043597dc@zhilegelian1.bpca2026.top:443?allowInsecure=1&sni=zhilegelian1.bpca2026.top&ws=1&wspath=%2Fimages#%F0%9F%87%B9%F0%9F%87%BC%20%F0%9F%87%A8%F0%9F%87%B3%20%E5%8F%B0%E6%B9%BE%20%7C%20TWN"
     },
     {
       "protocol": "ss",
@@ -1133,7 +1233,8 @@
       "country": "UA",
       "fingerprint": "392c3abd31e560df4ad502b78cb22084",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "ss://YWVzLTI1Ni1jZmI6ZjhmN2FDemNQS2JzRjhwMw==@5.188.6.8:989#%F0%9F%87%BA%F0%9F%87%A6UA-5.188.6.8-6889"
     },
     {
       "protocol": "vless",
@@ -1143,7 +1244,8 @@
       "country": "UA",
       "fingerprint": "1d83afb93746bcee51adf8852a56983d",
       "added_date": "2026-09-30",
-      "ping": 116
+      "ping": 93,
+      "raw": "vless://fdc48be3-a615-41ac-8bd1-ed844c931048@173.242.63.235:8443?sni=edgetunnel-4uw.pages.dev&type=ws&host=edgetunnel-4uw.pages.dev&path=/fp=chrome&security=tls#%F0%9F%87%BA%F0%9F%87%A6%5Bwww.v2nodes.com%5D%20vless-UA-4..."
     },
     {
       "protocol": "vmess",
@@ -1153,7 +1255,8 @@
       "country": "UZ",
       "fingerprint": "747f9593bfa9f0b6a8bcd9deef482d74",
       "added_date": "2026-09-30",
-      "ping": 169
+      "ping": 76,
+      "raw": "vmess://ewogICAgImFkZCI6ICIzNy4xMTAuMjA5LjIyOCIsCiAgICAiYWlkIjogMCwKICAgICJob3N0IjogInNhemdhci5zZXJ2ZWlyYy5jb20iLAogICAgImlkIjogImVjYmE1YjMzLWY3NjgtNGQ4YS1iMDA0LWIyOWU4ZTVjNjc2ZiIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4MCwKICAgICJwcyI6ICLwn4e68J+Hv1VaLTM3LjExMC4yMDkuMjI4LTA3NDQiLAogICAgInRscyI6ICIiLAogICAgInR5cGUiOiAiYXV0byIsCiAgICAic2VjdXJpdHkiOiAiYXV0byIsCiAgICAic2tpcC1jZXJ0LXZlcmlmeSI6IHRydWUsCiAgICAic25pIjogIiIKfQ=="
     },
     {
       "protocol": "vmess",
@@ -1163,7 +1266,8 @@
       "country": "VN",
       "fingerprint": "bdcbb18ac4e4dd66c252e42e09a5e05f",
       "added_date": "2026-09-30",
-      "ping": 247
+      "ping": 220,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxMDMuMTY2LjE4My4yMjYiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogImVmOTE5YzY3LTY2MzgtNDQxNi05MWFmLTlhMTNmZmU1YjljYSIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi90YW5kdW5nMjg4LmNsaWNrIiwKICAgICJwb3J0IjogODAsCiAgICAicHMiOiAi8J+Hu/Cfh7NWTi0xMDMuMTY2LjE4My4yMjYtMDMzMCIsCiAgICAidGxzIjogIiIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogZmFsc2UsCiAgICAic25pIjogImRsLmtndm4uZ2FyZW5hbm93LmNvbSIKfQ=="
     },
     {
       "protocol": "trojan",
@@ -1173,7 +1277,8 @@
       "country": "VN",
       "fingerprint": "8bcfddad56020eb770b6ce9013f651bd",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "trojan://b874173c-dfc6-40f4-9542-d973997f9659@103.81.85.238:443?security=tls#%F0%9F%87%BB%F0%9F%87%B3VN-103.81.85.238-2449"
     },
     {
       "protocol": "ss",
@@ -1183,7 +1288,8 @@
       "country": "ZA",
       "fingerprint": "1353124b3974132c3181a8a71404f24c",
       "added_date": "2026-09-30",
-      "ping": 217
+      "ping": -1,
+      "raw": "ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0ZkFjUmlrYXdoTm9aQWh1@139.84.247.164:8388#%F0%9F%87%BF%F0%9F%87%A6ZA-139.84.247.164-0129"
     },
     {
       "protocol": "vmess",
@@ -1193,7 +1299,8 @@
       "country": "ZA",
       "fingerprint": "ce50b5df18249b4d7f10db7efcf66671",
       "added_date": "2026-09-30",
-      "ping": -1
+      "ping": -1,
+      "raw": "vmess://ewogICAgImFkZCI6ICIxMjkuMTUxLjE2NC4xNTIiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICIiLAogICAgImlkIjogImUzMGY4NTg4LTI1NTUtNDhiOC1jMzU0LWM4ZTYzZjU3MjMyZCIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA1NTYwMCwKICAgICJwcyI6ICLwn4e/8J+HplpBLTEyOS4xNTEuMTY0LjE1Mi0xNDYyIiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0="
     }
   ]
 }
