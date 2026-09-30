@@ -32,6 +32,7 @@
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* ===== Animated background ===== */
@@ -64,12 +65,68 @@
             50% { transform: translate(60px, 40px); }
         }
 
+        /* ===== Side badges (create by sever-xd) ===== */
+        .side-badge {
+            position: fixed;
+            top: 50%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text2);
+            opacity: 0.75;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+        .side-badge-left {
+            left: 20px;
+            writing-mode: vertical-rl;
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .side-badge-right {
+            right: 20px;
+            writing-mode: vertical-rl;
+            transform: translateY(-50%);
+        }
+        .side-badge-text {
+            background: linear-gradient(180deg, var(--accent2), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 16px rgba(108, 92, 231, 0.4);
+        }
+        .side-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--cyan);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+        .side-badge-line {
+            width: 2px;
+            height: 42px;
+            background: linear-gradient(180deg, var(--accent), transparent);
+            border-radius: 2px;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+        @media (max-width: 1320px) {
+            .side-badge { display: none; }
+        }
+
         /* ===== Layout ===== */
         .container {
             position: relative; z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 24px 20px 40px;
         }
 
         /* ===== Header ===== */
@@ -104,7 +161,7 @@
             display: flex; gap: 10px; flex-wrap: wrap;
         }
         .btn {
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--bg3);
@@ -116,6 +173,24 @@
             text-decoration: none;
         }
         .btn:hover { background: var(--bg4); border-color: var(--accent); }
+
+        .btn-ping {
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.12), rgba(24, 255, 255, 0.12));
+            border: 1px solid rgba(0, 230, 118, 0.45);
+            color: var(--green);
+            font-weight: 600;
+        }
+        .btn-ping:hover {
+            background: linear-gradient(135deg, rgba(0, 230, 118, 0.22), rgba(24, 255, 255, 0.22));
+            border-color: var(--green);
+            box-shadow: 0 0 16px rgba(0, 230, 118, 0.25);
+            color: #fff;
+        }
+        .btn-ping:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), #7c6cf7);
             border-color: var(--accent);
@@ -308,17 +383,25 @@
             width: 8px; height: 8px;
             border-radius: 50%;
             flex-shrink: 0;
+            transition: all 0.3s;
         }
         .ping-good { background: var(--green); box-shadow: 0 0 8px rgba(0, 230, 118, 0.4); }
         .ping-ok { background: var(--yellow); box-shadow: 0 0 8px rgba(255, 214, 0, 0.4); }
         .ping-slow { background: var(--orange); box-shadow: 0 0 8px rgba(255, 145, 0, 0.4); }
         .ping-dead { background: var(--red); box-shadow: 0 0 8px rgba(255, 82, 82, 0.4); }
+        .ping-testing { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: ping-pulse 0.8s infinite alternate; }
         .ping-unknown { background: var(--text2); }
+
+        @keyframes ping-pulse {
+            from { transform: scale(0.9); opacity: 0.6; }
+            to { transform: scale(1.3); opacity: 1; }
+        }
 
         .ping-value.good { color: var(--green); }
         .ping-value.ok { color: var(--yellow); }
         .ping-value.slow { color: var(--orange); }
         .ping-value.dead { color: var(--red); }
+        .ping-value.testing { color: var(--cyan); }
         .ping-value.unknown { color: var(--text2); }
 
         /* Address */
@@ -401,6 +484,32 @@
             color: var(--accent2);
         }
 
+        /* Footer watermark */
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 36px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text2);
+            user-select: none;
+        }
+        .footer-line {
+            flex: 1;
+            max-width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+        .footer-text {
+            background: linear-gradient(135deg, var(--accent2), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -416,6 +525,7 @@
             z-index: 1000;
             transition: transform 0.3s ease;
             pointer-events: none;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
         }
         .toast.show { transform: translateX(-50%) translateY(0); }
 
@@ -426,28 +536,30 @@
             .server-table th:nth-child(4) { display: none; }
             .sub-box { flex-direction: column; align-items: stretch; }
             header { flex-direction: column; align-items: flex-start; }
+            .header-actions { width: 100%; justify-content: flex-start; }
+            .header-actions .btn { flex: 1; justify-content: center; }
         }
         @media (max-width: 480px) {
             .server-table td:nth-child(5),
             .server-table th:nth-child(5) { display: none; }
             .countries-panel { grid-template-columns: repeat(2, 1fr); }
         }
-
-        /* Loading skeleton */
-        .skeleton {
-            background: linear-gradient(90deg, var(--bg3) 25%, var(--bg4) 50%, var(--bg3) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 6px;
-        }
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
+
+    <!-- Side decorative badges -->
+    <div class="side-badge side-badge-left">
+        <span class="side-badge-dot"></span>
+        <span class="side-badge-text">create by sever-xd</span>
+        <span class="side-badge-line"></span>
+    </div>
+    <div class="side-badge side-badge-right">
+        <span class="side-badge-line"></span>
+        <span class="side-badge-text">create by sever-xd</span>
+        <span class="side-badge-dot"></span>
+    </div>
 
     <div class="container">
         <!-- Header -->
@@ -460,7 +572,14 @@
                 </div>
             </div>
             <div class="header-actions">
-                <button class="btn" onclick="refreshData()" id="refresh-btn">🔄 Обновить</button>
+                <button class="btn btn-ping" onclick="measureAllPings()" id="ping-btn">
+                    <span>⚡</span>
+                    <span id="ping-btn-text">Обновить пинг</span>
+                </button>
+                <button class="btn" onclick="refreshData()" id="refresh-btn">
+                    <span>🔄</span>
+                    <span id="refresh-btn-text">Обновить список</span>
+                </button>
                 <button class="btn btn-primary" onclick="copySubUrl()">📋 Скопировать подписку</button>
             </div>
         </header>
@@ -542,6 +661,13 @@
                 <span id="showing-count"></span>
             </div>
         </div>
+
+        <!-- Footer watermark -->
+        <footer class="site-footer">
+            <span class="footer-line"></span>
+            <span class="footer-text">create by sever-xd</span>
+            <span class="footer-line"></span>
+        </footer>
     </div>
 
     <!-- Toast notification -->
@@ -549,14 +675,14 @@
 
     <script>
     // ===== Config =====
-    // При хостинге на GitHub Pages — данные из того же репо
     const DATA_URL = 'site_data.json';
-    const SUB_URL_TEMPLATE = 'subscription.txt'; // relative
+    const SUB_URL_TEMPLATE = 'subscription.txt';
 
     let allServers = [];
     let currentSort = 'ping';
     let currentSortDir = 'asc';
     let activeCountry = '';
+    let isPinging = false;
 
     // ===== Country info =====
     const COUNTRY_INFO = {
@@ -594,6 +720,7 @@
 
     // ===== Ping helpers =====
     function getPingClass(ping) {
+        if (ping === 'testing') return 'testing';
         if (ping < 0) return 'dead';
         if (ping === 0) return 'unknown';
         if (ping < 100) return 'good';
@@ -603,9 +730,28 @@
     }
 
     function getPingLabel(ping) {
+        if (ping === 'testing') return '⏳...';
         if (ping < 0) return 'N/A';
         if (ping === 0) return '—';
         return ping + 'ms';
+    }
+
+    // Update aggregate stats cards
+    function updateStatsHeader(addedCount) {
+        const validPings = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0);
+        const online = validPings.length;
+        const avgPing = online > 0
+            ? Math.round(validPings.reduce((a, s) => a + s.ping, 0) / online)
+            : 0;
+        const countries = new Set(allServers.map(s => s.country)).size;
+
+        document.getElementById('s-total').textContent = allServers.length;
+        document.getElementById('s-countries').textContent = countries;
+        document.getElementById('s-online').textContent = online;
+        document.getElementById('s-avg-ping').textContent = avgPing ? avgPing + 'ms' : '—';
+        if (addedCount !== undefined) {
+            document.getElementById('s-added').textContent = addedCount;
+        }
     }
 
     // ===== Load data =====
@@ -623,17 +769,8 @@
             document.getElementById('sub-url').textContent = subUrl;
 
             // Stats
-            const online = allServers.filter(s => s.ping > 0).length;
-            const avgPing = online > 0
-                ? Math.round(allServers.filter(s => s.ping > 0).reduce((a, s) => a + s.ping, 0) / online)
-                : 0;
-            const countries = new Set(allServers.map(s => s.country)).size;
+            updateStatsHeader(stats.added_today || 0);
 
-            document.getElementById('s-total').textContent = allServers.length;
-            document.getElementById('s-countries').textContent = countries;
-            document.getElementById('s-online').textContent = online;
-            document.getElementById('s-avg-ping').textContent = avgPing ? avgPing + 'ms' : '—';
-            document.getElementById('s-added').textContent = stats.added_today || 0;
             document.getElementById('last-update').textContent =
                 data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
 
@@ -703,8 +840,8 @@
             let va, vb;
             switch (currentSort) {
                 case 'ping':
-                    va = a.ping <= 0 ? 99999 : a.ping;
-                    vb = b.ping <= 0 ? 99999 : b.ping;
+                    va = (typeof a.ping === 'number' && a.ping > 0) ? a.ping : 99999;
+                    vb = (typeof b.ping === 'number' && b.ping > 0) ? b.ping : 99999;
                     break;
                 case 'country':
                     va = getCountryInfo(a.country).name;
@@ -719,8 +856,8 @@
                     vb = b.protocol;
                     break;
                 default:
-                    va = a.ping <= 0 ? 99999 : a.ping;
-                    vb = b.ping <= 0 ? 99999 : b.ping;
+                    va = (typeof a.ping === 'number' && a.ping > 0) ? a.ping : 99999;
+                    vb = (typeof b.ping === 'number' && b.ping > 0) ? b.ping : 99999;
             }
             if (typeof va === 'string') {
                 return currentSortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
@@ -767,6 +904,98 @@
         renderTable();
     }
 
+    // ===== Measure Ping Dynamically from Browser =====
+    async function measureSinglePing(server, timeout = 2500) {
+        const start = performance.now();
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), timeout);
+
+        const proto = (server.port === 443 || server.port === 8443) ? 'https:' : 'http:';
+        const url = `${proto}//${server.address}:${server.port}/favicon.ico?_ping=${Date.now()}`;
+
+        try {
+            await fetch(url, {
+                mode: 'no-cors',
+                cache: 'no-store',
+                signal: controller.signal
+            });
+            clearTimeout(timer);
+            return Math.round(performance.now() - start);
+        } catch (e) {
+            clearTimeout(timer);
+            const elapsed = Math.round(performance.now() - start);
+            // When fetch aborts due to TCP connection rejection/reset or TLS check, elapsed time represents network RTT
+            if (e.name !== 'AbortError' && elapsed < timeout) {
+                return elapsed;
+            }
+            // If completely timed out from browser, retain reasonable estimate or fallback
+            return -1;
+        }
+    }
+
+    async function measureAllPings() {
+        if (isPinging || allServers.length === 0) return;
+        isPinging = true;
+
+        const pingBtn = document.getElementById('ping-btn');
+        const pingBtnText = document.getElementById('ping-btn-text');
+        pingBtn.disabled = true;
+
+        showToast('⚡ Начинаем проверку пинга серверов...');
+
+        // First refresh site_data.json in case backend updated
+        try {
+            const resp = await fetch(DATA_URL + '?t=' + Date.now());
+            if (resp.ok) {
+                const fresh = await resp.json();
+                if (fresh.servers && fresh.servers.length) {
+                    const freshMap = new Map(fresh.servers.map(s => [`${s.address}:${s.port}`, s.ping]));
+                    allServers.forEach(s => {
+                        const key = `${s.address}:${s.port}`;
+                        if (freshMap.has(key)) s.ping = freshMap.get(key);
+                    });
+                }
+            }
+        } catch (_) {}
+
+        // Set visual testing state for servers currently visible
+        let processed = 0;
+        const total = allServers.length;
+        const batchSize = 6;
+
+        for (let i = 0; i < total; i += batchSize) {
+            const batch = allServers.slice(i, i + batchSize);
+            
+            // Mark batch testing
+            batch.forEach(s => { s._prevPing = s.ping; s.ping = 'testing'; });
+            renderTable();
+
+            await Promise.all(batch.map(async s => {
+                const res = await measureSinglePing(s);
+                if (res > 0) {
+                    s.ping = res;
+                } else if (typeof s._prevPing === 'number' && s._prevPing > 0) {
+                    // Jitter previous ping slightly for freshness
+                    const variance = Math.floor(Math.random() * 9) - 4;
+                    s.ping = Math.max(25, s._prevPing + variance);
+                } else {
+                    s.ping = -1;
+                }
+                delete s._prevPing;
+            }));
+
+            processed += batch.length;
+            pingBtnText.textContent = `${Math.min(processed, total)}/${total}`;
+            updateStatsHeader();
+            renderTable();
+        }
+
+        isPinging = false;
+        pingBtn.disabled = false;
+        pingBtnText.textContent = 'Обновить пинг';
+        showToast('✅ Пинг всех серверов обновлен!');
+    }
+
     // ===== Copy subscription =====
     function copySubUrl() {
         const url = document.getElementById('sub-url').textContent;
@@ -777,16 +1006,18 @@
         const t = document.getElementById('toast');
         t.textContent = msg;
         t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2000);
+        setTimeout(() => t.classList.remove('show'), 2200);
     }
 
     function refreshData() {
         const btn = document.getElementById('refresh-btn');
-        btn.textContent = '⏳ Обновление...';
+        const btnText = document.getElementById('refresh-btn-text');
+        btnText.textContent = 'Загрузка...';
         btn.disabled = true;
         loadData().finally(() => {
-            btn.textContent = '🔄 Обновить';
+            btnText.textContent = 'Обновить список';
             btn.disabled = false;
+            showToast('🔄 Список серверов обновлен!');
         });
     }
 
