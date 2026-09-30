@@ -1239,7 +1239,7 @@
         <div class="fast-filters-bar">
             <span style="font-size:12px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:4px">Быстрый отбор:</span>
             <div class="fast-filter-pill active" onclick="setFastFilter('all')" id="fast-all">
-                <span>🌐</span> <span>Все сервера (<span id="count-all">107</span>)</span>
+                <span>🌐</span> <span>Все сервера (<span id="count-all">—</span>)</span>
             </div>
             <div class="fast-filter-pill" onclick="setFastFilter('fast')" id="fast-fast">
                 <span>⚡</span> <span>Ultra-Fast &lt; 100ms (<span id="count-fast">0</span>)</span>
@@ -1430,7 +1430,7 @@
     <div class="toast" id="toast">✅ Скопировано!</div>
 
     <script>
-    // ===== Base URLs Setup =====
+    // ===== 1. Base URLs & Global State =====
     function getCleanBaseUrl() {
         let p = window.location.pathname;
         if (!p.endsWith('/')) {
@@ -1443,38 +1443,7 @@
     const PAGES_SUB_URL = PAGES_BASE + 'subscription.txt';
     const RAW_SUB_URL = 'https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/subscription.txt';
 
-    // Set subscription text immediately!
-    document.getElementById('sub-url').textContent = PAGES_SUB_URL;
     let currentQrUrl = PAGES_SUB_URL;
-
-    // ===== Themes Logic =====
-    function setTheme(themeName) {
-        document.documentElement.setAttribute('data-theme', themeName);
-        localStorage.setItem('vpn_theme', themeName);
-
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        const activeBtn = document.querySelector(`.theme-btn-${themeName}`);
-        if (activeBtn) activeBtn.classList.add('active');
-        renderWorldMap();
-    }
-
-    const savedTheme = localStorage.getItem('vpn_theme') || 'black';
-    setTheme(savedTheme);
-
-    // ===== Portable Token Decoder (Works on HTTP, HTTPS, localhost, mobile) =====
-    function decodeToken(pass) {
-        const hex = '0a071230261c4f200b28580737112f1d1657093a10541637013f3a3c022e155f2f25461a29091e36';
-        let out = '';
-        for (let i = 0; i < hex.length; i += 2) {
-            const byte = parseInt(hex.substr(i, 2), 16);
-            const k = pass.charCodeAt((i / 2) % pass.length);
-            out += String.fromCharCode(byte ^ k);
-        }
-        return out;
-    }
-
     let allServers = [];
     let currentSort = 'ping';
     let currentSortDir = 'asc';
@@ -1511,7 +1480,6 @@
 
     const AI_COUNTRIES = new Set(['US', 'CA', 'GB', 'DE', 'NL', 'FR', 'SE', 'FI', 'JP', 'SG', 'AU', 'KR', 'CH', 'AT', 'IE', 'NO']);
 
-    // Country info
     const COUNTRY_INFO = {
         US: {flag: '🇺🇸', name: 'США'}, GB: {flag: '🇬🇧', name: 'UK'},
         DE: {flag: '🇩🇪', name: 'Германия'}, NL: {flag: '🇳🇱', name: 'Нидерланды'},
@@ -1542,7 +1510,7 @@
     };
 
     function getCountryInfo(code) {
-        return COUNTRY_INFO[code] || {flag: '🌐', name: code};
+        return COUNTRY_INFO[code] || {flag: '🌐', name: code || 'Мир'};
     }
 
     function getPingClass(ping) {
@@ -1580,6 +1548,23 @@
         return badges.length ? `<div class="service-badges">${badges.join('')}</div>` : '';
     }
 
+    // ===== 2. Themes Management =====
+    function setTheme(themeName) {
+        document.documentElement.setAttribute('data-theme', themeName);
+        try { localStorage.setItem('vpn_theme', themeName); } catch (_) {}
+
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        const activeBtn = document.querySelector(`.theme-btn-${themeName}`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        if (allServers && allServers.length > 0) {
+            renderWorldMap();
+        }
+    }
+
+    // ===== 3. Stats Header =====
     function updateStatsHeader(addedCount) {
         const validPings = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0);
         const online = validPings.length;
@@ -1588,20 +1573,26 @@
             : 0;
         const countries = new Set(allServers.map(s => s.country)).size;
 
-        document.getElementById('s-total').textContent = allServers.length;
-        document.getElementById('s-countries').textContent = countries;
-        document.getElementById('s-online').textContent = online;
-        document.getElementById('s-avg-ping').textContent = avgPing ? avgPing + 'ms' : '—';
-        if (addedCount !== undefined) {
-            document.getElementById('s-added').textContent = addedCount;
-        }
+        const totalEl = document.getElementById('s-total');
+        const ctEl = document.getElementById('s-countries');
+        const onEl = document.getElementById('s-online');
+        const avgEl = document.getElementById('s-avg-ping');
+        const addEl = document.getElementById('s-added');
+
+        if (totalEl) totalEl.textContent = allServers.length;
+        if (ctEl) ctEl.textContent = countries;
+        if (onEl) onEl.textContent = online;
+        if (avgEl) avgEl.textContent = avgPing ? avgPing + 'ms' : '—';
+        if (addEl && addedCount !== undefined) addEl.textContent = addedCount;
 
         const fastCount = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0 && s.ping < 100).length;
-        document.getElementById('count-all').textContent = allServers.length;
-        document.getElementById('count-fast').textContent = fastCount;
+        const cntAll = document.getElementById('count-all');
+        const cntFast = document.getElementById('count-fast');
+        if (cntAll) cntAll.textContent = allServers.length;
+        if (cntFast) cntFast.textContent = fastCount;
     }
 
-    // ===== Load data with Auto-Fallback =====
+    // ===== 4. Load Data (Double Fallback) =====
     async function loadData() {
         let data = null;
 
@@ -1609,19 +1600,25 @@
         try {
             const resp = await fetch('site_data.json?t=' + Date.now());
             if (resp.ok) data = await resp.json();
-        } catch (_) {}
+        } catch (e) {
+            console.warn('Relative site_data.json fetch failed:', e);
+        }
 
-        // Fallback to raw github if needed
-        if (!data) {
+        // Fallback to raw GitHub
+        if (!data || !data.servers || !data.servers.length) {
             try {
                 const resp = await fetch('https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json?t=' + Date.now());
                 if (resp.ok) data = await resp.json();
-            } catch (_) {}
+            } catch (e) {
+                console.error('Raw GitHub site_data.json fetch failed:', e);
+            }
         }
 
-        if (!data || !data.servers) {
-            document.getElementById('server-tbody').innerHTML =
-                '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Не удалось загрузить сервера. Обновите страницу или проверьте сеть.</td></tr>';
+        if (!data || !data.servers || !data.servers.length) {
+            const tbody = document.getElementById('server-tbody');
+            if (tbody) {
+                tbody.innerHTML = '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Не удалось загрузить сервера. Проверьте интернет-соединение или обновите страницу.</td></tr>';
+            }
             return;
         }
 
@@ -1630,18 +1627,21 @@
 
         updateStatsHeader(stats.added_today || 0);
 
-        document.getElementById('last-update').textContent =
-            data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
+        const lastUp = document.getElementById('last-update');
+        if (lastUp) {
+            lastUp.textContent = data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
+        }
 
         renderCountryTags();
         renderWorldMap();
         renderTable();
     }
 
-    // ===== World Map =====
+    // ===== 5. World Map =====
     function toggleWorldMap() {
         const container = document.getElementById('world-map-container');
         const text = document.getElementById('world-map-toggle-text');
+        if (!container || !text) return;
         if (container.style.display === 'none') {
             container.style.display = 'block';
             text.textContent = 'Свернуть карту ▲';
@@ -1653,7 +1653,7 @@
 
     function renderWorldMap() {
         const group = document.getElementById('map-nodes-group');
-        if (!group) return;
+        if (!group || !allServers.length) return;
 
         const countryMap = {};
         allServers.forEach(s => {
@@ -1692,8 +1692,9 @@
 
     function showMapTooltip(e, code, count, bestPing) {
         const tip = document.getElementById('map-tooltip');
-        const info = getCountryInfo(code);
         const container = document.getElementById('world-map-container');
+        if (!tip || !container) return;
+        const info = getCountryInfo(code);
         const rect = container.getBoundingClientRect();
 
         tip.innerHTML = `${info.flag} <strong>${info.name}</strong> • ${count} серв. • ${bestPing > 0 ? bestPing + 'ms' : 'пинг N/A'}`;
@@ -1703,10 +1704,11 @@
     }
 
     function hideMapTooltip() {
-        document.getElementById('map-tooltip').style.display = 'none';
+        const tip = document.getElementById('map-tooltip');
+        if (tip) tip.style.display = 'none';
     }
 
-    // ===== Fast Filter Pills =====
+    // ===== 6. Fast Filter Pills =====
     function setFastFilter(mode) {
         activeFastFilter = mode;
         document.querySelectorAll('.fast-filter-pill').forEach(p => {
@@ -1740,15 +1742,16 @@
         });
     }
 
-    // ===== Country Tags =====
+    // ===== 7. Country Tags =====
     function renderCountryTags() {
+        const panel = document.getElementById('countries-panel');
+        if (!panel) return;
         const counts = {};
         allServers.forEach(s => {
             counts[s.country] = (counts[s.country] || 0) + 1;
         });
         const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 
-        const panel = document.getElementById('countries-panel');
         panel.innerHTML = sorted.map(([code, count]) => {
             const info = getCountryInfo(code);
             const active = activeCountry === code ? ' active' : '';
@@ -1767,12 +1770,17 @@
         renderTable();
     }
 
-    // Filter computation logic
+    // ===== 8. Filtering & Table =====
     function getFilteredServers() {
-        const search = document.getElementById('search').value.toLowerCase();
-        const protoFilter = document.getElementById('filter-proto').value;
-        const pingFilter = document.getElementById('filter-ping').value;
-        const srvFilter = document.getElementById('filter-service').value;
+        const sEl = document.getElementById('search');
+        const pEl = document.getElementById('filter-proto');
+        const pingEl = document.getElementById('filter-ping');
+        const srvEl = document.getElementById('filter-service');
+
+        const search = sEl ? sEl.value.toLowerCase() : '';
+        const protoFilter = pEl ? pEl.value : '';
+        const pingFilter = pingEl ? pingEl.value : '';
+        const srvFilter = srvEl ? srvEl.value : '';
 
         return allServers.filter(s => {
             if (activeCountry && s.country !== activeCountry) return false;
@@ -1807,7 +1815,6 @@
         });
     }
 
-    // ===== Render Table =====
     function renderTable() {
         let filtered = getFilteredServers();
 
@@ -1846,6 +1853,8 @@
         }
 
         const tbody = document.getElementById('server-tbody');
+        if (!tbody) return;
+
         if (filtered.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" class="no-results"><div class="emoji">🔍</div>Серверы не найдены</td></tr>';
         } else {
@@ -1876,7 +1885,8 @@
             }).join('');
         }
 
-        document.getElementById('showing-count').textContent = `Показано: ${filtered.length} из ${allServers.length}`;
+        const showCnt = document.getElementById('showing-count');
+        if (showCnt) showCnt.textContent = `Показано: ${filtered.length} из ${allServers.length}`;
     }
 
     function toggleSort(field) {
@@ -1894,7 +1904,7 @@
         renderTable();
     }
 
-    // ===== Copy Individual Server =====
+    // ===== 9. Individual Server Actions =====
     function copyServerRaw(idx) {
         const filtered = getFilteredServers();
         const server = filtered[idx];
@@ -1922,7 +1932,7 @@
         document.getElementById('qr-modal').classList.add('active');
     }
 
-    // ===== QR Code Modal =====
+    // ===== 10. QR Modal =====
     function openQrModal(type) {
         const subUrl = document.getElementById('sub-url').textContent;
         currentQrUrl = subUrl;
@@ -1934,7 +1944,8 @@
     }
 
     function closeQrModal() {
-        document.getElementById('qr-modal').classList.remove('active');
+        const m = document.getElementById('qr-modal');
+        if (m) m.classList.remove('active');
     }
 
     function copyCurrentQrUrl() {
@@ -1944,13 +1955,15 @@
         });
     }
 
-    // ===== Export Modal =====
+    // ===== 11. Export Modal =====
     function openExportModal() {
-        document.getElementById('export-modal').classList.add('active');
+        const m = document.getElementById('export-modal');
+        if (m) m.classList.add('active');
     }
 
     function closeExportModal() {
-        document.getElementById('export-modal').classList.remove('active');
+        const m = document.getElementById('export-modal');
+        if (m) m.classList.remove('active');
     }
 
     function openAppUrl(app) {
@@ -2037,7 +2050,7 @@ rules:
         });
     }
 
-    // ===== Measure Ping Dynamically from Browser =====
+    // ===== 12. Dynamic Browser Ping =====
     async function measureSinglePing(server, timeout = 2500) {
         const start = performance.now();
         const controller = new AbortController();
@@ -2070,7 +2083,7 @@ rules:
 
         const pingBtn = document.getElementById('ping-btn');
         const pingBtnText = document.getElementById('ping-btn-text');
-        pingBtn.disabled = true;
+        if (pingBtn) pingBtn.disabled = true;
 
         showToast('⚡ Начинаем проверку пинга серверов...');
 
@@ -2112,51 +2125,69 @@ rules:
             }));
 
             processed += batch.length;
-            pingBtnText.textContent = `${Math.min(processed, total)}/${total}`;
+            if (pingBtnText) pingBtnText.textContent = `${Math.min(processed, total)}/${total}`;
             updateStatsHeader();
             renderTable();
             renderWorldMap();
         }
 
         isPinging = false;
-        pingBtn.disabled = false;
-        pingBtnText.textContent = 'Обновить пинг';
+        if (pingBtn) pingBtn.disabled = false;
+        if (pingBtnText) pingBtnText.textContent = 'Обновить пинг';
         showToast('✅ Пинг всех серверов обновлен!');
     }
 
-    // ===== Rebuild Servers Trigger with Password (Pure JS) =====
+    // ===== 13. Password Protected Server Rebuild =====
+    function decodeToken(pass) {
+        const hex = '0a071230261c4f200b28580737112f1d1657093a10541637013f3a3c022e155f2f25461a29091e36';
+        let out = '';
+        for (let i = 0; i < hex.length; i += 2) {
+            const byte = parseInt(hex.substr(i, 2), 16);
+            const k = pass.charCodeAt((i / 2) % pass.length);
+            out += String.fromCharCode(byte ^ k);
+        }
+        return out;
+    }
+
     function openRebuildModal() {
         const modal = document.getElementById('rebuild-modal');
         const input = document.getElementById('modal-pass-input');
         const errMsg = document.getElementById('modal-error-msg');
-        input.value = '';
-        input.classList.remove('error');
-        errMsg.style.display = 'none';
-        modal.classList.add('active');
-        setTimeout(() => input.focus(), 100);
+        if (input) {
+            input.value = '';
+            input.classList.remove('error');
+        }
+        if (errMsg) errMsg.style.display = 'none';
+        if (modal) modal.classList.add('active');
+        if (input) setTimeout(() => input.focus(), 100);
     }
 
     function closeRebuildModal() {
-        document.getElementById('rebuild-modal').classList.remove('active');
+        const modal = document.getElementById('rebuild-modal');
+        if (modal) modal.classList.remove('active');
     }
 
     async function confirmRebuild() {
         const input = document.getElementById('modal-pass-input');
         const errMsg = document.getElementById('modal-error-msg');
-        const pass = input.value.trim();
         const submitBtn = document.getElementById('modal-submit-btn');
+        const pass = input ? input.value.trim() : '';
 
         if (pass !== 'mobolow') {
-            input.classList.add('error');
-            errMsg.textContent = '❌ Неверный пароль!';
-            errMsg.style.display = 'block';
+            if (input) input.classList.add('error');
+            if (errMsg) {
+                errMsg.textContent = '❌ Неверный пароль!';
+                errMsg.style.display = 'block';
+            }
             return;
         }
 
-        input.classList.remove('error');
-        errMsg.style.display = 'none';
-        submitBtn.disabled = true;
-        submitBtn.textContent = '⏳ Запуск...';
+        if (input) input.classList.remove('error');
+        if (errMsg) errMsg.style.display = 'none';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Запуск...';
+        }
 
         const token = decodeToken(pass);
 
@@ -2177,61 +2208,90 @@ rules:
                 
                 const rebuildBtn = document.getElementById('rebuild-btn');
                 const rebuildBtnText = document.getElementById('rebuild-btn-text');
-                rebuildBtnText.textContent = 'Сборка запущена...';
-                rebuildBtn.disabled = true;
+                if (rebuildBtnText) rebuildBtnText.textContent = 'Сборка запущена...';
+                if (rebuildBtn) rebuildBtn.disabled = true;
                 
                 setTimeout(() => {
-                    rebuildBtnText.textContent = 'Обновить сервера';
-                    rebuildBtn.disabled = false;
+                    if (rebuildBtnText) rebuildBtnText.textContent = 'Обновить сервера';
+                    if (rebuildBtn) rebuildBtn.disabled = false;
                     refreshData();
                 }, 60000);
             } else {
                 const errText = await resp.text();
-                errMsg.textContent = `Ошибка GitHub (${resp.status}): ${errText.slice(0, 100)}`;
-                errMsg.style.display = 'block';
+                if (errMsg) {
+                    errMsg.textContent = `Ошибка GitHub (${resp.status}): ${errText.slice(0, 100)}`;
+                    errMsg.style.display = 'block';
+                }
             }
         } catch (e) {
-            errMsg.textContent = `Ошибка: ${e.message}`;
-            errMsg.style.display = 'block';
+            if (errMsg) {
+                errMsg.textContent = `Ошибка: ${e.message}`;
+                errMsg.style.display = 'block';
+            }
         } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = '🚀 Запустить';
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 Запустить';
+            }
         }
     }
 
-    // ===== Copy Subscription =====
+    // ===== 14. Utilities =====
     function copySubUrl() {
-        const url = document.getElementById('sub-url').textContent;
+        const subEl = document.getElementById('sub-url');
+        const url = subEl ? subEl.textContent : PAGES_SUB_URL;
         navigator.clipboard.writeText(url).then(() => showToast('✅ Ссылка подписки скопирована!'));
     }
 
     function showToast(msg) {
         const t = document.getElementById('toast');
+        if (!t) return;
         t.textContent = msg;
         t.classList.add('show');
         setTimeout(() => t.classList.remove('show'), 2500);
     }
 
     function refreshData() {
-        const btn = document.getElementById('refresh-btn');
-        const btnText = document.getElementById('refresh-btn-text');
-        btnText.textContent = 'Загрузка...';
-        btn.disabled = true;
+        const rebuildBtn = document.getElementById('rebuild-btn');
+        const rebuildBtnText = document.getElementById('rebuild-btn-text');
+        if (rebuildBtnText) rebuildBtnText.textContent = 'Загрузка...';
+        if (rebuildBtn) rebuildBtn.disabled = true;
+
         loadData().finally(() => {
-            btnText.textContent = 'Обновить список';
-            btn.disabled = false;
+            if (rebuildBtnText) rebuildBtnText.textContent = 'Обновить сервера';
+            if (rebuildBtn) rebuildBtn.disabled = false;
             showToast('🔄 Список серверов обновлен!');
         });
     }
 
-    // ===== Events =====
-    document.getElementById('search').addEventListener('input', renderTable);
-    document.getElementById('filter-proto').addEventListener('change', renderTable);
-    document.getElementById('filter-ping').addEventListener('change', renderTable);
-    document.getElementById('filter-service').addEventListener('change', renderTable);
+    // ===== 15. Safe Initialization =====
+    function initApp() {
+        const subUrlEl = document.getElementById('sub-url');
+        if (subUrlEl) subUrlEl.textContent = PAGES_SUB_URL;
 
-    // ===== Init =====
-    loadData();
-    </script>
+        let savedTheme = 'black';
+        try { savedTheme = localStorage.getItem('vpn_theme') || 'black'; } catch (_) {}
+        setTheme(savedTheme);
+
+        // Events
+        const sInput = document.getElementById('search');
+        if (sInput) sInput.addEventListener('input', renderTable);
+        const pSelect = document.getElementById('filter-proto');
+        if (pSelect) pSelect.addEventListener('change', renderTable);
+        const pingSelect = document.getElementById('filter-ping');
+        if (pingSelect) pingSelect.addEventListener('change', renderTable);
+        const srvSelect = document.getElementById('filter-service');
+        if (srvSelect) srvSelect.addEventListener('change', renderTable);
+
+        // Fetch Data
+        loadData();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+        initApp();
+    }
+</script>
 </body>
 </html>
