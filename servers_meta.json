@@ -1,10 +1,10 @@
 {
-  "last_update": "2026-09-30T17:43:21.459816+00:00",
+  "last_update": "2026-09-30T17:50:51.834226+00:00",
   "stats": {
     "total": 107,
-    "added_today": 107,
+    "added_today": 0,
     "removed_expired": 0,
-    "kept_from_previous": 0,
+    "kept_from_previous": 107,
     "date": "2026-09-30",
     "countries": {
       "US": 3,
