@@ -1,0 +1,12 @@
+[project]
+name = "vpn-sub-aggregator"
+version = "1.0.0"
+description = "VPN Subscription Aggregator - автопарсер и генератор подписок с GitHub"
+requires-python = ">=3.10"
+dependencies = [
+    "aiohttp>=3.9.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+vpn-aggregator = "aggregator:main"

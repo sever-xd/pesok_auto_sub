@@ -1,0 +1,86 @@
+# ============================================================
+# VPN Subscription Aggregator - Конфигурация
+# ============================================================
+
+# Интервал обновления в минутах
+update_interval: 30
+
+# HTTP сервер для раздачи подписки
+server:
+  host: "0.0.0.0"
+  port: 8080
+
+# Путь к файлу подписки
+output:
+  subscription_file: "subscription.txt"
+  raw_configs_file: "raw_configs.txt"
+  log_file: "aggregator.log"
+
+# Поддерживаемые протоколы
+protocols:
+  - vmess
+  - vless
+  - trojan
+  - ss
+  - ssr
+
+# Источники серверов (raw GitHub ссылки)
+# Добавляй свои источники сюда
+sources:
+  # Популярные открытые репозитории с VPN конфигами
+  - name: "freefq"
+    url: "https://raw.githubusercontent.com/freefq/free/master/v2"
+    enabled: true
+
+  - name: "pawdroid-free-servers"
+    url: "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"
+    enabled: true
+
+  - name: "aiboboxx-v2rayfree"
+    url: "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2"
+    enabled: true
+
+  - name: "mfuu-v2ray"
+    url: "https://raw.githubusercontent.com/mfuu/v2ray/master/v2ray"
+    enabled: true
+
+  - name: "ermaozi-getnode"
+    url: "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt"
+    enabled: true
+
+  - name: "barry-far-v2ray"
+    url: "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/Sub1.txt"
+    enabled: true
+
+  - name: "mahdibland-v2raycollector"
+    url: "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge_base64.txt"
+    enabled: true
+
+  - name: "yebekhe-tvc"
+    url: "https://raw.githubusercontent.com/yebekhe/TelegramV2rayCollector/main/sub/base64/mix"
+    enabled: true
+
+  - name: "soroushmirzaei"
+    url: "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/protocols/reality"
+    enabled: true
+
+  - name: "lagzian-configs"
+    url: "https://raw.githubusercontent.com/lagzian/SS-Collector/main/ss.txt"
+    enabled: true
+
+# Фильтры
+filters:
+  # Удалять дубликаты
+  remove_duplicates: true
+  # Минимальная длина конфига (символы)
+  min_config_length: 10
+  # Исключить страны (ISO коды, пусто = все)
+  exclude_countries: []
+  # Только эти страны (пусто = все)
+  include_countries: []
+
+# Тестирование серверов (опционально)
+testing:
+  enabled: false
+  timeout: 5
+  max_concurrent: 20
