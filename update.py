@@ -388,7 +388,7 @@ def save_subscription(path: Path, servers: list[dict], stats: dict):
 
     # 4. Данные для сайта (без поля raw)
     site_path = path.parent / "site_data.json"
-    site_servers = [{k: v for k, v in s.items() if k != "raw"} for s in servers]
+    site_servers = list(servers)
     site_data = {
         "last_update": now_iso,
         "stats": stats,
