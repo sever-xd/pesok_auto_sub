@@ -18,6 +18,7 @@ import hashlib
 import json
 import re
 import sys
+import time
 import urllib.parse
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -377,14 +378,25 @@ def save_subscription(path: Path, servers: list[dict], stats: dict):
 
     # 3. Метаданные (для отслеживания)
     meta_path = path.parent / "servers_meta.json"
+    now_iso = datetime.now(timezone.utc).isoformat()
     meta = {
-        "last_update": datetime.now(timezone.utc).isoformat(),
+        "last_update": now_iso,
         "stats": stats,
         "servers": servers,
     }
     meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    # 4. README со статистикой
+    # 4. Данные для сайта (без поля raw)
+    site_path = path.parent / "site_data.json"
+    site_servers = [{k: v for k, v in s.items() if k != "raw"} for s in servers]
+    site_data = {
+        "last_update": now_iso,
+        "stats": stats,
+        "servers": site_servers,
+    }
+    site_path.write_text(json.dumps(site_data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # 5. README со статистикой
     generate_readme(path.parent, servers, stats)
 
 
@@ -627,6 +639,47 @@ https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.t
 
 
 # ============================================================
+# Тестирование пинга (TCP)
+# ============================================================
+async def test_server_ping(address: str, port: int, timeout: float = 3) -> int:
+    """Измерить latency подключения по TCP в мс. Возвращает мс или -1 при ошибке."""
+    try:
+        port_num = int(port)
+        if not address or port_num <= 0 or port_num > 65535:
+            return -1
+        addr_str = str(address).strip()
+        if addr_str.startswith("[") and addr_str.endswith("]"):
+            addr_str = addr_str[1:-1]
+        start = time.perf_counter()
+        reader, writer = await asyncio.wait_for(
+            asyncio.open_connection(addr_str, port_num),
+            timeout=timeout,
+        )
+        latency = int(round((time.perf_counter() - start) * 1000))
+        try:
+            writer.close()
+            await asyncio.wait_for(writer.wait_closed(), timeout=1.0)
+        except Exception:
+            pass
+        return latency
+    except Exception:
+        return -1
+
+
+async def test_all_pings(servers: list[dict], max_concurrent: int = 30) -> list[dict]:
+    """Проверить TCP пинг для всех серверов параллельно с семафором."""
+    sem = asyncio.Semaphore(max_concurrent)
+
+    async def _test_one(server: dict):
+        async with sem:
+            ping = await test_server_ping(server.get("address", ""), server.get("port", 0))
+            server["ping"] = ping
+
+    await asyncio.gather(*[_test_one(s) for s in servers])
+    return servers
+
+
+# ============================================================
 # Точка входа
 # ============================================================
 async def main():
@@ -667,14 +720,18 @@ async def main():
     print(f"\n🎯 Выбираем по {SERVERS_PER_COUNTRY} сервера из каждой популярной страны...")
     final, stats = select_best_servers(new_configs, existing)
 
-    # 4. Сохраняем
+    # 4. Тестируем пинг
+    print(f"\n⚡ Тестирование пинга для {len(final)} серверов...")
+    await test_all_pings(final)
+
+    # 5. Сохраняем
     save_subscription(sub_path, final, stats)
 
     print(f"\n✅ Готово!")
     print(f"   📦 Всего: {stats['total']}")
     print(f"   ➕ Добавлено: {stats['added_today']}")
     print(f"   🗑️ Удалено: {stats['removed_expired']}")
-    print(f"   💾 Файлы: subscription.txt, raw_configs.txt, servers_meta.json")
+    print(f"   💾 Файлы: subscription.txt, raw_configs.txt, servers_meta.json, site_data.json")
     print("=" * 60)
 
 
