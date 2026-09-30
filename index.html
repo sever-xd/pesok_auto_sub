@@ -171,6 +171,7 @@
             transition: all 0.2s;
             display: flex; align-items: center; gap: 8px;
             text-decoration: none;
+            white-space: nowrap;
         }
         .btn:hover { background: var(--bg4); border-color: var(--accent); }
 
@@ -187,6 +188,23 @@
             color: #fff;
         }
         .btn-ping:disabled {
+            opacity: 0.6;
+            cursor: wait;
+        }
+
+        .btn-rebuild {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.16), rgba(162, 155, 254, 0.16));
+            border: 1px solid rgba(108, 92, 231, 0.5);
+            color: var(--accent2);
+            font-weight: 600;
+        }
+        .btn-rebuild:hover {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.28), rgba(162, 155, 254, 0.28));
+            border-color: var(--accent2);
+            box-shadow: 0 0 16px rgba(108, 92, 231, 0.35);
+            color: #fff;
+        }
+        .btn-rebuild:disabled {
             opacity: 0.6;
             cursor: wait;
         }
@@ -510,6 +528,103 @@
             font-weight: 700;
         }
 
+        /* ===== Modal Dialog ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10, 11, 16, 0.78);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-width: 440px;
+            width: 100%;
+            padding: 26px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(108, 92, 231, 0.15);
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+            position: relative;
+        }
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .modal-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .modal-desc {
+            color: var(--text2);
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+        .modal-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .modal-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(108, 92, 231, 0.25);
+        }
+        .modal-input.error {
+            border-color: var(--red);
+            box-shadow: 0 0 12px rgba(255, 82, 82, 0.25);
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+        .modal-error-msg {
+            color: var(--red);
+            font-size: 12px;
+            margin-bottom: 14px;
+            display: none;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 14px;
+        }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -522,7 +637,7 @@
             border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
-            z-index: 1000;
+            z-index: 2000;
             transition: transform 0.3s ease;
             pointer-events: none;
             box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
@@ -576,8 +691,12 @@
                     <span>⚡</span>
                     <span id="ping-btn-text">Обновить пинг</span>
                 </button>
-                <button class="btn" onclick="refreshData()" id="refresh-btn">
+                <button class="btn btn-rebuild" onclick="openRebuildModal()" id="rebuild-btn">
                     <span>🔄</span>
+                    <span id="rebuild-btn-text">Обновить сервера</span>
+                </button>
+                <button class="btn" onclick="refreshData()" id="refresh-btn">
+                    <span>📑</span>
                     <span id="refresh-btn-text">Обновить список</span>
                 </button>
                 <button class="btn btn-primary" onclick="copySubUrl()">📋 Скопировать подписку</button>
@@ -670,6 +789,31 @@
         </footer>
     </div>
 
+    <!-- Rebuild Servers Modal -->
+    <div class="modal-overlay" id="rebuild-modal" onclick="if(event.target===this)closeRebuildModal()">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-icon">🔄</div>
+                <div>
+                    <div class="modal-title">Сборка новых серверов</div>
+                    <div style="font-size:12px;color:var(--text2)">Перезапуск парсера и пинг-теста</div>
+                </div>
+            </div>
+            <p class="modal-desc">
+                Запускает процесс на GitHub Actions: сбор свежих серверов со всех источников, пинг-тест и обновление подписки.
+            </p>
+            <label style="display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:700">
+                Введите пароль для применения:
+            </label>
+            <input type="password" id="modal-pass-input" class="modal-input" placeholder="Пароль администратора..." onkeydown="if(event.key==='Enter')confirmRebuild()">
+            <div class="modal-error-msg" id="modal-error-msg"></div>
+            <div class="modal-actions">
+                <button class="btn" onclick="closeRebuildModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="confirmRebuild()" id="modal-submit-btn">🚀 Запустить</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast notification -->
     <div class="toast" id="toast">✅ Скопировано!</div>
 
@@ -677,6 +821,7 @@
     // ===== Config =====
     const DATA_URL = 'site_data.json';
     const SUB_URL_TEMPLATE = 'subscription.txt';
+    const ENC_TOKEN = '813e3b9d4fd05025a937980ed2fb8a8034f2daf199a9456293ce67a29d65e825a51c7ab543c81932';
 
     let allServers = [];
     let currentSort = 'ping';
@@ -924,11 +1069,9 @@
         } catch (e) {
             clearTimeout(timer);
             const elapsed = Math.round(performance.now() - start);
-            // When fetch aborts due to TCP connection rejection/reset or TLS check, elapsed time represents network RTT
             if (e.name !== 'AbortError' && elapsed < timeout) {
                 return elapsed;
             }
-            // If completely timed out from browser, retain reasonable estimate or fallback
             return -1;
         }
     }
@@ -943,7 +1086,6 @@
 
         showToast('⚡ Начинаем проверку пинга серверов...');
 
-        // First refresh site_data.json in case backend updated
         try {
             const resp = await fetch(DATA_URL + '?t=' + Date.now());
             if (resp.ok) {
@@ -958,7 +1100,6 @@
             }
         } catch (_) {}
 
-        // Set visual testing state for servers currently visible
         let processed = 0;
         const total = allServers.length;
         const batchSize = 6;
@@ -966,7 +1107,6 @@
         for (let i = 0; i < total; i += batchSize) {
             const batch = allServers.slice(i, i + batchSize);
             
-            // Mark batch testing
             batch.forEach(s => { s._prevPing = s.ping; s.ping = 'testing'; });
             renderTable();
 
@@ -975,7 +1115,6 @@
                 if (res > 0) {
                     s.ping = res;
                 } else if (typeof s._prevPing === 'number' && s._prevPing > 0) {
-                    // Jitter previous ping slightly for freshness
                     const variance = Math.floor(Math.random() * 9) - 4;
                     s.ping = Math.max(25, s._prevPing + variance);
                 } else {
@@ -996,6 +1135,92 @@
         showToast('✅ Пинг всех серверов обновлен!');
     }
 
+    // ===== Rebuild Servers Trigger with Password =====
+    async function decryptToken(hexStr, password) {
+        const encoder = new TextEncoder();
+        const keyBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(password));
+        const key = new Uint8Array(keyBuffer);
+        const enc = new Uint8Array(hexStr.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+        const dec = new Uint8Array(enc.length);
+        for (let i = 0; i < enc.length; i++) {
+            dec[i] = enc[i] ^ key[i % key.length];
+        }
+        return new TextDecoder().decode(dec);
+    }
+
+    function openRebuildModal() {
+        const modal = document.getElementById('rebuild-modal');
+        const input = document.getElementById('modal-pass-input');
+        const errMsg = document.getElementById('modal-error-msg');
+        input.value = '';
+        input.classList.remove('error');
+        errMsg.style.display = 'none';
+        modal.classList.add('active');
+        setTimeout(() => input.focus(), 100);
+    }
+
+    function closeRebuildModal() {
+        document.getElementById('rebuild-modal').classList.remove('active');
+    }
+
+    async function confirmRebuild() {
+        const input = document.getElementById('modal-pass-input');
+        const errMsg = document.getElementById('modal-error-msg');
+        const pass = input.value.trim();
+        const submitBtn = document.getElementById('modal-submit-btn');
+
+        if (pass !== 'mobolow') {
+            input.classList.add('error');
+            errMsg.textContent = '❌ Неверный пароль!';
+            errMsg.style.display = 'block';
+            return;
+        }
+
+        input.classList.remove('error');
+        errMsg.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Запуск...';
+
+        try {
+            const token = await decryptToken(ENC_TOKEN, pass);
+            const resp = await fetch('https://api.github.com/repos/sever-xd/pesok_auto_sub/actions/workflows/update.yml/dispatches', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ ref: 'main' })
+            });
+
+            if (resp.status === 204 || resp.status === 200) {
+                closeRebuildModal();
+                showToast('🚀 Сервера собираются заново в GitHub Actions!');
+                
+                const rebuildBtn = document.getElementById('rebuild-btn');
+                const rebuildBtnText = document.getElementById('rebuild-btn-text');
+                rebuildBtnText.textContent = 'Сборка запущена...';
+                rebuildBtn.disabled = true;
+                
+                setTimeout(() => {
+                    rebuildBtnText.textContent = 'Обновить сервера';
+                    rebuildBtn.disabled = false;
+                    refreshData();
+                }, 90000);
+            } else {
+                const errText = await resp.text();
+                errMsg.textContent = `Ошибка GitHub API (${resp.status})`;
+                errMsg.style.display = 'block';
+            }
+        } catch (e) {
+            errMsg.textContent = `Ошибка: ${e.message}`;
+            errMsg.style.display = 'block';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '🚀 Запустить';
+        }
+    }
+
     // ===== Copy subscription =====
     function copySubUrl() {
         const url = document.getElementById('sub-url').textContent;
@@ -1006,7 +1231,7 @@
         const t = document.getElementById('toast');
         t.textContent = msg;
         t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2200);
+        setTimeout(() => t.classList.remove('show'), 2500);
     }
 
     function refreshData() {
