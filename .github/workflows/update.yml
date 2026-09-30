@@ -54,9 +54,9 @@ jobs:
       - name: 📤 Commit & Push
         run: |
           git config user.name "VPN Auto-Updater"
-          git config user.email "bot@github.com"
           git add subscription.txt raw_configs.txt servers_meta.json site_data.json README.md
-          git diff --staged --quiet || git commit -m "🔄 Update $(date -u +%Y-%m-%d): $(python3 -c "import json; d=json.load(open('servers_meta.json')); s=d['stats']; print(f\"{s['total']} servers, +{s['added_today']} new\")")"
+          git diff --staged --quiet || git commit -m "🔄 Update $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main || true
           git push
 
   deploy:
