@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Auto-Sub — Серверы</title>
+    <title>VPN Auto-Sub — Серверы Премиум</title>
     <!-- Google Fonts: Luxury Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,6 @@
             --blue: #448aff;
             --cyan: #18ffff;
             --card-glass: rgba(14, 16, 23, 0.78);
-            --header-glass: rgba(6, 7, 10, 0.85);
             --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.5);
             --badge-glow: rgba(108, 92, 231, 0.35);
         }
@@ -56,7 +55,6 @@
             --blue: #38bdf8;
             --cyan: #facc15;
             --card-glass: rgba(20, 16, 5, 0.82);
-            --header-glass: rgba(9, 7, 2, 0.88);
             --shadow-subtle: 0 10px 30px rgba(245, 158, 11, 0.08);
             --badge-glow: rgba(245, 158, 11, 0.35);
         }
@@ -82,7 +80,6 @@
             --blue: #38bdf8;
             --cyan: #38bdf8;
             --card-glass: rgba(8, 18, 41, 0.82);
-            --header-glass: rgba(4, 8, 20, 0.88);
             --shadow-subtle: 0 10px 30px rgba(2, 132, 199, 0.12);
             --badge-glow: rgba(2, 132, 199, 0.35);
         }
@@ -108,7 +105,6 @@
             --blue: #38bdf8;
             --cyan: #34d399;
             --card-glass: rgba(7, 25, 15, 0.82);
-            --header-glass: rgba(3, 12, 7, 0.88);
             --shadow-subtle: 0 10px 30px rgba(16, 185, 129, 0.1);
             --badge-glow: rgba(16, 185, 129, 0.35);
         }
@@ -134,7 +130,6 @@
             --blue: #38bdf8;
             --cyan: #fb7185;
             --card-glass: rgba(27, 7, 11, 0.82);
-            --header-glass: rgba(14, 3, 6, 0.88);
             --shadow-subtle: 0 10px 30px rgba(225, 29, 72, 0.12);
             --badge-glow: rgba(225, 29, 72, 0.35);
         }
@@ -160,7 +155,6 @@
             --blue: #0284c7;
             --cyan: #06b6d4;
             --card-glass: rgba(255, 255, 255, 0.9);
-            --header-glass: rgba(248, 250, 252, 0.92);
             --shadow-subtle: 0 12px 32px rgba(15, 23, 42, 0.06);
             --badge-glow: rgba(79, 70, 229, 0.25);
         }
@@ -261,16 +255,16 @@
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.6); opacity: 1; }
         }
-        @media (max-width: 1340px) {
+        @media (max-width: 1380px) {
             .side-badge { display: none; }
         }
 
         /* ===== Layout ===== */
         .container {
             position: relative; z-index: 1;
-            max-width: 1240px;
+            max-width: 1260px;
             margin: 0 auto;
-            padding: 28px 24px 48px;
+            padding: 26px 20px 48px;
         }
 
         /* ===== Header Bar ===== */
@@ -279,8 +273,8 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 18px;
-            margin-bottom: 28px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
         .logo {
             display: flex; align-items: center; gap: 14px;
@@ -304,7 +298,7 @@
         .logo p { color: var(--text2); font-size: 13px; font-weight: 500; margin-top: 2px; }
 
         .header-actions {
-            display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+            display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
         }
 
         /* ===== Theme Switcher Pill Group ===== */
@@ -321,9 +315,9 @@
         .theme-btn {
             border: none;
             background: transparent;
-            width: 32px;
-            height: 32px;
-            border-radius: 9px;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -341,14 +335,12 @@
             box-shadow: 0 0 12px var(--badge-glow);
         }
         .theme-dot {
-            width: 14px;
-            height: 14px;
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
             transition: transform 0.2s;
         }
-        .theme-btn:hover .theme-dot {
-            transform: scale(1.15);
-        }
+        .theme-btn:hover .theme-dot { transform: scale(1.15); }
         .theme-btn-black .theme-dot { background: #12131a; border: 1.5px solid #6c5ce7; }
         .theme-btn-yellow .theme-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
         .theme-btn-blue .theme-dot { background: #0284c7; box-shadow: 0 0 8px rgba(2, 132, 199, 0.6); }
@@ -356,7 +348,6 @@
         .theme-btn-red .theme-dot { background: #e11d48; box-shadow: 0 0 8px rgba(225, 29, 72, 0.6); }
         .theme-btn-white .theme-dot { background: #ffffff; border: 1.5px solid #94a3b8; }
 
-        /* Tooltip on theme hover */
         .theme-btn::after {
             content: attr(data-label);
             position: absolute;
@@ -383,16 +374,16 @@
 
         /* ===== Buttons ===== */
         .btn {
-            padding: 10px 18px;
+            padding: 9px 16px;
             border-radius: 12px;
             border: 1px solid var(--border);
             background: var(--bg2);
             color: var(--text);
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; align-items: center; gap: 8px;
+            display: flex; align-items: center; gap: 7px;
             text-decoration: none;
             white-space: nowrap;
             box-shadow: var(--shadow-subtle);
@@ -415,10 +406,7 @@
             box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
             color: var(--green);
         }
-        .btn-ping:disabled {
-            opacity: 0.6;
-            cursor: wait;
-        }
+        .btn-ping:disabled { opacity: 0.6; cursor: wait; }
 
         .btn-rebuild {
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(162, 155, 254, 0.15));
@@ -431,10 +419,7 @@
             box-shadow: 0 0 20px var(--badge-glow);
             color: var(--text);
         }
-        .btn-rebuild:disabled {
-            opacity: 0.6;
-            cursor: wait;
-        }
+        .btn-rebuild:disabled { opacity: 0.6; cursor: wait; }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -454,32 +439,30 @@
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
             backdrop-filter: blur(14px);
             box-shadow: var(--shadow-subtle);
             transition: border-color 0.3s;
         }
-        .sub-box:hover {
-            border-color: var(--border-hover);
-        }
+        .sub-box:hover { border-color: var(--border-hover); }
         .sub-box .label {
             color: var(--text2); font-size: 13px; font-weight: 700;
             text-transform: uppercase; letter-spacing: 1.2px;
             white-space: nowrap;
         }
         .sub-url {
-            flex: 1; min-width: 220px;
-            padding: 12px 18px;
+            flex: 1; min-width: 200px;
+            padding: 10px 16px;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 10px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--cyan);
             word-break: break-all;
             cursor: pointer;
@@ -493,15 +476,15 @@
         /* ===== Stats Grid ===== */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 26px;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-bottom: 22px;
         }
         .stat-card {
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             backdrop-filter: blur(14px);
@@ -513,7 +496,7 @@
             box-shadow: 0 12px 30px var(--badge-glow);
         }
         .stat-value {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 800;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, var(--accent2), var(--cyan));
@@ -522,28 +505,100 @@
         }
         .stat-label {
             color: var(--text2);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 700;
             margin-top: 5px;
             text-transform: uppercase;
             letter-spacing: 1.2px;
         }
 
+        /* ===== World Node Map (Feature 4) ===== */
+        .world-hub-wrap {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 22px;
+            backdrop-filter: blur(16px);
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .world-hub-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .world-hub-title {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 15px; font-weight: 700; color: var(--text);
+        }
+        .world-hub-toggle {
+            font-size: 12px; color: var(--accent2); font-weight: 600;
+        }
+        .world-map-svg-container {
+            width: 100%;
+            height: 260px;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, var(--bg3) 0%, var(--bg2) 100%);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .world-map-svg {
+            width: 100%;
+            height: 100%;
+        }
+        .map-node {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .map-node:hover circle.node-glow {
+            r: 16;
+            opacity: 0.7;
+        }
+        .map-node-pulse {
+            animation: map-pulse 2s infinite ease-out;
+            transform-origin: center;
+        }
+        @keyframes map-pulse {
+            0% { r: 6; opacity: 0.8; }
+            100% { r: 18; opacity: 0; }
+        }
+        .map-tooltip {
+            position: absolute;
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            pointer-events: none;
+            display: none;
+            z-index: 50;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            white-space: nowrap;
+        }
+
         /* ===== Country Tags ===== */
         .countries-panel {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            margin-bottom: 26px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 8px;
+            margin-bottom: 22px;
         }
         .country-tag {
-            padding: 10px 14px;
+            padding: 9px 12px;
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 13px;
@@ -554,42 +609,79 @@
             border-color: var(--accent);
             background: var(--bg3);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px var(--badge-glow);
+            box-shadow: 0 6px 18px var(--badge-glow);
         }
-        .country-tag .ct-flag { font-size: 20px; }
+        .country-tag .ct-flag { font-size: 19px; }
         .country-tag .ct-count {
             margin-left: auto;
             background: var(--bg4);
-            padding: 2px 8px;
+            padding: 2px 7px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 800;
             color: var(--accent2);
         }
 
+        /* ===== Fast Filter Pills (Feature 5) ===== */
+        .fast-filters-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .fast-filter-pill {
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--card-glass);
+            color: var(--text2);
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .fast-filter-pill:hover, .fast-filter-pill.active {
+            border-color: var(--accent);
+            color: var(--text);
+            background: var(--bg3);
+            box-shadow: 0 4px 14px var(--badge-glow);
+        }
+        .fast-filter-pill.active-fast {
+            border-color: var(--green);
+            color: var(--green);
+            background: rgba(0, 230, 118, 0.1);
+        }
+        .fast-filter-pill.active-top {
+            border-color: var(--yellow);
+            color: var(--yellow);
+            background: rgba(255, 214, 0, 0.1);
+        }
+
         /* ===== Filters Bar ===== */
         .filters {
             display: flex;
-            gap: 12px;
-            margin-bottom: 22px;
+            gap: 10px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
             align-items: center;
         }
         .search-box {
-            flex: 1; min-width: 220px;
-            padding: 12px 18px 12px 42px;
+            flex: 1; min-width: 200px;
+            padding: 11px 16px 11px 40px;
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text);
-            font-size: 14px;
+            font-size: 13.5px;
             font-family: inherit;
             outline: none;
             transition: all 0.25s;
             backdrop-filter: blur(12px);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23828a9e' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.442.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: 15px center;
+            background-position: 14px center;
         }
         .search-box:focus {
             border-color: var(--accent);
@@ -598,17 +690,17 @@
         .search-box::placeholder { color: var(--text2); }
 
         select.filter-select {
-            padding: 12px 18px;
+            padding: 11px 16px;
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text);
-            font-size: 14px;
+            font-size: 13.5px;
             font-family: inherit;
             font-weight: 500;
             outline: none;
             cursor: pointer;
-            min-width: 150px;
+            min-width: 140px;
             backdrop-filter: blur(12px);
             transition: all 0.25s;
         }
@@ -616,12 +708,12 @@
         select.filter-select option { background: var(--bg2); color: var(--text); }
 
         .sort-btn {
-            padding: 12px 18px;
+            padding: 11px 16px;
             background: var(--card-glass);
             border: 1px solid var(--border);
             border-radius: 12px;
             color: var(--text);
-            font-size: 14px;
+            font-size: 13.5px;
             font-family: inherit;
             font-weight: 600;
             cursor: pointer;
@@ -632,7 +724,7 @@
         .sort-btn:hover, .sort-btn.active {
             border-color: var(--accent);
             background: var(--bg3);
-            box-shadow: 0 4px 16px var(--badge-glow);
+            box-shadow: 0 4px 14px var(--badge-glow);
         }
 
         /* ===== Luxury Server Table ===== */
@@ -649,7 +741,7 @@
             border-collapse: collapse;
         }
         .server-table thead th {
-            padding: 16px 20px;
+            padding: 15px 18px;
             text-align: left;
             font-size: 11px;
             font-weight: 800;
@@ -674,23 +766,23 @@
         .server-table tbody tr:last-child { border-bottom: none; }
 
         .server-table td {
-            padding: 14px 20px;
-            font-size: 14px;
+            padding: 13px 18px;
+            font-size: 13.5px;
             vertical-align: middle;
         }
 
         /* Country cell */
         .country-cell {
-            display: flex; align-items: center; gap: 10px;
+            display: flex; align-items: center; gap: 9px;
             font-weight: 700;
         }
-        .country-flag { font-size: 22px; }
+        .country-flag { font-size: 20px; }
 
         /* Protocol badge */
         .proto-badge {
             display: inline-block;
-            padding: 4px 11px;
-            border-radius: 8px;
+            padding: 3px 9px;
+            border-radius: 7px;
             font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
@@ -701,6 +793,23 @@
         .proto-trojan { background: rgba(255, 82, 82, 0.15); color: var(--red); border: 1px solid rgba(255, 82, 82, 0.3); }
         .proto-ss { background: rgba(255, 214, 0, 0.15); color: var(--yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
         .proto-ssr { background: rgba(255, 145, 0, 0.15); color: var(--orange); border: 1px solid rgba(255, 145, 0, 0.3); }
+
+        /* Streaming Service Badges (Feature 6) */
+        .service-badges {
+            display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px;
+        }
+        .srv-badge {
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .srv-yt { background: rgba(255, 82, 82, 0.15); color: var(--red); border: 1px solid rgba(255, 82, 82, 0.3); }
+        .srv-ai { background: rgba(0, 230, 118, 0.15); color: var(--green); border: 1px solid rgba(0, 230, 118, 0.3); }
+        .srv-dc { background: rgba(68, 138, 255, 0.15); color: var(--blue); border: 1px solid rgba(68, 138, 255, 0.3); }
+        .srv-game { background: rgba(255, 214, 0, 0.15); color: var(--yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
 
         /* Ping indicator */
         .ping-cell {
@@ -735,14 +844,36 @@
         /* Address */
         .addr-cell {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text2);
             font-weight: 500;
         }
         .addr-cell .port { color: var(--accent2); margin-left: 2px; font-weight: 600; }
 
+        /* Action Buttons per server (Feature 3) */
+        .server-actions-cell {
+            display: flex; gap: 6px; align-items: center; justify-content: flex-end;
+        }
+        .btn-table-icon {
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--bg2);
+            color: var(--text);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .btn-table-icon:hover {
+            border-color: var(--accent);
+            background: var(--bg3);
+            transform: scale(1.04);
+            color: var(--cyan);
+        }
+
         /* Date */
-        .date-cell { color: var(--text2); font-size: 13px; font-weight: 500; }
+        .date-cell { color: var(--text2); font-size: 12.5px; font-weight: 500; white-space: nowrap; }
         .date-today { color: var(--green); font-weight: 700; }
 
         /* Status bar */
@@ -750,7 +881,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 13px 18px;
             font-size: 13px;
             font-weight: 500;
             color: var(--text2);
@@ -807,7 +938,7 @@
             font-weight: 800;
         }
 
-        /* ===== Modal Dialog ===== */
+        /* ===== Modal Dialogs (QR, Export, Rebuild) ===== */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -829,17 +960,15 @@
             background: var(--bg2);
             border: 1px solid var(--border);
             border-radius: 20px;
-            max-width: 440px;
+            max-width: 480px;
             width: 100%;
-            padding: 28px;
+            padding: 26px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px var(--badge-glow);
             transform: scale(0.95);
             transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
-        .modal-overlay.active .modal-card {
-            transform: scale(1);
-        }
+        .modal-overlay.active .modal-card { transform: scale(1); }
         .modal-header {
             display: flex;
             align-items: center;
@@ -863,11 +992,11 @@
             color: var(--text2);
             font-size: 13px;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .modal-input {
             width: 100%;
-            padding: 13px 18px;
+            padding: 12px 16px;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -906,6 +1035,64 @@
             margin-top: 14px;
         }
 
+        /* QR Modal specifics */
+        .qr-card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 0;
+        }
+        .qr-img-frame {
+            padding: 14px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .qr-img-frame img {
+            width: 220px;
+            height: 220px;
+            display: block;
+        }
+
+        /* Export format items */
+        .export-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .export-card-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .export-card-btn:hover {
+            border-color: var(--accent);
+            background: var(--bg3);
+            transform: translateY(-2px);
+        }
+        .export-card-icon {
+            font-size: 24px;
+        }
+        .export-card-name {
+            font-size: 13px; font-weight: 700; color: var(--text);
+        }
+        .export-card-sub {
+            font-size: 11px; color: var(--text2);
+        }
+
         /* Toast */
         .toast {
             position: fixed;
@@ -926,18 +1113,19 @@
         .toast.show { transform: translateX(-50%) translateY(0); }
 
         /* Responsive */
-        @media (max-width: 820px) {
+        @media (max-width: 860px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .server-table td:nth-child(4),
-            .server-table th:nth-child(4) { display: none; }
+            .server-table td:nth-child(5),
+            .server-table th:nth-child(5) { display: none; }
             .sub-box { flex-direction: column; align-items: stretch; }
             header { flex-direction: column; align-items: flex-start; }
             .header-actions { width: 100%; justify-content: flex-start; }
             .header-actions .btn { flex: 1; justify-content: center; }
+            .export-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 480px) {
-            .server-table td:nth-child(5),
-            .server-table th:nth-child(5) { display: none; }
+        @media (max-width: 580px) {
+            .server-table td:nth-child(4),
+            .server-table th:nth-child(4) { display: none; }
             .countries-panel { grid-template-columns: repeat(2, 1fr); }
             .theme-switcher-wrap { width: 100%; justify-content: center; }
         }
@@ -999,11 +1187,15 @@
                     <span>🔄</span>
                     <span id="rebuild-btn-text">Обновить сервера</span>
                 </button>
-                <button class="btn" onclick="refreshData()" id="refresh-btn">
-                    <span>📑</span>
-                    <span id="refresh-btn-text">Обновить список</span>
+                <button class="btn" onclick="openExportModal()">
+                    <span>📥</span>
+                    <span>Экспорт</span>
                 </button>
-                <button class="btn btn-primary" onclick="copySubUrl()">📋 Скопировать подписку</button>
+                <button class="btn" onclick="openQrModal('sub')">
+                    <span>📱</span>
+                    <span>QR-код</span>
+                </button>
+                <button class="btn btn-primary" onclick="copySubUrl()">📋 Скопировать</button>
             </div>
         </header>
 
@@ -1011,6 +1203,8 @@
         <div class="sub-box">
             <span class="label">📋 Подписка</span>
             <div class="sub-url" id="sub-url" onclick="copySubUrl()">Загрузка...</div>
+            <button class="btn" onclick="copySubUrl()" style="padding: 10px 14px;">📋 Копировать</button>
+            <button class="btn" onclick="openQrModal('sub')" style="padding: 10px 14px;">📱 QR</button>
         </div>
 
         <!-- Stats -->
@@ -1037,8 +1231,67 @@
             </div>
         </div>
 
+        <!-- Interactive World Hub Map (Feature 4) -->
+        <div class="world-hub-wrap">
+            <div class="world-hub-header" onclick="toggleWorldMap()">
+                <div class="world-hub-title">
+                    <span>🗺️</span>
+                    <span>Интерактивная карта мировых узлов</span>
+                    <span style="font-size:11px;font-weight:800;color:var(--cyan);background:rgba(24,255,255,0.1);padding:2px 8px;border-radius:6px;border:1px solid rgba(24,255,255,0.25)">LIVE RADAR</span>
+                </div>
+                <div class="world-hub-toggle" id="world-map-toggle-text">Свернуть карту ▲</div>
+            </div>
+            <div class="world-map-svg-container" id="world-map-container">
+                <div class="map-tooltip" id="map-tooltip"></div>
+                <!-- Clean Dark Futuristic World Vector Projection -->
+                <svg class="world-map-svg" viewBox="0 0 1000 480" preserveAspectRatio="none" id="world-svg">
+                    <defs>
+                        <!-- Grid pattern -->
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                        </pattern>
+                    </defs>
+                    <rect width="1000" height="480" fill="url(#grid)" />
+                    <!-- Continents abstract silhouettes -->
+                    <g fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1">
+                        <!-- North America -->
+                        <path d="M 120,60 Q 240,40 320,80 Q 280,180 200,240 Q 150,210 110,130 Z" />
+                        <!-- South America -->
+                        <path d="M 230,250 Q 320,270 300,380 Q 250,440 220,360 Z" />
+                        <!-- Europe -->
+                        <path d="M 460,80 Q 550,60 560,140 Q 480,180 440,130 Z" />
+                        <!-- Africa -->
+                        <path d="M 450,190 Q 560,180 540,320 Q 480,380 440,260 Z" />
+                        <!-- Asia -->
+                        <path d="M 580,70 Q 820,60 850,200 Q 720,260 600,180 Z" />
+                        <!-- Australia -->
+                        <path d="M 760,310 Q 860,300 870,390 Q 780,410 740,360 Z" />
+                    </g>
+                    <!-- Server Nodes will be injected dynamically -->
+                    <g id="map-nodes-group"></g>
+                </svg>
+            </div>
+        </div>
+
         <!-- Country tags -->
         <div class="countries-panel" id="countries-panel"></div>
+
+        <!-- Fast Filter Pills (Feature 5) -->
+        <div class="fast-filters-bar">
+            <span style="font-size:12px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:4px">Быстрый отбор:</span>
+            <div class="fast-filter-pill active" onclick="setFastFilter('all')" id="fast-all">
+                <span>🌐</span> <span>Все сервера (<span id="count-all">107</span>)</span>
+            </div>
+            <div class="fast-filter-pill" onclick="setFastFilter('fast')" id="fast-fast">
+                <span>⚡</span> <span>Ultra-Fast &lt; 100ms (<span id="count-fast">0</span>)</span>
+            </div>
+            <div class="fast-filter-pill" onclick="setFastFilter('top10')" id="fast-top10">
+                <span>🏆</span> <span>Топ-10 лучших</span>
+            </div>
+            <button class="btn" onclick="copyFastSub()" style="padding: 7px 12px; font-size: 12px; margin-left: auto;">
+                <span>📋</span> <span>Скопировать только выбранные</span>
+            </button>
+        </div>
 
         <!-- Filters -->
         <div class="filters">
@@ -1050,6 +1303,13 @@
                 <option value="trojan">Trojan</option>
                 <option value="ss">Shadowsocks</option>
                 <option value="ssr">SSR</option>
+            </select>
+            <select class="filter-select" id="filter-service">
+                <option value="">Все сервисы</option>
+                <option value="yt">🎬 YouTube 4K</option>
+                <option value="ai">🤖 ChatGPT / AI</option>
+                <option value="dc">🎧 Discord / Голос</option>
+                <option value="game">🎮 Gaming Low Latency</option>
             </select>
             <select class="filter-select" id="filter-ping">
                 <option value="">Любой пинг</option>
@@ -1071,12 +1331,13 @@
                         <th onclick="toggleSort('country')">Страна <span class="sort-arrow"></span></th>
                         <th onclick="toggleSort('proto')">Протокол</th>
                         <th onclick="toggleSort('ping')">Пинг <span class="sort-arrow"></span></th>
-                        <th>Адрес</th>
+                        <th>Адрес & Сервисы</th>
                         <th onclick="toggleSort('date')">Добавлен</th>
+                        <th style="text-align: right; cursor: default;">Действие</th>
                     </tr>
                 </thead>
                 <tbody id="server-tbody">
-                    <tr><td colspan="5" class="no-results"><div class="emoji">⏳</div>Загрузка серверов...</td></tr>
+                    <tr><td colspan="6" class="no-results"><div class="emoji">⏳</div>Загрузка серверов...</td></tr>
                 </tbody>
             </table>
             <div class="status-bar">
@@ -1118,6 +1379,94 @@
         </div>
     </div>
 
+    <!-- QR Code Modal (Feature 1) -->
+    <div class="modal-overlay" id="qr-modal" onclick="if(event.target===this)closeQrModal()">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-icon">📱</div>
+                <div>
+                    <div class="modal-title" id="qr-modal-title">Подключение по QR-коду</div>
+                    <div style="font-size:12px;color:var(--text2)" id="qr-modal-sub">Наведите камеру в приложении</div>
+                </div>
+            </div>
+            <div class="qr-card-body">
+                <div class="qr-img-frame">
+                    <img id="qr-img" src="" alt="QR-код">
+                </div>
+                <div style="font-size:12px;color:var(--text2);text-align:center;max-width:320px;line-height:1.5;margin-bottom:12px">
+                    Откройте <strong>Hiddify / v2rayNG / Streisand / NekoBox</strong> на телефоне и отсканируйте код для мгновенного добавления.
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn" onclick="copyCurrentQrUrl()">📋 Копировать ссылку</button>
+                <button class="btn btn-primary" onclick="closeQrModal()">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Formats Modal (Feature 2) -->
+    <div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeExportModal()">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-icon">📥</div>
+                <div>
+                    <div class="modal-title">Экспорт и быстрый запуск</div>
+                    <div style="font-size:12px;color:var(--text2)">Выберите формат или приложение</div>
+                </div>
+            </div>
+            <p class="modal-desc">
+                Импортируйте подписку напрямую в приложение или сохраните конфигурационный файл на устройство:
+            </p>
+            <div class="export-grid">
+                <div class="export-card-btn" onclick="openAppUrl('hiddify')">
+                    <span class="export-card-icon">🚀</span>
+                    <div>
+                        <div class="export-card-name">Hiddify</div>
+                        <div class="export-card-sub">Открыть в 1 клик</div>
+                    </div>
+                </div>
+                <div class="export-card-btn" onclick="openAppUrl('v2rayng')">
+                    <span class="export-card-icon">📱</span>
+                    <div>
+                        <div class="export-card-name">v2rayNG</div>
+                        <div class="export-card-sub">Импорт в Android</div>
+                    </div>
+                </div>
+                <div class="export-card-btn" onclick="openAppUrl('nekoray')">
+                    <span class="export-card-icon">🐱</span>
+                    <div>
+                        <div class="export-card-name">NekoBox / Ray</div>
+                        <div class="export-card-sub">Открыть в клиенте</div>
+                    </div>
+                </div>
+                <div class="export-card-btn" onclick="downloadClashYaml()">
+                    <span class="export-card-icon">📄</span>
+                    <div>
+                        <div class="export-card-name">Clash / Mihomo</div>
+                        <div class="export-card-sub">Скачать .yaml конфиг</div>
+                    </div>
+                </div>
+                <div class="export-card-btn" onclick="downloadSingBoxJson()">
+                    <span class="export-card-icon">📦</span>
+                    <div>
+                        <div class="export-card-name">Sing-Box</div>
+                        <div class="export-card-sub">Скачать .json файл</div>
+                    </div>
+                </div>
+                <div class="export-card-btn" onclick="copyRawList()">
+                    <span class="export-card-icon">📋</span>
+                    <div>
+                        <div class="export-card-name">Raw текст</div>
+                        <div class="export-card-sub">Скопировать все ссылки</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="closeExportModal()">Готово</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast notification -->
     <div class="toast" id="toast">✅ Скопировано!</div>
 
@@ -1132,9 +1481,9 @@
         });
         const activeBtn = document.querySelector(`.theme-btn-${themeName}`);
         if (activeBtn) activeBtn.classList.add('active');
+        renderWorldMap();
     }
 
-    // Load saved theme or default black
     const savedTheme = localStorage.getItem('vpn_theme') || 'black';
     setTheme(savedTheme);
 
@@ -1147,7 +1496,62 @@
     let currentSort = 'ping';
     let currentSortDir = 'asc';
     let activeCountry = '';
+    let activeFastFilter = 'all'; // all, fast, top10
     let isPinging = false;
+    let currentQrUrl = '';
+
+    // Geographic Coordinates for World Map (0..1000, 0..480)
+    const GEO_MAP = {
+        US: { x: 220, y: 150 },
+        CA: { x: 230, y: 90 },
+        GB: { x: 470, y: 110 },
+        DE: { x: 505, y: 120 },
+        NL: { x: 492, y: 115 },
+        FR: { x: 485, y: 135 },
+        SE: { x: 520, y: 85 },
+        FI: { x: 545, y: 75 },
+        PL: { x: 530, y: 120 },
+        UA: { x: 565, y: 130 },
+        RU: { x: 670, y: 100 },
+        TR: { x: 560, y: 165 },
+        AE: { x: 610, y: 200 },
+        IN: { x: 685, y: 210 },
+        SG: { x: 745, y: 270 },
+        HK: { x: 775, y: 205 },
+        TW: { x: 800, y: 200 },
+        JP: { x: 845, y: 155 },
+        KR: { x: 810, y: 150 },
+        AU: { x: 820, y: 360 },
+        BR: { x: 330, y: 330 },
+        ZA: { x: 535, y: 370 },
+        IT: { x: 505, y: 148 },
+        ES: { x: 465, y: 155 },
+        BE: { x: 490, y: 125 },
+        CH: { x: 498, y: 138 },
+        AT: { x: 512, y: 135 },
+        IE: { x: 452, y: 112 },
+        CZ: { x: 515, y: 125 },
+        HU: { x: 528, y: 136 },
+        RO: { x: 548, y: 142 },
+        BG: { x: 548, y: 155 },
+        GR: { x: 536, y: 165 },
+        IL: { x: 575, y: 185 },
+        KZ: { x: 645, y: 130 },
+        UZ: { x: 635, y: 150 },
+        TH: { x: 735, y: 235 },
+        VN: { x: 755, y: 230 },
+        ID: { x: 765, y: 300 },
+        PH: { x: 805, y: 245 },
+        MY: { x: 740, y: 265 },
+        MX: { x: 185, y: 200 },
+        AR: { x: 290, y: 400 },
+        NO: { x: 498, y: 80 },
+        DK: { x: 502, y: 102 },
+        PT: { x: 450, y: 158 },
+    };
+
+    // AI/Streaming compatibility rules
+    const AI_COUNTRIES = new Set(['US', 'CA', 'GB', 'DE', 'NL', 'FR', 'SE', 'FI', 'JP', 'SG', 'AU', 'KR', 'CH', 'AT', 'IE', 'NO']);
 
     // ===== Country info =====
     const COUNTRY_INFO = {
@@ -1183,7 +1587,6 @@
         return COUNTRY_INFO[code] || {flag: '🌐', name: code};
     }
 
-    // ===== Ping helpers =====
     function getPingClass(ping) {
         if (ping === 'testing') return 'testing';
         if (ping < 0) return 'dead';
@@ -1201,7 +1604,24 @@
         return ping + 'ms';
     }
 
-    // Update aggregate stats cards
+    function getServiceBadges(s) {
+        const badges = [];
+        const isOnline = typeof s.ping === 'number' && s.ping > 0;
+        if (isOnline && s.ping < 260) {
+            badges.push('<span class="srv-badge srv-yt" title="Высокая скорость для 4K">🎬 4K</span>');
+        }
+        if (AI_COUNTRIES.has(s.country)) {
+            badges.push('<span class="srv-badge srv-ai" title="Работает ChatGPT / Claude">🤖 AI</span>');
+        }
+        if (isOnline && s.ping < 150) {
+            badges.push('<span class="srv-badge srv-dc" title="Низкая задержка голоса">🎧 Discord</span>');
+        }
+        if (isOnline && s.ping < 80) {
+            badges.push('<span class="srv-badge srv-game" title="Минимальный пинг для игр">🎮 LowPing</span>');
+        }
+        return badges.length ? `<div class="service-badges">${badges.join('')}</div>` : '';
+    }
+
     function updateStatsHeader(addedCount) {
         const validPings = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0);
         const online = validPings.length;
@@ -1217,6 +1637,11 @@
         if (addedCount !== undefined) {
             document.getElementById('s-added').textContent = addedCount;
         }
+
+        // Update fast filter counts
+        const fastCount = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0 && s.ping < 100).length;
+        document.getElementById('count-all').textContent = allServers.length;
+        document.getElementById('count-fast').textContent = fastCount;
     }
 
     // ===== Load data =====
@@ -1229,28 +1654,129 @@
             allServers = data.servers || [];
             const stats = data.stats || {};
 
-            // Subscription URL
             const subUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + SUB_URL_TEMPLATE;
             document.getElementById('sub-url').textContent = subUrl;
+            currentQrUrl = subUrl;
 
-            // Stats
             updateStatsHeader(stats.added_today || 0);
 
             document.getElementById('last-update').textContent =
                 data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
 
-            // Country tags
             renderCountryTags();
-
-            // Render
+            renderWorldMap();
             renderTable();
         } catch (e) {
             console.error('Load error:', e);
             document.getElementById('server-tbody').innerHTML =
-                '<tr><td colspan="5" class="no-results"><div class="emoji">⚠️</div>Ошибка загрузки данных<br><small>' + e.message + '</small></td></tr>';
+                '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Ошибка загрузки данных<br><small>' + e.message + '</small></td></tr>';
         }
     }
 
+    // ===== World Map (Feature 4) =====
+    function toggleWorldMap() {
+        const container = document.getElementById('world-map-container');
+        const text = document.getElementById('world-map-toggle-text');
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            text.textContent = 'Свернуть карту ▲';
+        } else {
+            container.style.display = 'none';
+            text.textContent = 'Развернуть карту ▼';
+        }
+    }
+
+    function renderWorldMap() {
+        const group = document.getElementById('map-nodes-group');
+        if (!group) return;
+
+        // Group servers by country
+        const countryMap = {};
+        allServers.forEach(s => {
+            if (!countryMap[s.country]) countryMap[s.country] = [];
+            countryMap[s.country].push(s);
+        });
+
+        let html = '';
+        for (const [code, servers] of Object.entries(countryMap)) {
+            const geo = GEO_MAP[code];
+            if (!geo) continue;
+
+            const pings = servers.filter(s => typeof s.ping === 'number' && s.ping > 0).map(s => s.ping);
+            const bestPing = pings.length ? Math.min(...pings) : 0;
+            const pClass = getPingClass(bestPing);
+            
+            let color = '#a29bfe';
+            if (pClass === 'good') color = '#00e676';
+            else if (pClass === 'ok') color = '#ffd600';
+            else if (pClass === 'slow') color = '#ff9100';
+            else if (pClass === 'dead') color = '#ff5252';
+
+            const active = activeCountry === code ? 'stroke="#fff" stroke-width="2"' : '';
+
+            html += `
+            <g class="map-node" onclick="filterCountry('${code}')" 
+               onmouseenter="showMapTooltip(event, '${code}', ${servers.length}, ${bestPing})" 
+               onmouseleave="hideMapTooltip()">
+                <circle class="map-node-pulse" cx="${geo.x}" cy="${geo.y}" r="8" fill="${color}" opacity="0.6" />
+                <circle class="node-glow" cx="${geo.x}" cy="${geo.y}" r="6" fill="${color}" ${active} />
+                <circle cx="${geo.x}" cy="${geo.y}" r="3" fill="#fff" />
+            </g>`;
+        }
+        group.innerHTML = html;
+    }
+
+    function showMapTooltip(e, code, count, bestPing) {
+        const tip = document.getElementById('map-tooltip');
+        const info = getCountryInfo(code);
+        const container = document.getElementById('world-map-container');
+        const rect = container.getBoundingClientRect();
+
+        tip.innerHTML = `${info.flag} <strong>${info.name}</strong> • ${count} серв. • ${bestPing > 0 ? bestPing + 'ms' : 'пинг N/A'}`;
+        tip.style.left = (e.clientX - rect.left + 15) + 'px';
+        tip.style.top = (e.clientY - rect.top - 10) + 'px';
+        tip.style.display = 'block';
+    }
+
+    function hideMapTooltip() {
+        document.getElementById('map-tooltip').style.display = 'none';
+    }
+
+    // ===== Fast Filter Pills (Feature 5) =====
+    function setFastFilter(mode) {
+        activeFastFilter = mode;
+        document.querySelectorAll('.fast-filter-pill').forEach(p => {
+            p.classList.remove('active', 'active-fast', 'active-top');
+        });
+
+        const activePill = document.getElementById('fast-' + mode);
+        if (activePill) {
+            activePill.classList.add('active');
+            if (mode === 'fast') activePill.classList.add('active-fast');
+            if (mode === 'top10') activePill.classList.add('active-top');
+        }
+
+        renderTable();
+    }
+
+    function copyFastSub() {
+        const filtered = getFilteredServers();
+        if (!filtered.length) {
+            showToast('⚠️ Нет серверов в текущей выборке');
+            return;
+        }
+        const rawLines = filtered.map(s => s.raw || '').filter(Boolean);
+        if (!rawLines.length) {
+            showToast('⚠️ Ссылки недоступны');
+            return;
+        }
+        const b64 = btoa(unescape(encodeURIComponent(rawLines.join('\n'))));
+        navigator.clipboard.writeText(b64).then(() => {
+            showToast(`✅ Подписка на ${filtered.length} серверов скопирована!`);
+        });
+    }
+
+    // ===== Country Tags =====
     function renderCountryTags() {
         const counts = {};
         allServers.forEach(s => {
@@ -1273,18 +1799,27 @@
     function filterCountry(code) {
         activeCountry = activeCountry === code ? '' : code;
         renderCountryTags();
+        renderWorldMap();
         renderTable();
     }
 
-    // ===== Render table =====
-    function renderTable() {
+    // Filter computation logic
+    function getFilteredServers() {
         const search = document.getElementById('search').value.toLowerCase();
         const protoFilter = document.getElementById('filter-proto').value;
         const pingFilter = document.getElementById('filter-ping').value;
+        const srvFilter = document.getElementById('filter-service').value;
 
-        let filtered = allServers.filter(s => {
+        return allServers.filter(s => {
             if (activeCountry && s.country !== activeCountry) return false;
             if (protoFilter && s.protocol !== protoFilter) return false;
+            
+            // Fast filters
+            if (activeFastFilter === 'fast') {
+                if (!(typeof s.ping === 'number' && s.ping > 0 && s.ping < 100)) return false;
+            }
+
+            // Ping status filter
             if (pingFilter) {
                 const pc = getPingClass(s.ping);
                 if (pingFilter === 'good' && pc !== 'good') return false;
@@ -1292,6 +1827,17 @@
                 if (pingFilter === 'slow' && pc !== 'slow') return false;
                 if (pingFilter === 'dead' && pc !== 'dead') return false;
             }
+
+            // Service filter
+            if (srvFilter) {
+                const isOnline = typeof s.ping === 'number' && s.ping > 0;
+                if (srvFilter === 'yt' && !(isOnline && s.ping < 260)) return false;
+                if (srvFilter === 'ai' && !AI_COUNTRIES.has(s.country)) return false;
+                if (srvFilter === 'dc' && !(isOnline && s.ping < 150)) return false;
+                if (srvFilter === 'game' && !(isOnline && s.ping < 80)) return false;
+            }
+
+            // Search
             if (search) {
                 const info = getCountryInfo(s.country);
                 const haystack = `${info.name} ${s.country} ${s.address} ${s.protocol} ${s.remark}`.toLowerCase();
@@ -1299,6 +1845,11 @@
             }
             return true;
         });
+    }
+
+    // ===== Render Table =====
+    function renderTable() {
+        let filtered = getFilteredServers();
 
         // Sort
         filtered.sort((a, b) => {
@@ -1330,23 +1881,38 @@
             return currentSortDir === 'asc' ? va - vb : vb - va;
         });
 
+        // If Top-10 mode active, take slice
+        if (activeFastFilter === 'top10') {
+            filtered = filtered.slice(0, 10);
+        }
+
         const tbody = document.getElementById('server-tbody');
         if (filtered.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" class="no-results"><div class="emoji">🔍</div>Серверы не найдены</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="6" class="no-results"><div class="emoji">🔍</div>Серверы не найдены</td></tr>';
         } else {
             const today = new Date().toISOString().slice(0, 10);
-            tbody.innerHTML = filtered.map(s => {
+            tbody.innerHTML = filtered.map((s, idx) => {
                 const info = getCountryInfo(s.country);
                 const pc = getPingClass(s.ping);
                 const isToday = s.added_date === today;
-                const addrShort = s.address.length > 28 ? s.address.slice(0, 28) + '…' : s.address;
+                const addrShort = s.address.length > 26 ? s.address.slice(0, 26) + '…' : s.address;
+                const badges = getServiceBadges(s);
 
                 return `<tr>
                     <td><div class="country-cell"><span class="country-flag">${info.flag}</span>${info.name}</div></td>
                     <td><span class="proto-badge proto-${s.protocol}">${s.protocol}</span></td>
                     <td><div class="ping-cell"><span class="ping-dot ping-${pc}"></span><span class="ping-value ${pc}">${getPingLabel(s.ping)}</span></div></td>
-                    <td><span class="addr-cell">${addrShort}<span class="port">:${s.port}</span></span></td>
+                    <td>
+                        <div class="addr-cell">${addrShort}<span class="port">:${s.port}</span></div>
+                        ${badges}
+                    </td>
                     <td><span class="date-cell${isToday ? ' date-today' : ''}">${s.added_date || '—'}${isToday ? ' 🆕' : ''}</span></td>
+                    <td>
+                        <div class="server-actions-cell">
+                            <button class="btn-table-icon" onclick="copyServerRaw(${idx})" title="Скопировать ссылку подключения">📋 Скопировать</button>
+                            <button class="btn-table-icon" onclick="openServerQr(${idx})" title="Показать QR-код">📱</button>
+                        </div>
+                    </td>
                 </tr>`;
             }).join('');
         }
@@ -1367,6 +1933,150 @@
         if (btn) btn.classList.add('active');
 
         renderTable();
+    }
+
+    // ===== Copy Individual Server (Feature 3) =====
+    function copyServerRaw(idx) {
+        const filtered = getFilteredServers();
+        const server = filtered[idx];
+        if (!server || !server.raw) {
+            showToast('⚠️ Ссылка недоступна');
+            return;
+        }
+        navigator.clipboard.writeText(server.raw).then(() => {
+            const info = getCountryInfo(server.country);
+            showToast(`✅ Конфиг ${info.flag} ${info.name} скопирован!`);
+        });
+    }
+
+    function openServerQr(idx) {
+        const filtered = getFilteredServers();
+        const server = filtered[idx];
+        if (!server || !server.raw) return;
+
+        const info = getCountryInfo(server.country);
+        document.getElementById('qr-modal-title').textContent = `${info.flag} Сервер ${info.name} (${server.protocol.toUpperCase()})`;
+        document.getElementById('qr-modal-sub').textContent = `${server.address}:${server.port}`;
+        
+        currentQrUrl = server.raw;
+        document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(server.raw)}`;
+        document.getElementById('qr-modal').classList.add('active');
+    }
+
+    // ===== QR Code Modal (Feature 1) =====
+    function openQrModal(type) {
+        const subUrl = document.getElementById('sub-url').textContent;
+        currentQrUrl = subUrl;
+
+        document.getElementById('qr-modal-title').textContent = 'Подключение по QR-коду';
+        document.getElementById('qr-modal-sub').textContent = 'Основная авто-обновляемая подписка';
+        document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(subUrl)}`;
+        document.getElementById('qr-modal').classList.add('active');
+    }
+
+    function closeQrModal() {
+        document.getElementById('qr-modal').classList.remove('active');
+    }
+
+    function copyCurrentQrUrl() {
+        navigator.clipboard.writeText(currentQrUrl).then(() => {
+            showToast('✅ Ссылка скопирована!');
+            closeQrModal();
+        });
+    }
+
+    // ===== Export Modal (Feature 2) =====
+    function openExportModal() {
+        document.getElementById('export-modal').classList.add('active');
+    }
+
+    function closeExportModal() {
+        document.getElementById('export-modal').classList.remove('active');
+    }
+
+    function openAppUrl(app) {
+        const subUrl = document.getElementById('sub-url').textContent;
+        let deepLink = '';
+        if (app === 'hiddify') {
+            deepLink = `hiddify://install-sub?url=${encodeURIComponent(subUrl)}`;
+        } else if (app === 'v2rayng') {
+            deepLink = `v2rayng://install-config?url=${encodeURIComponent(subUrl)}`;
+        } else if (app === 'nekoray') {
+            deepLink = `nekoray://install-sub?url=${encodeURIComponent(subUrl)}`;
+        }
+        if (deepLink) {
+            window.location.href = deepLink;
+            showToast(`🚀 Запуск ${app}...`);
+            closeExportModal();
+        }
+    }
+
+    function downloadClashYaml() {
+        const subUrl = document.getElementById('sub-url').textContent;
+        // Generate ready Clash configuration
+        const yaml = `# Generated by VPN Auto-Sub (create by sever-xd)
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+proxy-providers:
+  PesokVPN:
+    type: http
+    url: "${subUrl}"
+    interval: 3600
+    path: ./pesok_vpn.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+proxy-groups:
+  - name: 🚀 AUTO-FASTEST
+    type: url-test
+    use: [PesokVPN]
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+rules:
+  - MATCH,🚀 AUTO-FASTEST
+`;
+        const blob = new Blob([yaml], { type: 'text/yaml' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'pesok_clash_config.yaml';
+        a.click();
+        showToast('📄 Файл Clash YAML скачан!');
+        closeExportModal();
+    }
+
+    function downloadSingBoxJson() {
+        const subUrl = document.getElementById('sub-url').textContent;
+        const config = {
+            "log": { "level": "info" },
+            "endpoints": [
+                {
+                    "type": "remote",
+                    "tag": "pesok-sub",
+                    "url": subUrl,
+                    "download_detour": "direct",
+                    "update_interval": "12h"
+                }
+            ]
+        };
+        const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'pesok_singbox_config.json';
+        a.click();
+        showToast('📦 Файл Sing-Box JSON скачан!');
+        closeExportModal();
+    }
+
+    function copyRawList() {
+        const rawLines = allServers.map(s => s.raw || '').filter(Boolean);
+        navigator.clipboard.writeText(rawLines.join('\n')).then(() => {
+            showToast(`📋 Все ${rawLines.length} ссылок скопированы открытым текстом!`);
+            closeExportModal();
+        });
     }
 
     // ===== Measure Ping Dynamically from Browser =====
@@ -1447,6 +2157,7 @@
             pingBtnText.textContent = `${Math.min(processed, total)}/${total}`;
             updateStatsHeader();
             renderTable();
+            renderWorldMap();
         }
 
         isPinging = false;
@@ -1541,7 +2252,7 @@
         }
     }
 
-    // ===== Copy subscription =====
+    // ===== Copy Subscription =====
     function copySubUrl() {
         const url = document.getElementById('sub-url').textContent;
         navigator.clipboard.writeText(url).then(() => showToast('✅ Ссылка подписки скопирована!'));
@@ -1570,6 +2281,7 @@
     document.getElementById('search').addEventListener('input', renderTable);
     document.getElementById('filter-proto').addEventListener('change', renderTable);
     document.getElementById('filter-ping').addEventListener('change', renderTable);
+    document.getElementById('filter-service').addEventListener('change', renderTable);
 
     // ===== Init =====
     loadData();
