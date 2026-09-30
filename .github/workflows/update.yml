@@ -1,15 +1,10 @@
 name: 🔄 Update VPN Subscription
 
 on:
-  # Запуск каждый день в 06:00 и 18:00 UTC (09:00 и 21:00 МСК)
   schedule:
     - cron: '0 6 * * *'
     - cron: '0 18 * * *'
-
-  # Ручной запуск
   workflow_dispatch:
-
-  # При пуше (для первого запуска)
   push:
     branches: [main]
     paths:
@@ -18,11 +13,13 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
 
     steps:
       - name: 📥 Checkout
@@ -36,21 +33,19 @@ jobs:
       - name: 📦 Install dependencies
         run: pip install aiohttp pyyaml
 
-      - name: 🔄 Run update
+      - name: 🔄 Run update & ping test
         run: python update.py
 
       - name: 📊 Show results
         run: |
-          echo "=== Subscription size ==="
-          wc -c subscription.txt
-          echo ""
-          echo "=== Server count ==="
+          echo "=== Stats ==="
           python3 -c "
           import json
           meta = json.load(open('servers_meta.json'))
           stats = meta['stats']
           print(f'Total: {stats[\"total\"]}')
           print(f'Added today: {stats[\"added_today\"]}')
+          print(f'Online: {len([s for s in meta[\"servers\"] if s.get(\"ping\",0) > 0])}')
           print(f'Countries: {len(stats[\"countries\"])}')
           for k,v in sorted(stats['protocols'].items(), key=lambda x: -x[1]):
               print(f'  {k}: {v}')
@@ -60,6 +55,34 @@ jobs:
         run: |
           git config user.name "VPN Auto-Updater"
           git config user.email "bot@github.com"
-          git add subscription.txt raw_configs.txt servers_meta.json README.md
-          git diff --staged --quiet || git commit -m "🔄 Update $(date -u +%Y-%m-%d): $(python3 -c "import json; d=json.load(open('servers_meta.json')); print(f\"{d['stats']['total']} servers, +{d['stats']['added_today']} new\")")"
+          git add subscription.txt raw_configs.txt servers_meta.json site_data.json README.md
+          git diff --staged --quiet || git commit -m "🔄 Update $(date -u +%Y-%m-%d): $(python3 -c "import json; d=json.load(open('servers_meta.json')); s=d['stats']; print(f\"{s['total']} servers, +{s['added_today']} new\")")"
           git push
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 🔄 Pull latest
+        run: git pull origin main
+
+      - name: 📦 Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: 📤 Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
