@@ -17,10 +17,10 @@ https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.t
 | Метрика | Значение |
 |---------|----------|
 | 📅 Обновлено | **2026-10-01** |
-| 📦 Всего серверов | **107** |
-| ➕ Добавлено сегодня | **0** |
-| 🗑️ Удалено (устаревших) | **0** |
-| 📌 Из прошлого обновления | **107** |
+| 📦 Всего серверов | **106** |
+| ➕ Добавлено сегодня | **106** |
+| 🗑️ Удалено (устаревших) | **106** |
+| 📌 Из прошлого обновления | **0** |
 
 ### 🌍 Серверы по странам
 
@@ -60,7 +60,6 @@ https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.t
 | LT | `LT` | 2 |
 | LV | `LV` | 2 |
 | MX | `MX` | 2 |
-| MY | `MY` | 2 |
 | NO | `NO` | 2 |
 | PH | `PH` | 2 |
 | PL | `PL` | 2 |
@@ -72,16 +71,17 @@ https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.t
 | VN | `VN` | 2 |
 | ZA | `ZA` | 2 |
 | IL | `IL` | 1 |
+| MY | `MY` | 1 |
 | UZ | `UZ` | 1 |
 
 ### 🔌 По протоколам
 
 | Протокол | Кол-во |
 |----------|--------|
-| SS | 30 |
-| VMESS | 29 |
-| VLESS | 28 |
-| TROJAN | 20 |
+| VLESS | 43 |
+| SS | 27 |
+| VMESS | 23 |
+| TROJAN | 13 |
 
 ## 🔄 Автообновление
 
