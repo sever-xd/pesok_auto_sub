@@ -875,11 +875,14 @@
                     <div class="theme-pill tp-black" onclick="setTheme('black')" title="7. Stealth Obsidian (OLED Черная)"></div>
                 </div>
 
+                <button class="btn" id="btn-refresh-data" onclick="loadData(true)" title="Перезагрузить данные серверов">
+                    <span>🔄</span> <span id="btn-refresh-text">Обновить страницу</span>
+                </button>
                 <button class="btn" id="btn-ping" onclick="measureAllPings()">
                     <span>⚡</span> <span id="btn-ping-text">Обновить пинг</span>
                 </button>
                 <button class="btn btn-rebuild" id="btn-rebuild" onclick="openRebuildModal()">
-                    <span>🔄</span> <span id="btn-rebuild-text">Обновить сервера</span>
+                    <span>⚙️</span> <span id="btn-rebuild-text">Пересобрать серверы</span>
                 </button>
                 <button class="btn" onclick="openExportModal()">
                     <span>📥</span> <span>Экспорт</span>
@@ -1054,6 +1057,10 @@
                 <button class="modal-close" onclick="closeExportModal()">&times;</button>
             </div>
             <div class="export-grid">
+                <div class="export-card" onclick="copySubUrl(); closeExportModal(); showToast('✅ Ссылка для Happ скопирована в буфер!');">
+                    <div class="export-card-title">📱 Happ (iOS / Android)</div>
+                    <div class="export-card-desc">Скопировать ссылку для Happ</div>
+                </div>
                 <div class="export-card" onclick="openAppUrl('hiddify')">
                     <div class="export-card-title">🚀 Hiddify Next</div>
                     <div class="export-card-desc">Открыть в один клик</div>
@@ -1148,30 +1155,73 @@
     }
 
     // ===== LOAD DATA =====
-    async function loadData() {
+    function getAssetUrl(file) {
+        let base = window.location.href.split('?')[0].split('#')[0];
+        if (!base.endsWith('/')) {
+            base = base + '/';
+        }
+        return new URL(file, base).href + '?t=' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    }
+
+    async function loadData(manual = false) {
+        if (manual) {
+            const btn = document.getElementById('btn-refresh-text');
+            if (btn) btn.textContent = 'Загрузка...';
+            showToast('🔄 Загрузка свежих данных...');
+        }
+
         let data = null;
+
+        // 1. Попытка 1: По абсолютному пути страницы с cache-buster
         try {
-            const resp = await fetch('site_data.json?t=' + Date.now());
+            const resp = await fetch(getAssetUrl('site_data.json'), { cache: 'no-store' });
             if (resp.ok) data = await resp.json();
         } catch (_) {}
 
+        // 2. Попытка 2: Прямой относительный путь
         if (!data || !data.servers) {
             try {
-                const resp = await fetch('https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json?t=' + Date.now());
+                const resp = await fetch('site_data.json?t=' + Date.now() + '_' + Math.random(), { cache: 'no-store' });
                 if (resp.ok) data = await resp.json();
             } catch (_) {}
         }
 
+        // 3. Попытка 3: Raw GitHub с cache-buster
+        if (!data || !data.servers) {
+            try {
+                const resp = await fetch('https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json?t=' + Date.now() + '_' + Math.random(), { cache: 'no-store' });
+                if (resp.ok) data = await resp.json();
+            } catch (_) {}
+        }
+
+        // 4. Попытка 4: GitHub API (без CDN кэша Cloudflare)
+        if (!data || !data.servers) {
+            try {
+                const resp = await fetch('https://api.github.com/repos/sever-xd/pesok_auto_sub/contents/site_data.json?t=' + Date.now());
+                if (resp.ok) {
+                    const j = await resp.json();
+                    if (j.content) {
+                        const decoded = decodeURIComponent(escape(atob(j.content)));
+                        data = JSON.parse(decoded);
+                    }
+                }
+            } catch (_) {}
+        }
+
+        const rBtnText = document.getElementById('btn-refresh-text');
+        if (rBtnText) rBtnText.textContent = 'Обновить страницу';
+
         if (!data || !data.servers || !data.servers.length) {
             document.getElementById('servers-tbody').innerHTML =
-                '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--dead);">⚠️ Не удалось загрузить серверы. Проверьте сеть или обновите страницу.</td></tr>';
+                '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--dead);">⚠️ Не удалось загрузить серверы. Проверьте сеть или нажмите «Обновить страницу».</td></tr>';
+            if (manual) showToast('❌ Ошибка загрузки данных');
             return;
         }
 
         allServers = data.servers;
         const stats = data.stats || {};
 
-        // Update stats cards
+        // Обновление карточек статистики
         const total = allServers.length;
         const countriesCount = new Set(allServers.map(s => s.country)).size;
         const validPings = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0);
@@ -1193,6 +1243,8 @@
 
         renderCountryCloud();
         renderTable();
+
+        if (manual) showToast('✅ Данные успешно обновлены!');
     }
 
     // ===== COUNTRY CLOUD =====
@@ -1500,7 +1552,7 @@
 
         err.style.display = 'none';
         btn.disabled = true;
-        btn.textContent = '⏳ Запуск...';
+        btn.textContent = '⏳ Отправка запроса...';
 
         try {
             const token = decodeToken(pass);
@@ -1516,23 +1568,51 @@
 
             if (res.status === 204 || res.ok) {
                 closeRebuildModal();
-                showToast('🚀 Сервера собираются заново в GitHub Actions!');
+                showToast('🚀 Запущен процесс сборки серверов в GitHub Actions!');
 
                 const rBtn = document.getElementById('btn-rebuild');
                 const rTxt = document.getElementById('btn-rebuild-text');
                 rBtn.disabled = true;
-                let s = 60;
-                const tId = setInterval(() => {
-                    rTxt.textContent = `Сборка... (${s}s)`;
-                    s--;
-                    if (s < 0) {
-                        clearInterval(tId);
+                rTxt.textContent = 'Запуск на GitHub...';
+
+                let elapsed = 0;
+                const pollInterval = setInterval(async () => {
+                    elapsed += 4;
+                    rTxt.textContent = `Сборка серверов... (${elapsed}s)`;
+
+                    try {
+                        const checkRes = await fetch('https://api.github.com/repos/sever-xd/pesok_auto_sub/actions/runs?per_page=1&t=' + Date.now());
+                        if (checkRes.ok) {
+                            const data = await checkRes.json();
+                            const run = data.workflow_runs && data.workflow_runs[0];
+                            if (run) {
+                                if (run.status === 'in_progress') {
+                                    rTxt.textContent = `Парсинг & пинг... (${elapsed}s)`;
+                                } else if (run.status === 'completed') {
+                                    clearInterval(pollInterval);
+                                    rBtn.disabled = false;
+                                    rTxt.textContent = 'Пересобрать серверы';
+                                    if (run.conclusion === 'success') {
+                                        showToast('🎉 Сервера успешно пересобраны и опубликованы!');
+                                        setTimeout(() => loadData(true), 1500);
+                                    } else {
+                                        showToast('⚠️ Сборка завершилась со статусом: ' + run.conclusion);
+                                        loadData(true);
+                                    }
+                                    return;
+                                }
+                            }
+                        }
+                    } catch (_) {}
+
+                    if (elapsed >= 90) {
+                        clearInterval(pollInterval);
                         rBtn.disabled = false;
-                        rTxt.textContent = 'Обновить сервера';
-                        loadData();
-                        showToast('🔄 Данные обновлены!');
+                        rTxt.textContent = 'Пересобрать серверы';
+                        loadData(true);
+                        showToast('🔄 Тайм-аут ожидания: обновляем страницу');
                     }
-                }, 1000);
+                }, 4000);
             } else {
                 err.textContent = 'Ошибка GitHub API (' + res.status + ')';
                 err.style.display = 'block';
