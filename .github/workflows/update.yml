@@ -10,7 +10,6 @@ on:
     paths:
       - 'update.py'
       - '.github/workflows/update.yml'
-      - 'index.html'
 
 permissions:
   contents: write
