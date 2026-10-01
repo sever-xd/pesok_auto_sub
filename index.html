@@ -1,2297 +1,1272 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="black">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VPN Auto-Sub — Серверы Премиум</title>
-    <!-- Google Fonts: Luxury Modern Typography -->
+    <title>VPN Auto-Sub | Премиум VPN подписки</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Three.js and Globe.GL -->
+    <script src="https://unpkg.com/three"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+
     <style>
-        /* ===== THEMES DEFINITIONS ===== */
-        :root, [data-theme="black"] {
-            --bg: #06070a;
-            --bg2: #0e1017;
-            --bg3: #151822;
-            --bg4: #1d2230;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-hover: rgba(162, 155, 254, 0.4);
-            --text: #f3f5fa;
-            --text2: #828a9e;
-            --accent: #6c5ce7;
-            --accent2: #a29bfe;
-            --glow1: #6c5ce7;
-            --glow2: #18ffff;
-            --green: #00e676;
-            --yellow: #ffd600;
-            --orange: #ff9100;
-            --red: #ff5252;
-            --blue: #448aff;
-            --cyan: #18ffff;
-            --card-glass: rgba(14, 16, 23, 0.78);
-            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --badge-glow: rgba(108, 92, 231, 0.35);
+        :root {
+            --bg-color: #05140b;
+            --card-bg: rgba(10, 31, 18, 0.7);
+            --card-border: rgba(34, 197, 94, 0.2);
+            --primary: #22c55e;
+            --primary-hover: #16a34a;
+            --text-main: #f0fdf4;
+            --text-muted: #86efac;
+            --glass-bg: rgba(22, 163, 74, 0.1);
+            --danger: #ef4444;
+            --warning: #eab308;
+            --ok: #f97316;
+            --good: #22c55e;
+            --radius: 16px;
         }
 
-        /* 1. Желтая / Золотая (Rolex Gold / Amber Luxury) */
         [data-theme="yellow"] {
-            --bg: #090702;
-            --bg2: #141005;
-            --bg3: #221b08;
-            --bg4: #30260c;
-            --border: rgba(255, 215, 0, 0.15);
-            --border-hover: rgba(255, 215, 0, 0.5);
-            --text: #fffdf5;
-            --text2: #ad9f78;
-            --accent: #f59e0b;
-            --accent2: #fbbf24;
-            --glow1: #f59e0b;
-            --glow2: #fde68a;
-            --green: #10b981;
-            --yellow: #fbbf24;
-            --orange: #f97316;
-            --red: #ef4444;
-            --blue: #38bdf8;
-            --cyan: #facc15;
-            --card-glass: rgba(20, 16, 5, 0.82);
-            --shadow-subtle: 0 10px 30px rgba(245, 158, 11, 0.08);
-            --badge-glow: rgba(245, 158, 11, 0.35);
+            --bg-color: #141105;
+            --card-bg: rgba(31, 27, 10, 0.7);
+            --card-border: rgba(234, 179, 8, 0.2);
+            --primary: #eab308;
+            --primary-hover: #ca8a04;
+            --text-main: #fefce8;
+            --text-muted: #fef08a;
+            --glass-bg: rgba(202, 138, 4, 0.1);
         }
 
-        /* 2. Синяя (Deep Sapphire & Royal Neon) */
         [data-theme="blue"] {
-            --bg: #040814;
-            --bg2: #081229;
-            --bg3: #0f1f45;
-            --bg4: #172c60;
-            --border: rgba(56, 189, 248, 0.15);
-            --border-hover: rgba(56, 189, 248, 0.5);
-            --text: #f0f6ff;
-            --text2: #7d96ba;
-            --accent: #0284c7;
-            --accent2: #38bdf8;
-            --glow1: #0284c7;
-            --glow2: #38bdf8;
-            --green: #00e676;
-            --yellow: #ffd600;
-            --orange: #ff9100;
-            --red: #ff5252;
-            --blue: #38bdf8;
-            --cyan: #38bdf8;
-            --card-glass: rgba(8, 18, 41, 0.82);
-            --shadow-subtle: 0 10px 30px rgba(2, 132, 199, 0.12);
-            --badge-glow: rgba(2, 132, 199, 0.35);
+            --bg-color: #050b14;
+            --card-bg: rgba(10, 18, 31, 0.7);
+            --card-border: rgba(59, 130, 246, 0.2);
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text-main: #eff6ff;
+            --text-muted: #93c5fd;
+            --glass-bg: rgba(37, 99, 235, 0.1);
         }
 
-        /* 3. Зеленая (Emerald / Cyber Matrix) */
-        [data-theme="green"] {
-            --bg: #030c07;
-            --bg2: #07190f;
-            --bg3: #0e2b1b;
-            --bg4: #153c26;
-            --border: rgba(16, 185, 129, 0.18);
-            --border-hover: rgba(16, 185, 129, 0.5);
-            --text: #f0fff4;
-            --text2: #7ca88a;
-            --accent: #10b981;
-            --accent2: #34d399;
-            --glow1: #10b981;
-            --glow2: #6ee7b7;
-            --green: #10b981;
-            --yellow: #fbbf24;
-            --orange: #f97316;
-            --red: #ef4444;
-            --blue: #38bdf8;
-            --cyan: #34d399;
-            --card-glass: rgba(7, 25, 15, 0.82);
-            --shadow-subtle: 0 10px 30px rgba(16, 185, 129, 0.1);
-            --badge-glow: rgba(16, 185, 129, 0.35);
-        }
-
-        /* 5. Красная (Velvet Ruby Noir) */
         [data-theme="red"] {
-            --bg: #0e0306;
-            --bg2: #1b070b;
-            --bg3: #2d0c14;
-            --bg4: #40121d;
-            --border: rgba(244, 63, 94, 0.18);
-            --border-hover: rgba(244, 63, 94, 0.5);
-            --text: #fff1f3;
-            --text2: #b87d88;
-            --accent: #e11d48;
-            --accent2: #fb7185;
-            --glow1: #e11d48;
-            --glow2: #f43f5e;
-            --green: #10b981;
-            --yellow: #fbbf24;
-            --orange: #f97316;
-            --red: #f43f5e;
-            --blue: #38bdf8;
-            --cyan: #fb7185;
-            --card-glass: rgba(27, 7, 11, 0.82);
-            --shadow-subtle: 0 10px 30px rgba(225, 29, 72, 0.12);
-            --badge-glow: rgba(225, 29, 72, 0.35);
+            --bg-color: #140505;
+            --card-bg: rgba(31, 10, 10, 0.7);
+            --card-border: rgba(239, 68, 68, 0.2);
+            --primary: #ef4444;
+            --primary-hover: #dc2626;
+            --text-main: #fef2f2;
+            --text-muted: #fca5a5;
+            --glass-bg: rgba(220, 38, 38, 0.1);
         }
 
-        /* 6. Белая (Minimalist Studio Luxury Light) */
         [data-theme="white"] {
-            --bg: #f8fafc;
-            --bg2: #ffffff;
-            --bg3: #f1f5f9;
-            --bg4: #e2e8f0;
-            --border: rgba(15, 23, 42, 0.08);
-            --border-hover: rgba(99, 102, 241, 0.4);
-            --text: #0f172a;
-            --text2: #64748b;
-            --accent: #4f46e5;
-            --accent2: #6366f1;
-            --glow1: rgba(99, 102, 241, 0.25);
-            --glow2: rgba(56, 189, 248, 0.25);
-            --green: #059669;
-            --yellow: #d97706;
-            --orange: #ea580c;
-            --red: #dc2626;
-            --blue: #0284c7;
-            --cyan: #06b6d4;
-            --card-glass: rgba(255, 255, 255, 0.9);
-            --shadow-subtle: 0 12px 32px rgba(15, 23, 42, 0.06);
-            --badge-glow: rgba(79, 70, 229, 0.25);
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-border: rgba(148, 163, 184, 0.3);
+            --primary: #0f172a;
+            --primary-hover: #334155;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --glass-bg: rgba(148, 163, 184, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        [data-theme="black"] {
+            --bg-color: #000000;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --card-border: rgba(168, 85, 247, 0.3);
+            --primary: #a855f7;
+            --primary-hover: #9333ea;
+            --text-main: #faf5ff;
+            --text-muted: #d8b4fe;
+            --glass-bg: rgba(147, 51, 234, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-color);
+            color: var(--text-main);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
             position: relative;
-            transition: background 0.4s ease, color 0.3s ease;
-            letter-spacing: -0.01em;
         }
 
-        /* Animated Luxury Background Glow */
-        .bg-glow {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            pointer-events: none; z-index: 0;
-            overflow: hidden;
-        }
-        .bg-glow::before, .bg-glow::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.16;
-            animation: float 22s ease-in-out infinite;
-            transition: background 0.6s ease;
-        }
-        .bg-glow::before {
-            width: 650px; height: 650px;
-            background: var(--glow1);
-            top: -220px; left: -120px;
-        }
-        .bg-glow::after {
-            width: 550px; height: 550px;
-            background: var(--glow2);
-            bottom: -220px; right: -120px;
-            animation-delay: -11s;
-        }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(70px, 45px); }
+        /* Glassmorphism */
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Side badges (create by sever-xd) */
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+            flex: 1;
+            z-index: 10;
+        }
+
+        /* Side Badges */
         .side-badge {
             position: fixed;
             top: 50%;
-            z-index: 10;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            z-index: 5;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text2);
-            opacity: 0.8;
-            pointer-events: none;
-            user-select: none;
-            transition: opacity 0.3s ease;
+            gap: 10px;
         }
-        .side-badge-left {
-            left: 22px;
-            writing-mode: vertical-rl;
-            transform: translateY(-50%) rotate(180deg);
-        }
-        .side-badge-right {
-            right: 22px;
-            writing-mode: vertical-rl;
-            transform: translateY(-50%);
-        }
-        .side-badge-text {
-            background: linear-gradient(180deg, var(--accent2), var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px var(--badge-glow);
-        }
-        .side-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--cyan);
+        .side-badge.left { left: -60px; }
+        .side-badge.right { right: -60px; transform: translateY(-50%) rotate(90deg); }
+        .dot-glow {
+            width: 8px; height: 8px;
+            background: var(--primary);
             border-radius: 50%;
-            box-shadow: 0 0 12px var(--cyan);
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
-        .side-badge-line {
-            width: 2px;
-            height: 48px;
-            background: linear-gradient(180deg, var(--accent), transparent);
-            border-radius: 2px;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.6); opacity: 1; }
-        }
-        @media (max-width: 1380px) {
-            .side-badge { display: none; }
+            box-shadow: 0 0 10px var(--primary);
         }
 
-        /* Layout */
-        .container {
-            position: relative; z-index: 1;
-            max-width: 1260px;
-            margin: 0 auto;
-            padding: 26px 20px 48px;
-        }
-
-        /* Header Bar */
+        /* Header */
         header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 20px;
         }
         .logo {
-            display: flex; align-items: center; gap: 14px;
-        }
-        .logo-icon {
-            width: 48px; height: 48px;
-            background: linear-gradient(135deg, var(--accent), var(--cyan));
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 10px 24px var(--badge-glow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         .logo h1 {
-            font-size: 24px;
+            font-size: 1.8rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--text), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
         }
-        .logo p { color: var(--text2); font-size: 13px; font-weight: 500; margin-top: 2px; }
-
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
         .header-actions {
-            display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        /* Theme Switcher Pill Group */
-        .theme-switcher-wrap {
+        /* Theme Switcher */
+        .theme-switcher {
             display: flex;
-            align-items: center;
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 4px 6px;
-            gap: 4px;
-            box-shadow: var(--shadow-subtle);
-        }
-        .theme-btn {
-            border: none;
-            background: transparent;
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .theme-btn:hover { background: var(--bg3); transform: translateY(-1px); }
-        .theme-btn.active {
-            background: var(--bg4);
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 12px var(--badge-glow);
+            gap: 8px;
+            margin-right: 15px;
         }
         .theme-dot {
-            width: 13px; height: 13px; border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
             transition: transform 0.2s;
         }
-        .theme-btn:hover .theme-dot { transform: scale(1.15); }
-        .theme-btn-black .theme-dot { background: #12131a; border: 1.5px solid #6c5ce7; }
-        .theme-btn-yellow .theme-dot { background: #f59e0b; box-shadow: 0 0 8px rgba(245, 158, 11, 0.6); }
-        .theme-btn-blue .theme-dot { background: #0284c7; box-shadow: 0 0 8px rgba(2, 132, 199, 0.6); }
-        .theme-btn-green .theme-dot { background: #10b981; box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
-        .theme-btn-red .theme-dot { background: #e11d48; box-shadow: 0 0 8px rgba(225, 29, 72, 0.6); }
-        .theme-btn-white .theme-dot { background: #ffffff; border: 1.5px solid #94a3b8; }
-
-        .theme-btn::after {
-            content: attr(data-label);
-            position: absolute;
-            bottom: -28px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.85);
-            background: var(--bg3);
-            color: var(--text);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 3px 8px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.15s ease;
-            z-index: 100;
-        }
-        .theme-btn:hover::after { opacity: 1; transform: translateX(-50%) scale(1); }
+        .theme-dot:hover { transform: scale(1.2); }
+        .theme-dot.active { border-color: var(--text-main); }
+        .theme-yellow { background: #eab308; }
+        .theme-blue { background: #3b82f6; }
+        .theme-green { background: #22c55e; }
+        .theme-red { background: #ef4444; }
+        .theme-white { background: #f8fafc; border: 1px solid #ccc; }
+        .theme-black { background: #000; border: 1px solid #333; }
 
         /* Buttons */
-        .btn {
-            padding: 9px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-            color: var(--text);
-            font-size: 13.5px;
-            font-weight: 600;
+        button, .btn {
+            background: var(--glass-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            padding: 10px 16px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; align-items: center; gap: 7px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
             text-decoration: none;
-            white-space: nowrap;
-            box-shadow: var(--shadow-subtle);
-            backdrop-filter: blur(10px);
         }
-        .btn:hover {
-            background: var(--bg3);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .btn-ping {
-            background: linear-gradient(135deg, rgba(0, 230, 118, 0.12), rgba(24, 255, 255, 0.12));
-            border: 1px solid rgba(0, 230, 118, 0.45);
-            color: var(--green);
-        }
-        .btn-ping:hover {
-            background: linear-gradient(135deg, rgba(0, 230, 118, 0.24), rgba(24, 255, 255, 0.24));
-            border-color: var(--green);
-            box-shadow: 0 0 20px rgba(0, 230, 118, 0.3);
-            color: var(--green);
-        }
-        .btn-ping:disabled { opacity: 0.6; cursor: wait; }
-
-        .btn-rebuild {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(162, 155, 254, 0.15));
-            border: 1px solid rgba(108, 92, 231, 0.45);
-            color: var(--accent2);
-        }
-        .btn-rebuild:hover {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.28), rgba(162, 155, 254, 0.28));
-            border-color: var(--accent2);
-            box-shadow: 0 0 20px var(--badge-glow);
-            color: var(--text);
-        }
-        .btn-rebuild:disabled { opacity: 0.6; cursor: wait; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            border: none;
+        button:hover, .btn:hover {
+            background: var(--primary);
             color: #fff;
-            font-weight: 700;
-            box-shadow: 0 8px 24px var(--badge-glow);
+            border-color: var(--primary);
         }
-        .btn-primary:hover {
-            opacity: 0.94;
-            box-shadow: 0 12px 30px var(--badge-glow);
-            transform: translateY(-2px);
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Globe Section */
+        .globe-container {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+        .globe-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(100px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        #globeViz {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+        #globeViz:active { cursor: grabbing; }
 
         /* Subscription Box */
         .sub-box {
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px 20px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
             display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-subtle);
-            transition: border-color 0.3s;
-        }
-        .sub-box:hover { border-color: var(--border-hover); }
-        .sub-box .label {
-            color: var(--text2); font-size: 13px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1.2px;
-            white-space: nowrap;
-        }
-        .sub-url {
-            flex: 1; min-width: 200px;
-            padding: 10px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12.5px;
-            color: var(--cyan);
-            word-break: break-all;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .sub-url:hover {
-            border-color: var(--cyan);
-            box-shadow: 0 0 14px var(--badge-glow);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 14px;
-            margin-bottom: 22px;
-        }
-        .stat-card {
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 18px;
+            flex-direction: column;
+            gap: 15px;
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(14px);
-            box-shadow: var(--shadow-subtle);
         }
-        .stat-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px var(--badge-glow);
+        .sub-box h2 {
+            font-size: 1.4rem;
         }
-        .stat-value {
-            font-size: 32px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--accent2), var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .stat-label {
-            color: var(--text2);
-            font-size: 11.5px;
-            font-weight: 700;
-            margin-top: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-        }
-
-        /* World Node Map */
-        .world-hub-wrap {
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 22px;
-            backdrop-filter: blur(16px);
-            box-shadow: var(--shadow-subtle);
-            position: relative;
-            overflow: hidden;
-        }
-        .world-hub-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-        .world-hub-title {
-            display: flex; align-items: center; gap: 8px;
-            font-size: 15px; font-weight: 700; color: var(--text);
-        }
-        .world-hub-toggle { font-size: 12px; color: var(--accent2); font-weight: 600; }
-        .world-map-svg-container {
-            width: 100%;
-            height: 260px;
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, var(--bg3) 0%, var(--bg2) 100%);
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-        }
-        .world-map-svg { width: 100%; height: 100%; }
-        .map-node { cursor: pointer; transition: all 0.2s; }
-        .map-node:hover circle.node-glow { r: 16; opacity: 0.7; }
-        .map-node-pulse {
-            animation: map-pulse 2s infinite ease-out;
-            transform-origin: center;
-        }
-        @keyframes map-pulse {
-            0% { r: 6; opacity: 0.8; }
-            100% { r: 18; opacity: 0; }
-        }
-        .map-tooltip {
-            position: absolute;
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text);
-            pointer-events: none;
-            display: none;
-            z-index: 50;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-            white-space: nowrap;
-        }
-
-        /* Country Tags */
-        .countries-panel {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 8px;
-            margin-bottom: 22px;
-        }
-        .country-tag {
-            padding: 9px 12px;
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 13px;
-            font-weight: 600;
-            backdrop-filter: blur(12px);
-        }
-        .country-tag:hover, .country-tag.active {
-            border-color: var(--accent);
-            background: var(--bg3);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px var(--badge-glow);
-        }
-        .country-tag .ct-flag { font-size: 19px; }
-        .country-tag .ct-count {
-            margin-left: auto;
-            background: var(--bg4);
-            padding: 2px 7px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--accent2);
-        }
-
-        /* Fast Filter Pills */
-        .fast-filters-bar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .fast-filter-pill {
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--card-glass);
-            color: var(--text2);
-            font-size: 12.5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex; align-items: center; gap: 6px;
-        }
-        .fast-filter-pill:hover, .fast-filter-pill.active {
-            border-color: var(--accent);
-            color: var(--text);
-            background: var(--bg3);
-            box-shadow: 0 4px 14px var(--badge-glow);
-        }
-        .fast-filter-pill.active-fast {
-            border-color: var(--green);
-            color: var(--green);
-            background: rgba(0, 230, 118, 0.1);
-        }
-        .fast-filter-pill.active-top {
-            border-color: var(--yellow);
-            color: var(--yellow);
-            background: rgba(255, 214, 0, 0.1);
-        }
-
-        /* Filters Bar */
-        .filters {
+        .sub-input-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .search-box {
-            flex: 1; min-width: 200px;
-            padding: 11px 16px 11px 40px;
-            background: var(--card-glass);
-            border: 1px solid var(--border);
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
             border-radius: 12px;
-            color: var(--text);
-            font-size: 13.5px;
-            font-family: inherit;
-            outline: none;
-            transition: all 0.25s;
-            backdrop-filter: blur(12px);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23828a9e' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.442.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: 14px center;
+            border: 1px solid var(--card-border);
         }
-        .search-box:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 16px var(--badge-glow);
-        }
-        .search-box::placeholder { color: var(--text2); }
-
-        select.filter-select {
-            padding: 11px 16px;
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 13.5px;
-            font-family: inherit;
-            font-weight: 500;
-            outline: none;
-            cursor: pointer;
-            min-width: 140px;
-            backdrop-filter: blur(12px);
-            transition: all 0.25s;
-        }
-        select.filter-select:focus { border-color: var(--accent); }
-        select.filter-select option { background: var(--bg2); color: var(--text); }
-
-        .sort-btn {
-            padding: 11px 16px;
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 13.5px;
-            font-family: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            white-space: nowrap;
-            backdrop-filter: blur(12px);
-        }
-        .sort-btn:hover, .sort-btn.active {
-            border-color: var(--accent);
-            background: var(--bg3);
-            box-shadow: 0 4px 14px var(--badge-glow);
-        }
-
-        /* Luxury Server Table */
-        .table-wrap {
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            backdrop-filter: blur(16px);
-        }
-        .server-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .server-table thead th {
-            padding: 15px 18px;
-            text-align: left;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: var(--text2);
-            background: var(--bg3);
-            border-bottom: 1px solid var(--border);
-            cursor: pointer;
-            user-select: none;
-            white-space: nowrap;
-            transition: color 0.2s;
-        }
-        .server-table thead th:hover { color: var(--accent2); }
-        .server-table thead th .sort-arrow { margin-left: 4px; font-size: 10px; }
-
-        .server-table tbody tr {
-            border-bottom: 1px solid var(--border);
-            transition: background 0.18s ease;
-        }
-        .server-table tbody tr:hover { background: var(--bg3); }
-        .server-table tbody tr:last-child { border-bottom: none; }
-
-        .server-table td {
-            padding: 13px 18px;
-            font-size: 13.5px;
-            vertical-align: middle;
-        }
-
-        /* Country cell */
-        .country-cell {
-            display: flex; align-items: center; gap: 9px;
-            font-weight: 700;
-        }
-        .country-flag { font-size: 20px; }
-
-        /* Protocol badge */
-        .proto-badge {
-            display: inline-block;
-            padding: 3px 9px;
-            border-radius: 7px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-        .proto-vmess { background: rgba(108, 92, 231, 0.15); color: var(--accent2); border: 1px solid rgba(108, 92, 231, 0.3); }
-        .proto-vless { background: rgba(68, 138, 255, 0.15); color: var(--blue); border: 1px solid rgba(68, 138, 255, 0.3); }
-        .proto-trojan { background: rgba(255, 82, 82, 0.15); color: var(--red); border: 1px solid rgba(255, 82, 82, 0.3); }
-        .proto-ss { background: rgba(255, 214, 0, 0.15); color: var(--yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
-        .proto-ssr { background: rgba(255, 145, 0, 0.15); color: var(--orange); border: 1px solid rgba(255, 145, 0, 0.3); }
-
-        /* Streaming Service Badges */
-        .service-badges {
-            display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px;
-        }
-        .srv-badge {
-            font-size: 9.5px;
-            font-weight: 700;
-            padding: 2px 6px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .srv-yt { background: rgba(255, 82, 82, 0.15); color: var(--red); border: 1px solid rgba(255, 82, 82, 0.3); }
-        .srv-ai { background: rgba(0, 230, 118, 0.15); color: var(--green); border: 1px solid rgba(0, 230, 118, 0.3); }
-        .srv-dc { background: rgba(68, 138, 255, 0.15); color: var(--blue); border: 1px solid rgba(68, 138, 255, 0.3); }
-        .srv-game { background: rgba(255, 214, 0, 0.15); color: var(--yellow); border: 1px solid rgba(255, 214, 0, 0.3); }
-
-        /* Ping indicator */
-        .ping-cell {
-            display: flex; align-items: center; gap: 8px;
-            font-weight: 700; font-variant-numeric: tabular-nums;
-        }
-        .ping-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            transition: all 0.3s;
-        }
-        .ping-good { background: var(--green); box-shadow: 0 0 10px var(--green); }
-        .ping-ok { background: var(--yellow); box-shadow: 0 0 10px var(--yellow); }
-        .ping-slow { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
-        .ping-dead { background: var(--red); box-shadow: 0 0 10px var(--red); }
-        .ping-testing { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); animation: ping-pulse 0.8s infinite alternate; }
-        .ping-unknown { background: var(--text2); }
-
-        @keyframes ping-pulse {
-            from { transform: scale(0.9); opacity: 0.6; }
-            to { transform: scale(1.4); opacity: 1; }
-        }
-
-        .ping-value.good { color: var(--green); }
-        .ping-value.ok { color: var(--yellow); }
-        .ping-value.slow { color: var(--orange); }
-        .ping-value.dead { color: var(--red); }
-        .ping-value.testing { color: var(--cyan); }
-        .ping-value.unknown { color: var(--text2); }
-
-        /* Address */
-        .addr-cell {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12.5px;
-            color: var(--text2);
-            font-weight: 500;
-        }
-        .addr-cell .port { color: var(--accent2); margin-left: 2px; font-weight: 600; }
-
-        /* Action Buttons per server */
-        .server-actions-cell {
-            display: flex; gap: 6px; align-items: center; justify-content: flex-end;
-        }
-        .btn-table-icon {
-            padding: 6px 10px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: var(--bg2);
-            color: var(--text);
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex; align-items: center; gap: 5px;
-        }
-        .btn-table-icon:hover {
-            border-color: var(--accent);
-            background: var(--bg3);
-            transform: scale(1.04);
-            color: var(--cyan);
-        }
-
-        /* Date */
-        .date-cell { color: var(--text2); font-size: 12.5px; font-weight: 500; white-space: nowrap; }
-        .date-today { color: var(--green); font-weight: 700; }
-
-        /* Status bar */
-        .status-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 13px 18px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text2);
-            border-top: 1px solid var(--border);
-            background: var(--bg3);
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .status-bar .live-dot {
-            display: inline-block;
-            width: 8px; height: 8px;
-            background: var(--green);
-            border-radius: 50%;
-            margin-right: 8px;
-            box-shadow: 0 0 8px var(--green);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        /* No results */
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text2);
-        }
-        .no-results .emoji { font-size: 48px; margin-bottom: 12px; }
-
-        /* Footer watermark */
-        .site-footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 40px;
-            font-size: 12px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--text2);
-            user-select: none;
-        }
-        .footer-line {
+        .sub-input-group input {
             flex: 1;
-            max-width: 140px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            outline: none;
+            padding: 0 10px;
         }
-        .footer-text {
-            background: linear-gradient(135deg, var(--accent2), var(--cyan));
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--text-main), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
         }
 
-        /* Modal Dialogs */
+        /* Filters */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .filters input, .filters select {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+        .filters input {
+            flex: 1;
+            min-width: 200px;
+        }
+        .filters select {
+            cursor: pointer;
+        }
+        .filters select option {
+            background: var(--bg-color);
+            color: var(--text-main);
+        }
+        .fast-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .filter-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--card-border);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .filter-pill:hover, .filter-pill.active {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+        th {
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .ping-dot {
+            display: inline-block;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .ping-good { background: var(--good); box-shadow: 0 0 8px var(--good); }
+        .ping-ok { background: var(--warning); box-shadow: 0 0 8px var(--warning); }
+        .ping-slow { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+        .ping-dead { background: var(--danger); box-shadow: 0 0 8px var(--danger); }
+
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+        
+        .protocol-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--glass-bg);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        .proto-vmess { border-color: #a855f7; color: #a855f7; }
+        .proto-vless { border-color: #3b82f6; color: #3b82f6; }
+        .proto-ss { border-color: #10b981; color: #10b981; }
+        .proto-trojan { border-color: #f59e0b; color: #f59e0b; }
+
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+        }
+        .action-btns button {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Modals */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(6, 7, 10, 0.82);
-            backdrop-filter: blur(14px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            z-index: 100;
             opacity: 0;
-            transition: opacity 0.25s ease;
+            pointer-events: none;
+            transition: 0.3s;
         }
-        .modal-overlay.active { display: flex; opacity: 1; }
-        .modal-card {
-            background: var(--bg2);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            max-width: 480px;
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .modal {
+            background: var(--bg-color);
             width: 100%;
-            padding: 26px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 30px var(--badge-glow);
-            transform: scale(0.95);
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            max-width: 450px;
+            padding: 30px;
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            transform: translateY(20px);
+            transition: 0.3s;
         }
-        .modal-overlay.active .modal-card { transform: scale(1); }
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
         .modal-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
         }
-        .modal-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--accent), var(--cyan));
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px;
-            box-shadow: 0 8px 20px var(--badge-glow);
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            padding: 0;
+            cursor: pointer;
         }
-        .modal-title { font-size: 19px; font-weight: 800; color: var(--text); }
-        .modal-desc {
-            color: var(--text2);
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 18px;
+        .modal-close:hover {
+            background: transparent;
+            color: var(--danger);
         }
-        .modal-input {
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
             width: 100%;
-            padding: 12px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 14px;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            border-radius: 8px;
             outline: none;
-            margin-bottom: 8px;
-            transition: all 0.2s;
-            font-family: inherit;
         }
-        .modal-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 16px var(--badge-glow);
-        }
-        .modal-input.error {
-            border-color: var(--red);
-            box-shadow: 0 0 16px rgba(239, 68, 68, 0.3);
-            animation: shake 0.4s ease-in-out;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px); }
-            40%, 80% { transform: translateX(6px); }
-        }
-        .modal-error-msg {
-            color: var(--red);
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 14px;
-            display: none;
-        }
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            margin-top: 14px;
-        }
-
-        /* QR Modal specifics */
-        .qr-card-body {
+        
+        .export-links {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 0;
+            gap: 10px;
         }
-        .qr-img-frame {
-            padding: 14px;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
+        .export-links a, .export-links button {
+            width: 100%;
             justify-content: center;
-            margin-bottom: 16px;
-        }
-        .qr-img-frame img {
-            width: 220px;
-            height: 220px;
-            display: block;
+            padding: 12px;
         }
 
-        /* Export format items */
-        .export-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        .export-card-btn {
-            background: var(--bg);
-            border: 1px solid var(--border);
+        #qrContainer {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
             border-radius: 12px;
-            padding: 12px;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%;
         }
-        .export-card-btn:hover {
-            border-color: var(--accent);
-            background: var(--bg3);
-            transform: translateY(-2px);
+        #qrContainer img {
+            max-width: 100%;
+            border-radius: 8px;
         }
-        .export-card-icon { font-size: 24px; }
-        .export-card-name { font-size: 13px; font-weight: 700; color: var(--text); }
-        .export-card-sub { font-size: 11px; color: var(--text2); }
 
         /* Toast */
         .toast {
             position: fixed;
-            bottom: 32px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: var(--accent);
-            color: white;
-            padding: 13px 26px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 700;
-            z-index: 3000;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: none;
-            box-shadow: 0 12px 36px var(--badge-glow);
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+            opacity: 0;
         }
-        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
 
-        /* Responsive */
-        @media (max-width: 860px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .server-table td:nth-child(5),
-            .server-table th:nth-child(5) { display: none; }
-            .sub-box { flex-direction: column; align-items: stretch; }
-            header { flex-direction: column; align-items: flex-start; }
-            .header-actions { width: 100%; justify-content: flex-start; }
-            .header-actions .btn { flex: 1; justify-content: center; }
-            .export-grid { grid-template-columns: 1fr; }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
         }
-        @media (max-width: 580px) {
-            .server-table td:nth-child(4),
-            .server-table th:nth-child(4) { display: none; }
-            .countries-panel { grid-template-columns: repeat(2, 1fr); }
-            .theme-switcher-wrap { width: 100%; justify-content: center; }
+        footer .updated {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .header-actions { justify-content: flex-start; }
+            .sub-input-group { flex-direction: column; }
+            .side-badge { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-glow"></div>
 
-    <!-- Side decorative badges -->
-    <div class="side-badge side-badge-left">
-        <span class="side-badge-dot"></span>
-        <span class="side-badge-text">create by sever-xd</span>
-        <span class="side-badge-line"></span>
-    </div>
-    <div class="side-badge side-badge-right">
-        <span class="side-badge-line"></span>
-        <span class="side-badge-text">create by sever-xd</span>
-        <span class="side-badge-dot"></span>
-    </div>
+    <!-- Side Badges -->
+    <div class="side-badge left"><div class="dot-glow"></div> create by sever-xd</div>
+    <div class="side-badge right"><div class="dot-glow"></div> create by sever-xd</div>
 
     <div class="container">
         <!-- Header -->
         <header>
             <div class="logo">
-                <div class="logo-icon">🔐</div>
                 <div>
-                    <h1>VPN Auto-Sub</h1>
-                    <p>Автоматические VPN подписки премиум-класса</p>
+                    <h1>🛡️ VPN Auto-Sub</h1>
+                    <p>Премиум VPN подписки • create by sever-xd</p>
                 </div>
             </div>
             <div class="header-actions">
-                <!-- Theme Switcher -->
-                <div class="theme-switcher-wrap">
-                    <button class="theme-btn theme-btn-black active" onclick="setTheme('black')" data-label="7. Черная" title="7. Черная (Obsidian)">
-                        <span class="theme-dot"></span>
-                    </button>
-                    <button class="theme-btn theme-btn-yellow" onclick="setTheme('yellow')" data-label="1. Желтая" title="1. Желтая (Gold Luxury)">
-                        <span class="theme-dot"></span>
-                    </button>
-                    <button class="theme-btn theme-btn-blue" onclick="setTheme('blue')" data-label="2. Синяя" title="2. Синяя (Sapphire)">
-                        <span class="theme-dot"></span>
-                    </button>
-                    <button class="theme-btn theme-btn-green" onclick="setTheme('green')" data-label="3. Зеленая" title="3. Зеленая (Emerald)">
-                        <span class="theme-dot"></span>
-                    </button>
-                    <button class="theme-btn theme-btn-red" onclick="setTheme('red')" data-label="5. Красная" title="5. Красная (Ruby Noir)">
-                        <span class="theme-dot"></span>
-                    </button>
-                    <button class="theme-btn theme-btn-white" onclick="setTheme('white')" data-label="6. Белая" title="6. Белая (Studio Light)">
-                        <span class="theme-dot"></span>
-                    </button>
+                <div class="theme-switcher">
+                    <div class="theme-dot theme-yellow" data-set="yellow" title="Yellow Theme"></div>
+                    <div class="theme-dot theme-blue" data-set="blue" title="Blue Theme"></div>
+                    <div class="theme-dot theme-green active" data-set="green" title="Green Theme"></div>
+                    <div class="theme-dot theme-red" data-set="red" title="Red Theme"></div>
+                    <div class="theme-dot theme-white" data-set="white" title="White Theme"></div>
+                    <div class="theme-dot theme-black" data-set="black" title="Black Theme"></div>
                 </div>
-
-                <button class="btn btn-ping" onclick="measureAllPings()" id="ping-btn">
-                    <span>⚡</span>
-                    <span id="ping-btn-text">Обновить пинг</span>
-                </button>
-                <button class="btn btn-rebuild" onclick="openRebuildModal()" id="rebuild-btn">
-                    <span>🔄</span>
-                    <span id="rebuild-btn-text">Обновить сервера</span>
-                </button>
-                <button class="btn" onclick="openExportModal()">
-                    <span>📥</span>
-                    <span>Экспорт</span>
-                </button>
-                <button class="btn" onclick="openQrModal('sub')">
-                    <span>📱</span>
-                    <span>QR-код</span>
-                </button>
-                <button class="btn btn-primary" onclick="copySubUrl()">📋 Скопировать</button>
+                <button id="btnPingAll">⚡ Обновить пинг</button>
+                <button id="btnRebuild">🔄 Обновить сервера</button>
+                <button id="btnExport">📥 Экспорт</button>
+                <button id="btnSubQR">📱 QR-код</button>
+                <button id="btnSubCopy">📋 Скопировать</button>
             </div>
         </header>
 
-        <!-- Subscription URL -->
-        <div class="sub-box">
-            <span class="label">📋 Подписка</span>
-            <div class="sub-url" id="sub-url" onclick="copySubUrl()">https://sever-xd.github.io/pesok_auto_sub/subscription.txt</div>
-            <button class="btn" onclick="copySubUrl()" style="padding: 10px 14px;">📋 Копировать</button>
-            <button class="btn" onclick="openQrModal('sub')" style="padding: 10px 14px;">📱 QR</button>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats-grid" id="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value" id="s-total">—</div>
-                <div class="stat-label">Серверов</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="s-countries">—</div>
-                <div class="stat-label">Стран</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="s-online">—</div>
-                <div class="stat-label">Онлайн</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="s-avg-ping">—</div>
-                <div class="stat-label">Ср. пинг</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="s-added">—</div>
-                <div class="stat-label">Новых сегодня</div>
+        <!-- Subscription Box -->
+        <div class="glass sub-box">
+            <h2>🔗 Ссылка на подписку</h2>
+            <div class="sub-input-group">
+                <input type="text" id="subUrlInput" value="https://sever-xd.github.io/pesok_auto_sub/subscription.txt" readonly>
+                <button id="btnSubCopyInBox">📋 Копировать</button>
+                <button id="btnSubQRInBox">📱 QR</button>
             </div>
         </div>
 
-        <!-- Interactive World Hub Map (Feature 4) -->
-        <div class="world-hub-wrap">
-            <div class="world-hub-header" onclick="toggleWorldMap()">
-                <div class="world-hub-title">
-                    <span>🗺️</span>
-                    <span>Интерактивная карта мировых узлов</span>
-                    <span style="font-size:11px;font-weight:800;color:var(--cyan);background:rgba(24,255,255,0.1);padding:2px 8px;border-radius:6px;border:1px solid rgba(24,255,255,0.25)">LIVE RADAR</span>
-                </div>
-                <div class="world-hub-toggle" id="world-map-toggle-text">Свернуть карту ▲</div>
+        <!-- Globe Section -->
+        <div class="globe-container">
+            <div class="globe-glow"></div>
+            <div id="globeViz"></div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="glass stat-card">
+                <div class="label">Серверов</div>
+                <div class="value" id="statTotal">0</div>
             </div>
-            <div class="world-map-svg-container" id="world-map-container">
-                <div class="map-tooltip" id="map-tooltip"></div>
-                <svg class="world-map-svg" viewBox="0 0 1000 480" preserveAspectRatio="none" id="world-svg">
-                    <defs>
-                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-                        </pattern>
-                    </defs>
-                    <rect width="1000" height="480" fill="url(#grid)" />
-                    <g fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1">
-                        <!-- Continents silhouettes -->
-                        <path d="M 120,60 Q 240,40 320,80 Q 280,180 200,240 Q 150,210 110,130 Z" />
-                        <path d="M 230,250 Q 320,270 300,380 Q 250,440 220,360 Z" />
-                        <path d="M 460,80 Q 550,60 560,140 Q 480,180 440,130 Z" />
-                        <path d="M 450,190 Q 560,180 540,320 Q 480,380 440,260 Z" />
-                        <path d="M 580,70 Q 820,60 850,200 Q 720,260 600,180 Z" />
-                        <path d="M 760,310 Q 860,300 870,390 Q 780,410 740,360 Z" />
-                    </g>
-                    <g id="map-nodes-group"></g>
-                </svg>
+            <div class="glass stat-card">
+                <div class="label">Стран</div>
+                <div class="value" id="statCountries">0</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="label">Онлайн (Ping <500)</div>
+                <div class="value" id="statOnline">0</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="label">Ср. пинг</div>
+                <div class="value" id="statAvgPing">0 мс</div>
+            </div>
+            <div class="glass stat-card">
+                <div class="label">Новых сегодня</div>
+                <div class="value" id="statToday">0</div>
             </div>
         </div>
 
-        <!-- Country tags -->
-        <div class="countries-panel" id="countries-panel"></div>
-
-        <!-- Fast Filter Pills -->
-        <div class="fast-filters-bar">
-            <span style="font-size:12px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:4px">Быстрый отбор:</span>
-            <div class="fast-filter-pill active" onclick="setFastFilter('all')" id="fast-all">
-                <span>🌐</span> <span>Все сервера (<span id="count-all">—</span>)</span>
+        <!-- Filter & Search -->
+        <div class="glass filters">
+            <div class="filter-group">
+                <input type="text" id="searchInput" placeholder="Поиск (адрес, страна, порт)...">
+                <select id="protocolFilter">
+                    <option value="all">Все протоколы</option>
+                    <option value="vmess">VMess</option>
+                    <option value="vless">VLESS</option>
+                    <option value="ss">Shadowsocks</option>
+                    <option value="trojan">Trojan</option>
+                </select>
+                <select id="pingFilter">
+                    <option value="all">Любой пинг</option>
+                    <option value="good">Отличный (<100мс)</option>
+                    <option value="ok">Хороший (<300мс)</option>
+                    <option value="slow">Медленный (<500мс)</option>
+                </select>
+                <select id="serviceFilter">
+                    <option value="all">Все сервисы</option>
+                    <option value="4k">🎬 4K Video</option>
+                    <option value="ai">🤖 AI Access</option>
+                    <option value="discord">🎧 Discord</option>
+                    <option value="gaming">🎮 Gaming</option>
+                </select>
             </div>
-            <div class="fast-filter-pill" onclick="setFastFilter('fast')" id="fast-fast">
-                <span>⚡</span> <span>Ultra-Fast &lt; 100ms (<span id="count-fast">0</span>)</span>
+            <div class="filter-group" style="flex: 0;">
+                <button id="sortPing">По пингу ↑</button>
+                <button id="sortCountry">По стране</button>
+                <button id="sortDate">По дате</button>
             </div>
-            <div class="fast-filter-pill" onclick="setFastFilter('top10')" id="fast-top10">
-                <span>🏆</span> <span>Топ-10 лучших</span>
-            </div>
-            <button class="btn" onclick="copyFastSub()" style="padding: 7px 12px; font-size: 12px; margin-left: auto;">
-                <span>📋</span> <span>Скопировать только выбранные</span>
-            </button>
+        </div>
+        
+        <div class="fast-filters">
+            <div class="filter-pill active" id="pillAll">Все сервера (0)</div>
+            <div class="filter-pill" id="pillFast">Ultra-Fast <100ms (0)</div>
+            <div class="filter-pill" id="pillTop10">Топ-10 лучших</div>
         </div>
 
-        <!-- Filters -->
-        <div class="filters">
-            <input type="text" class="search-box" id="search" placeholder="Поиск по стране, адресу, протоколу...">
-            <select class="filter-select" id="filter-proto">
-                <option value="">Все протоколы</option>
-                <option value="vmess">VMess</option>
-                <option value="vless">VLESS</option>
-                <option value="trojan">Trojan</option>
-                <option value="ss">Shadowsocks</option>
-                <option value="ssr">SSR</option>
-            </select>
-            <select class="filter-select" id="filter-service">
-                <option value="">Все сервисы</option>
-                <option value="yt">🎬 YouTube 4K</option>
-                <option value="ai">🤖 ChatGPT / AI</option>
-                <option value="dc">🎧 Discord / Голос</option>
-                <option value="game">🎮 Gaming Low Latency</option>
-            </select>
-            <select class="filter-select" id="filter-ping">
-                <option value="">Любой пинг</option>
-                <option value="good">🟢 &lt; 100ms</option>
-                <option value="ok">🟡 100-300ms</option>
-                <option value="slow">🟠 300-500ms</option>
-                <option value="dead">🔴 Недоступен</option>
-            </select>
-            <button class="sort-btn active" id="sort-ping" onclick="toggleSort('ping')">⚡ По пингу</button>
-            <button class="sort-btn" id="sort-country" onclick="toggleSort('country')">🌍 По стране</button>
-            <button class="sort-btn" id="sort-date" onclick="toggleSort('date')">📅 По дате</button>
-        </div>
-
-        <!-- Server Table -->
-        <div class="table-wrap">
-            <table class="server-table">
+        <!-- Table -->
+        <div class="glass table-container">
+            <table>
                 <thead>
                     <tr>
-                        <th onclick="toggleSort('country')">Страна <span class="sort-arrow"></span></th>
-                        <th onclick="toggleSort('proto')">Протокол</th>
-                        <th onclick="toggleSort('ping')">Пинг <span class="sort-arrow"></span></th>
+                        <th>Страна</th>
+                        <th>Протокол</th>
+                        <th>Пинг</th>
                         <th>Адрес & Сервисы</th>
-                        <th onclick="toggleSort('date')">Добавлен</th>
-                        <th style="text-align: right; cursor: default;">Действие</th>
+                        <th>Добавлен</th>
+                        <th>Действие</th>
                     </tr>
                 </thead>
-                <tbody id="server-tbody">
-                    <tr><td colspan="6" class="no-results"><div class="emoji">⏳</div>Загрузка серверов...</td></tr>
+                <tbody id="serverTableBody">
+                    <!-- Rows generated via JS -->
                 </tbody>
             </table>
-            <div class="status-bar">
-                <span><span class="live-dot"></span>Обновлено: <span id="last-update">—</span></span>
-                <span id="showing-count"></span>
-            </div>
         </div>
 
-        <!-- Footer watermark -->
-        <footer class="site-footer">
-            <span class="footer-line"></span>
-            <span class="footer-text">create by sever-xd</span>
-            <span class="footer-line"></span>
+        <!-- Footer -->
+        <footer>
+            <div>CREATE BY SEVER-XD</div>
+            <div class="updated">
+                <div class="dot-glow" style="width:6px; height:6px;"></div>
+                <span id="lastUpdateText">Обновлено: загрузка...</span>
+            </div>
         </footer>
     </div>
 
-    <!-- Rebuild Servers Modal -->
-    <div class="modal-overlay" id="rebuild-modal" onclick="if(event.target===this)closeRebuildModal()">
-        <div class="modal-card">
+    <!-- Modals -->
+    <!-- Rebuild Modal -->
+    <div class="modal-overlay" id="modalRebuild">
+        <div class="modal glass">
             <div class="modal-header">
-                <div class="modal-icon">🔄</div>
-                <div>
-                    <div class="modal-title">Сборка новых серверов</div>
-                    <div style="font-size:12px;color:var(--text2)">Перезапуск парсера и пинг-теста</div>
-                </div>
+                <h3>🔄 Обновление серверов</h3>
+                <button class="modal-close" onclick="closeModal('modalRebuild')">&times;</button>
             </div>
-            <p class="modal-desc">
-                Запускает процесс на GitHub Actions: сбор свежих серверов со всех источников, пинг-тест и обновление подписки.
+            <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.9rem;">
+                Требуется пароль администратора для запуска процесса пересборки серверов через GitHub Actions.
             </p>
-            <label style="display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:700">
-                Введите пароль для применения:
-            </label>
-            <input type="password" id="modal-pass-input" class="modal-input" placeholder="Пароль администратора..." onkeydown="if(event.key==='Enter')confirmRebuild()">
-            <div class="modal-error-msg" id="modal-error-msg"></div>
-            <div class="modal-actions">
-                <button class="btn" onclick="closeRebuildModal()">Отмена</button>
-                <button class="btn btn-primary" onclick="confirmRebuild()" id="modal-submit-btn">🚀 Запустить</button>
+            <div class="form-group">
+                <input type="password" id="rebuildPassword" placeholder="Введите пароль">
             </div>
+            <button class="btn-primary" id="btnConfirmRebuild" style="width: 100%; justify-content: center;">Запустить сборку</button>
         </div>
     </div>
 
-    <!-- QR Code Modal -->
-    <div class="modal-overlay" id="qr-modal" onclick="if(event.target===this)closeQrModal()">
-        <div class="modal-card">
+    <!-- QR Modal -->
+    <div class="modal-overlay" id="modalQR">
+        <div class="modal glass">
             <div class="modal-header">
-                <div class="modal-icon">📱</div>
-                <div>
-                    <div class="modal-title" id="qr-modal-title">Подключение по QR-коду</div>
-                    <div style="font-size:12px;color:var(--text2)" id="qr-modal-sub">Наведите камеру в приложении</div>
-                </div>
+                <h3>📱 QR Код</h3>
+                <button class="modal-close" onclick="closeModal('modalQR')">&times;</button>
             </div>
-            <div class="qr-card-body">
-                <div class="qr-img-frame">
-                    <img id="qr-img" src="" alt="QR-код">
-                </div>
-                <div style="font-size:12px;color:var(--text2);text-align:center;max-width:320px;line-height:1.5;margin-bottom:12px">
-                    Откройте <strong>Hiddify / v2rayNG / Streisand / NekoBox</strong> на телефоне и отсканируйте код для мгновенного добавления.
-                </div>
+            <div id="qrContainer">
+                <img id="qrImage" src="" alt="QR Code">
             </div>
-            <div class="modal-actions">
-                <button class="btn" onclick="copyCurrentQrUrl()">📋 Копировать ссылку</button>
-                <button class="btn btn-primary" onclick="closeQrModal()">Закрыть</button>
+            <div class="form-group">
+                <input type="text" id="qrUrlDisplay" readonly style="font-family: monospace; font-size: 0.8rem;">
             </div>
+            <button class="btn-primary" id="btnCopyFromQR" style="width: 100%; justify-content: center;">📋 Скопировать ссылку</button>
         </div>
     </div>
 
-    <!-- Export Formats Modal -->
-    <div class="modal-overlay" id="export-modal" onclick="if(event.target===this)closeExportModal()">
-        <div class="modal-card">
+    <!-- Export Modal -->
+    <div class="modal-overlay" id="modalExport">
+        <div class="modal glass">
             <div class="modal-header">
-                <div class="modal-icon">📥</div>
-                <div>
-                    <div class="modal-title">Экспорт и быстрый запуск</div>
-                    <div style="font-size:12px;color:var(--text2)">Выберите формат или приложение</div>
-                </div>
+                <h3>📥 Экспорт списка</h3>
+                <button class="modal-close" onclick="closeModal('modalExport')">&times;</button>
             </div>
-            <p class="modal-desc">
-                Импортируйте подписку напрямую в приложение или сохраните конфигурационный файл на устройство:
-            </p>
-            <div class="export-grid">
-                <div class="export-card-btn" onclick="openAppUrl('hiddify')">
-                    <span class="export-card-icon">🚀</span>
-                    <div>
-                        <div class="export-card-name">Hiddify</div>
-                        <div class="export-card-sub">Открыть в 1 клик</div>
-                    </div>
-                </div>
-                <div class="export-card-btn" onclick="openAppUrl('v2rayng')">
-                    <span class="export-card-icon">📱</span>
-                    <div>
-                        <div class="export-card-name">v2rayNG</div>
-                        <div class="export-card-sub">Импорт в Android</div>
-                    </div>
-                </div>
-                <div class="export-card-btn" onclick="openAppUrl('nekoray')">
-                    <span class="export-card-icon">🐱</span>
-                    <div>
-                        <div class="export-card-name">NekoBox / Ray</div>
-                        <div class="export-card-sub">Открыть в клиенте</div>
-                    </div>
-                </div>
-                <div class="export-card-btn" onclick="downloadClashYaml()">
-                    <span class="export-card-icon">📄</span>
-                    <div>
-                        <div class="export-card-name">Clash / Mihomo</div>
-                        <div class="export-card-sub">Скачать .yaml конфиг</div>
-                    </div>
-                </div>
-                <div class="export-card-btn" onclick="downloadSingBoxJson()">
-                    <span class="export-card-icon">📦</span>
-                    <div>
-                        <div class="export-card-name">Sing-Box</div>
-                        <div class="export-card-sub">Скачать .json файл</div>
-                    </div>
-                </div>
-                <div class="export-card-btn" onclick="copyRawList()">
-                    <span class="export-card-icon">📋</span>
-                    <div>
-                        <div class="export-card-name">Raw текст</div>
-                        <div class="export-card-sub">Скопировать все ссылки</div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button class="btn btn-primary" onclick="closeExportModal()">Готово</button>
+            <div class="export-links">
+                <a href="hiddify://import/https://sever-xd.github.io/pesok_auto_sub/subscription.txt" class="btn">🟣 Импорт в Hiddify</a>
+                <a href="v2rayng://install-sub?url=https://sever-xd.github.io/pesok_auto_sub/subscription.txt" class="btn">🔵 Импорт в V2RayNG</a>
+                <button id="btnExportClash" class="btn">📄 Скачать Clash YAML (Скоро)</button>
+                <button id="btnExportSingbox" class="btn">📦 Скачать Sing-Box JSON (Скоро)</button>
+                <button id="btnExportRaw" class="btn">📋 Скопировать RAW ссылки (Все)</button>
             </div>
         </div>
     </div>
 
-    <!-- Toast notification -->
-    <div class="toast" id="toast">✅ Скопировано!</div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Уведомление</div>
 
+    <!-- Scripts -->
     <script>
-    // ===== 1. Base URLs & Global State =====
-    function getCleanBaseUrl() {
-        let p = window.location.pathname;
-        if (!p.endsWith('/')) {
-            p += '/';
-        }
-        return window.location.origin + p;
-    }
-
-    const PAGES_BASE = getCleanBaseUrl();
-    const PAGES_SUB_URL = PAGES_BASE + 'subscription.txt';
-    const RAW_SUB_URL = 'https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/subscription.txt';
-
-    let currentQrUrl = PAGES_SUB_URL;
-    let allServers = [];
-    let currentSort = 'ping';
-    let currentSortDir = 'asc';
-    let activeCountry = '';
-    let activeFastFilter = 'all'; // all, fast, top10
-    let isPinging = false;
-
-    // Geographic Coordinates for World Map (0..1000, 0..480)
-    const GEO_MAP = {
-        US: { x: 220, y: 150 }, CA: { x: 230, y: 90 },
-        GB: { x: 470, y: 110 }, DE: { x: 505, y: 120 },
-        NL: { x: 492, y: 115 }, FR: { x: 485, y: 135 },
-        SE: { x: 520, y: 85 },  FI: { x: 545, y: 75 },
-        PL: { x: 530, y: 120 }, UA: { x: 565, y: 130 },
-        RU: { x: 670, y: 100 }, TR: { x: 560, y: 165 },
-        AE: { x: 610, y: 200 }, IN: { x: 685, y: 210 },
-        SG: { x: 745, y: 270 }, HK: { x: 775, y: 205 },
-        TW: { x: 800, y: 200 }, JP: { x: 845, y: 155 },
-        KR: { x: 810, y: 150 }, AU: { x: 820, y: 360 },
-        BR: { x: 330, y: 330 }, ZA: { x: 535, y: 370 },
-        IT: { x: 505, y: 148 }, ES: { x: 465, y: 155 },
-        BE: { x: 490, y: 125 }, CH: { x: 498, y: 138 },
-        AT: { x: 512, y: 135 }, IE: { x: 452, y: 112 },
-        CZ: { x: 515, y: 125 }, HU: { x: 528, y: 136 },
-        RO: { x: 548, y: 142 }, BG: { x: 548, y: 155 },
-        GR: { x: 536, y: 165 }, IL: { x: 575, y: 185 },
-        KZ: { x: 645, y: 130 }, UZ: { x: 635, y: 150 },
-        TH: { x: 735, y: 235 }, VN: { x: 755, y: 230 },
-        ID: { x: 765, y: 300 }, PH: { x: 805, y: 245 },
-        MY: { x: 740, y: 265 }, MX: { x: 185, y: 200 },
-        AR: { x: 290, y: 400 }, NO: { x: 498, y: 80 },
-        DK: { x: 502, y: 102 }, PT: { x: 450, y: 158 },
-    };
-
-    const AI_COUNTRIES = new Set(['US', 'CA', 'GB', 'DE', 'NL', 'FR', 'SE', 'FI', 'JP', 'SG', 'AU', 'KR', 'CH', 'AT', 'IE', 'NO']);
-
-    const COUNTRY_INFO = {
-        US: {flag: '🇺🇸', name: 'США'}, GB: {flag: '🇬🇧', name: 'UK'},
-        DE: {flag: '🇩🇪', name: 'Германия'}, NL: {flag: '🇳🇱', name: 'Нидерланды'},
-        FR: {flag: '🇫🇷', name: 'Франция'}, JP: {flag: '🇯🇵', name: 'Япония'},
-        SG: {flag: '🇸🇬', name: 'Сингапур'}, KR: {flag: '🇰🇷', name: 'Корея'},
-        HK: {flag: '🇭🇰', name: 'Гонконг'}, TW: {flag: '🇹🇼', name: 'Тайвань'},
-        CA: {flag: '🇨🇦', name: 'Канада'}, AU: {flag: '🇦🇺', name: 'Австралия'},
-        IN: {flag: '🇮🇳', name: 'Индия'}, BR: {flag: '🇧🇷', name: 'Бразилия'},
-        RU: {flag: '🇷🇺', name: 'Россия'}, TR: {flag: '🇹🇷', name: 'Турция'},
-        IT: {flag: '🇮🇹', name: 'Италия'}, ES: {flag: '🇪🇸', name: 'Испания'},
-        PL: {flag: '🇵🇱', name: 'Польша'}, SE: {flag: '🇸🇪', name: 'Швеция'},
-        NO: {flag: '🇳🇴', name: 'Норвегия'}, FI: {flag: '🇫🇮', name: 'Финляндия'},
-        CH: {flag: '🇨🇭', name: 'Швейцария'}, AT: {flag: '🇦🇹', name: 'Австрия'},
-        IE: {flag: '🇮🇪', name: 'Ирландия'}, IL: {flag: '🇮🇱', name: 'Израиль'},
-        AE: {flag: '🇦🇪', name: 'ОАЭ'}, ZA: {flag: '🇿🇦', name: 'ЮАР'},
-        UA: {flag: '🇺🇦', name: 'Украина'}, CZ: {flag: '🇨🇿', name: 'Чехия'},
-        RO: {flag: '🇷🇴', name: 'Румыния'}, BG: {flag: '🇧🇬', name: 'Болгария'},
-        HU: {flag: '🇭🇺', name: 'Венгрия'}, PT: {flag: '🇵🇹', name: 'Португалия'},
-        BE: {flag: '🇧🇪', name: 'Бельгия'}, DK: {flag: '🇩🇰', name: 'Дания'},
-        MY: {flag: '🇲🇾', name: 'Малайзия'}, TH: {flag: '🇹🇭', name: 'Таиланд'},
-        VN: {flag: '🇻🇳', name: 'Вьетнам'}, ID: {flag: '🇮🇩', name: 'Индонезия'},
-        PH: {flag: '🇵🇭', name: 'Филиппины'}, KZ: {flag: '🇰🇿', name: 'Казахстан'},
-        MX: {flag: '🇲🇽', name: 'Мексика'}, AR: {flag: '🇦🇷', name: 'Аргентина'},
-        GR: {flag: '🇬🇷', name: 'Греция'}, LV: {flag: '🇱🇻', name: 'Латвия'},
-        LT: {flag: '🇱🇹', name: 'Литва'}, EE: {flag: '🇪🇪', name: 'Эстония'},
-        UZ: {flag: '🇺🇿', name: 'Узбекистан'},
-        XX: {flag: '🌐', name: 'Другое'},
-    };
-
-    function getCountryInfo(code) {
-        return COUNTRY_INFO[code] || {flag: '🌐', name: code || 'Мир'};
-    }
-
-    function getPingClass(ping) {
-        if (ping === 'testing') return 'testing';
-        if (ping < 0) return 'dead';
-        if (ping === 0) return 'unknown';
-        if (ping < 100) return 'good';
-        if (ping < 300) return 'ok';
-        if (ping < 500) return 'slow';
-        return 'dead';
-    }
-
-    function getPingLabel(ping) {
-        if (ping === 'testing') return '⏳...';
-        if (ping < 0) return 'N/A';
-        if (ping === 0) return '—';
-        return ping + 'ms';
-    }
-
-    function getServiceBadges(s) {
-        const badges = [];
-        const isOnline = typeof s.ping === 'number' && s.ping > 0;
-        if (isOnline && s.ping < 260) {
-            badges.push('<span class="srv-badge srv-yt" title="Высокая скорость для 4K">🎬 4K</span>');
-        }
-        if (AI_COUNTRIES.has(s.country)) {
-            badges.push('<span class="srv-badge srv-ai" title="Работает ChatGPT / Claude">🤖 AI</span>');
-        }
-        if (isOnline && s.ping < 150) {
-            badges.push('<span class="srv-badge srv-dc" title="Низкая задержка голоса">🎧 Discord</span>');
-        }
-        if (isOnline && s.ping < 80) {
-            badges.push('<span class="srv-badge srv-game" title="Минимальный пинг для игр">🎮 LowPing</span>');
-        }
-        return badges.length ? `<div class="service-badges">${badges.join('')}</div>` : '';
-    }
-
-    // ===== 2. Themes Management =====
-    function setTheme(themeName) {
-        document.documentElement.setAttribute('data-theme', themeName);
-        try { localStorage.setItem('vpn_theme', themeName); } catch (_) {}
-
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        const activeBtn = document.querySelector(`.theme-btn-${themeName}`);
-        if (activeBtn) activeBtn.classList.add('active');
-
-        if (allServers && allServers.length > 0) {
-            renderWorldMap();
-        }
-    }
-
-    // ===== 3. Stats Header =====
-    function updateStatsHeader(addedCount) {
-        const validPings = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0);
-        const online = validPings.length;
-        const avgPing = online > 0
-            ? Math.round(validPings.reduce((a, s) => a + s.ping, 0) / online)
-            : 0;
-        const countries = new Set(allServers.map(s => s.country)).size;
-
-        const totalEl = document.getElementById('s-total');
-        const ctEl = document.getElementById('s-countries');
-        const onEl = document.getElementById('s-online');
-        const avgEl = document.getElementById('s-avg-ping');
-        const addEl = document.getElementById('s-added');
-
-        if (totalEl) totalEl.textContent = allServers.length;
-        if (ctEl) ctEl.textContent = countries;
-        if (onEl) onEl.textContent = online;
-        if (avgEl) avgEl.textContent = avgPing ? avgPing + 'ms' : '—';
-        if (addEl && addedCount !== undefined) addEl.textContent = addedCount;
-
-        const fastCount = allServers.filter(s => typeof s.ping === 'number' && s.ping > 0 && s.ping < 100).length;
-        const cntAll = document.getElementById('count-all');
-        const cntFast = document.getElementById('count-fast');
-        if (cntAll) cntAll.textContent = allServers.length;
-        if (cntFast) cntFast.textContent = fastCount;
-    }
-
-    // ===== 4. Load Data (Double Fallback) =====
-    async function loadData() {
-        let data = null;
-
-        // Try relative first
-        try {
-            const resp = await fetch('site_data.json?t=' + Date.now());
-            if (resp.ok) data = await resp.json();
-        } catch (e) {
-            console.warn('Relative site_data.json fetch failed:', e);
-        }
-
-        // Fallback to raw GitHub
-        if (!data || !data.servers || !data.servers.length) {
-            try {
-                const resp = await fetch('https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json?t=' + Date.now());
-                if (resp.ok) data = await resp.json();
-            } catch (e) {
-                console.error('Raw GitHub site_data.json fetch failed:', e);
-            }
-        }
-
-        if (!data || !data.servers || !data.servers.length) {
-            const tbody = document.getElementById('server-tbody');
-            if (tbody) {
-                tbody.innerHTML = '<tr><td colspan="6" class="no-results"><div class="emoji">⚠️</div>Не удалось загрузить сервера. Проверьте интернет-соединение или обновите страницу.</td></tr>';
-            }
-            return;
-        }
-
-        allServers = data.servers || [];
-        const stats = data.stats || {};
-
-        updateStatsHeader(stats.added_today || 0);
-
-        const lastUp = document.getElementById('last-update');
-        if (lastUp) {
-            lastUp.textContent = data.last_update ? new Date(data.last_update).toLocaleString('ru-RU') : '—';
-        }
-
-        renderCountryTags();
-        renderWorldMap();
-        renderTable();
-    }
-
-    // ===== 5. World Map =====
-    function toggleWorldMap() {
-        const container = document.getElementById('world-map-container');
-        const text = document.getElementById('world-map-toggle-text');
-        if (!container || !text) return;
-        if (container.style.display === 'none') {
-            container.style.display = 'block';
-            text.textContent = 'Свернуть карту ▲';
-        } else {
-            container.style.display = 'none';
-            text.textContent = 'Развернуть карту ▼';
-        }
-    }
-
-    function renderWorldMap() {
-        const group = document.getElementById('map-nodes-group');
-        if (!group || !allServers.length) return;
-
-        const countryMap = {};
-        allServers.forEach(s => {
-            if (!countryMap[s.country]) countryMap[s.country] = [];
-            countryMap[s.country].push(s);
-        });
-
-        let html = '';
-        for (const [code, servers] of Object.entries(countryMap)) {
-            const geo = GEO_MAP[code];
-            if (!geo) continue;
-
-            const pings = servers.filter(s => typeof s.ping === 'number' && s.ping > 0).map(s => s.ping);
-            const bestPing = pings.length ? Math.min(...pings) : 0;
-            const pClass = getPingClass(bestPing);
-            
-            let color = '#a29bfe';
-            if (pClass === 'good') color = '#00e676';
-            else if (pClass === 'ok') color = '#ffd600';
-            else if (pClass === 'slow') color = '#ff9100';
-            else if (pClass === 'dead') color = '#ff5252';
-
-            const active = activeCountry === code ? 'stroke="#fff" stroke-width="2"' : '';
-
-            html += `
-            <g class="map-node" onclick="filterCountry('${code}')" 
-               onmouseenter="showMapTooltip(event, '${code}', ${servers.length}, ${bestPing})" 
-               onmouseleave="hideMapTooltip()">
-                <circle class="map-node-pulse" cx="${geo.x}" cy="${geo.y}" r="8" fill="${color}" opacity="0.6" />
-                <circle class="node-glow" cx="${geo.x}" cy="${geo.y}" r="6" fill="${color}" ${active} />
-                <circle cx="${geo.x}" cy="${geo.y}" r="3" fill="#fff" />
-            </g>`;
-        }
-        group.innerHTML = html;
-    }
-
-    function showMapTooltip(e, code, count, bestPing) {
-        const tip = document.getElementById('map-tooltip');
-        const container = document.getElementById('world-map-container');
-        if (!tip || !container) return;
-        const info = getCountryInfo(code);
-        const rect = container.getBoundingClientRect();
-
-        tip.innerHTML = `${info.flag} <strong>${info.name}</strong> • ${count} серв. • ${bestPing > 0 ? bestPing + 'ms' : 'пинг N/A'}`;
-        tip.style.left = (e.clientX - rect.left + 15) + 'px';
-        tip.style.top = (e.clientY - rect.top - 10) + 'px';
-        tip.style.display = 'block';
-    }
-
-    function hideMapTooltip() {
-        const tip = document.getElementById('map-tooltip');
-        if (tip) tip.style.display = 'none';
-    }
-
-    // ===== 6. Fast Filter Pills =====
-    function setFastFilter(mode) {
-        activeFastFilter = mode;
-        document.querySelectorAll('.fast-filter-pill').forEach(p => {
-            p.classList.remove('active', 'active-fast', 'active-top');
-        });
-
-        const activePill = document.getElementById('fast-' + mode);
-        if (activePill) {
-            activePill.classList.add('active');
-            if (mode === 'fast') activePill.classList.add('active-fast');
-            if (mode === 'top10') activePill.classList.add('active-top');
-        }
-
-        renderTable();
-    }
-
-    function copyFastSub() {
-        const filtered = getFilteredServers();
-        if (!filtered.length) {
-            showToast('⚠️ Нет серверов в текущей выборке');
-            return;
-        }
-        const rawLines = filtered.map(s => s.raw || '').filter(Boolean);
-        if (!rawLines.length) {
-            showToast('⚠️ Ссылки недоступны');
-            return;
-        }
-        const b64 = btoa(unescape(encodeURIComponent(rawLines.join('\n'))));
-        navigator.clipboard.writeText(b64).then(() => {
-            showToast(`✅ Подписка на ${filtered.length} серверов скопирована!`);
-        });
-    }
-
-    // ===== 7. Country Tags =====
-    function renderCountryTags() {
-        const panel = document.getElementById('countries-panel');
-        if (!panel) return;
-        const counts = {};
-        allServers.forEach(s => {
-            counts[s.country] = (counts[s.country] || 0) + 1;
-        });
-        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-
-        panel.innerHTML = sorted.map(([code, count]) => {
-            const info = getCountryInfo(code);
-            const active = activeCountry === code ? ' active' : '';
-            return `<div class="country-tag${active}" onclick="filterCountry('${code}')">
-                <span class="ct-flag">${info.flag}</span>
-                <span>${info.name}</span>
-                <span class="ct-count">${count}</span>
-            </div>`;
-        }).join('');
-    }
-
-    function filterCountry(code) {
-        activeCountry = activeCountry === code ? '' : code;
-        renderCountryTags();
-        renderWorldMap();
-        renderTable();
-    }
-
-    // ===== 8. Filtering & Table =====
-    function getFilteredServers() {
-        const sEl = document.getElementById('search');
-        const pEl = document.getElementById('filter-proto');
-        const pingEl = document.getElementById('filter-ping');
-        const srvEl = document.getElementById('filter-service');
-
-        const search = sEl ? sEl.value.toLowerCase() : '';
-        const protoFilter = pEl ? pEl.value : '';
-        const pingFilter = pingEl ? pingEl.value : '';
-        const srvFilter = srvEl ? srvEl.value : '';
-
-        return allServers.filter(s => {
-            if (activeCountry && s.country !== activeCountry) return false;
-            if (protoFilter && s.protocol !== protoFilter) return false;
-            
-            if (activeFastFilter === 'fast') {
-                if (!(typeof s.ping === 'number' && s.ping > 0 && s.ping < 100)) return false;
-            }
-
-            if (pingFilter) {
-                const pc = getPingClass(s.ping);
-                if (pingFilter === 'good' && pc !== 'good') return false;
-                if (pingFilter === 'ok' && pc !== 'ok') return false;
-                if (pingFilter === 'slow' && pc !== 'slow') return false;
-                if (pingFilter === 'dead' && pc !== 'dead') return false;
-            }
-
-            if (srvFilter) {
-                const isOnline = typeof s.ping === 'number' && s.ping > 0;
-                if (srvFilter === 'yt' && !(isOnline && s.ping < 260)) return false;
-                if (srvFilter === 'ai' && !AI_COUNTRIES.has(s.country)) return false;
-                if (srvFilter === 'dc' && !(isOnline && s.ping < 150)) return false;
-                if (srvFilter === 'game' && !(isOnline && s.ping < 80)) return false;
-            }
-
-            if (search) {
-                const info = getCountryInfo(s.country);
-                const haystack = `${info.name} ${s.country} ${s.address} ${s.protocol} ${s.remark}`.toLowerCase();
-                if (!haystack.includes(search)) return false;
-            }
-            return true;
-        });
-    }
-
-    function renderTable() {
-        let filtered = getFilteredServers();
-
-        // Sort
-        filtered.sort((a, b) => {
-            let va, vb;
-            switch (currentSort) {
-                case 'ping':
-                    va = (typeof a.ping === 'number' && a.ping > 0) ? a.ping : 99999;
-                    vb = (typeof b.ping === 'number' && b.ping > 0) ? b.ping : 99999;
-                    break;
-                case 'country':
-                    va = getCountryInfo(a.country).name;
-                    vb = getCountryInfo(b.country).name;
-                    break;
-                case 'date':
-                    va = a.added_date || '';
-                    vb = b.added_date || '';
-                    break;
-                case 'proto':
-                    va = a.protocol;
-                    vb = b.protocol;
-                    break;
-                default:
-                    va = (typeof a.ping === 'number' && a.ping > 0) ? a.ping : 99999;
-                    vb = (typeof b.ping === 'number' && b.ping > 0) ? b.ping : 99999;
-            }
-            if (typeof va === 'string') {
-                return currentSortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
-            }
-            return currentSortDir === 'asc' ? va - vb : vb - va;
-        });
-
-        if (activeFastFilter === 'top10') {
-            filtered = filtered.slice(0, 10);
-        }
-
-        const tbody = document.getElementById('server-tbody');
-        if (!tbody) return;
-
-        if (filtered.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" class="no-results"><div class="emoji">🔍</div>Серверы не найдены</td></tr>';
-        } else {
-            const today = new Date().toISOString().slice(0, 10);
-            tbody.innerHTML = filtered.map((s, idx) => {
-                const info = getCountryInfo(s.country);
-                const pc = getPingClass(s.ping);
-                const isToday = s.added_date === today;
-                const addrShort = s.address.length > 26 ? s.address.slice(0, 26) + '…' : s.address;
-                const badges = getServiceBadges(s);
-
-                return `<tr>
-                    <td><div class="country-cell"><span class="country-flag">${info.flag}</span>${info.name}</div></td>
-                    <td><span class="proto-badge proto-${s.protocol}">${s.protocol}</span></td>
-                    <td><div class="ping-cell"><span class="ping-dot ping-${pc}"></span><span class="ping-value ${pc}">${getPingLabel(s.ping)}</span></div></td>
-                    <td>
-                        <div class="addr-cell">${addrShort}<span class="port">:${s.port}</span></div>
-                        ${badges}
-                    </td>
-                    <td><span class="date-cell${isToday ? ' date-today' : ''}">${s.added_date || '—'}${isToday ? ' 🆕' : ''}</span></td>
-                    <td>
-                        <div class="server-actions-cell">
-                            <button class="btn-table-icon" onclick="copyServerRaw(${idx})" title="Скопировать ссылку подключения">📋 Скопировать</button>
-                            <button class="btn-table-icon" onclick="openServerQr(${idx})" title="Показать QR-код">📱</button>
-                        </div>
-                    </td>
-                </tr>`;
-            }).join('');
-        }
-
-        const showCnt = document.getElementById('showing-count');
-        if (showCnt) showCnt.textContent = `Показано: ${filtered.length} из ${allServers.length}`;
-    }
-
-    function toggleSort(field) {
-        if (currentSort === field) {
-            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
-        } else {
-            currentSort = field;
-            currentSortDir = 'asc';
-        }
-
-        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-        const btn = document.getElementById('sort-' + field);
-        if (btn) btn.classList.add('active');
-
-        renderTable();
-    }
-
-    // ===== 9. Individual Server Actions =====
-    function copyServerRaw(idx) {
-        const filtered = getFilteredServers();
-        const server = filtered[idx];
-        if (!server || !server.raw) {
-            showToast('⚠️ Ссылка недоступна');
-            return;
-        }
-        navigator.clipboard.writeText(server.raw).then(() => {
-            const info = getCountryInfo(server.country);
-            showToast(`✅ Конфиг ${info.flag} ${info.name} скопирован!`);
-        });
-    }
-
-    function openServerQr(idx) {
-        const filtered = getFilteredServers();
-        const server = filtered[idx];
-        if (!server || !server.raw) return;
-
-        const info = getCountryInfo(server.country);
-        document.getElementById('qr-modal-title').textContent = `${info.flag} Сервер ${info.name} (${server.protocol.toUpperCase()})`;
-        document.getElementById('qr-modal-sub').textContent = `${server.address}:${server.port}`;
-        
-        currentQrUrl = server.raw;
-        document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(server.raw)}`;
-        document.getElementById('qr-modal').classList.add('active');
-    }
-
-    // ===== 10. QR Modal =====
-    function openQrModal(type) {
-        const subUrl = document.getElementById('sub-url').textContent;
-        currentQrUrl = subUrl;
-
-        document.getElementById('qr-modal-title').textContent = 'Подключение по QR-коду';
-        document.getElementById('qr-modal-sub').textContent = 'Основная авто-обновляемая подписка';
-        document.getElementById('qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(subUrl)}`;
-        document.getElementById('qr-modal').classList.add('active');
-    }
-
-    function closeQrModal() {
-        const m = document.getElementById('qr-modal');
-        if (m) m.classList.remove('active');
-    }
-
-    function copyCurrentQrUrl() {
-        navigator.clipboard.writeText(currentQrUrl).then(() => {
-            showToast('✅ Ссылка скопирована!');
-            closeQrModal();
-        });
-    }
-
-    // ===== 11. Export Modal =====
-    function openExportModal() {
-        const m = document.getElementById('export-modal');
-        if (m) m.classList.add('active');
-    }
-
-    function closeExportModal() {
-        const m = document.getElementById('export-modal');
-        if (m) m.classList.remove('active');
-    }
-
-    function openAppUrl(app) {
-        const subUrl = document.getElementById('sub-url').textContent;
-        let deepLink = '';
-        if (app === 'hiddify') {
-            deepLink = `hiddify://install-sub?url=${encodeURIComponent(subUrl)}`;
-        } else if (app === 'v2rayng') {
-            deepLink = `v2rayng://install-config?url=${encodeURIComponent(subUrl)}`;
-        } else if (app === 'nekoray') {
-            deepLink = `nekoray://install-sub?url=${encodeURIComponent(subUrl)}`;
-        }
-        if (deepLink) {
-            window.location.href = deepLink;
-            showToast(`🚀 Запуск ${app}...`);
-            closeExportModal();
-        }
-    }
-
-    function downloadClashYaml() {
-        const subUrl = document.getElementById('sub-url').textContent;
-        const yaml = `# Generated by VPN Auto-Sub (create by sever-xd)
-port: 7890
-socks-port: 7891
-allow-lan: true
-mode: Rule
-log-level: info
-proxy-providers:
-  PesokVPN:
-    type: http
-    url: "${subUrl}"
-    interval: 3600
-    path: ./pesok_vpn.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-proxy-groups:
-  - name: 🚀 AUTO-FASTEST
-    type: url-test
-    use: [PesokVPN]
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-rules:
-  - MATCH,🚀 AUTO-FASTEST
-`;
-        const blob = new Blob([yaml], { type: 'text/yaml' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'pesok_clash_config.yaml';
-        a.click();
-        showToast('📄 Файл Clash YAML скачан!');
-        closeExportModal();
-    }
-
-    function downloadSingBoxJson() {
-        const subUrl = document.getElementById('sub-url').textContent;
-        const config = {
-            "log": { "level": "info" },
-            "endpoints": [
-                {
-                    "type": "remote",
-                    "tag": "pesok-sub",
-                    "url": subUrl,
-                    "download_detour": "direct",
-                    "update_interval": "12h"
-                }
-            ]
+        // Data and State
+        const SUB_URL = "https://sever-xd.github.io/pesok_auto_sub/subscription.txt";
+        let serversData = [];
+        let globalStats = {};
+        let filteredData = [];
+        let currentSort = { field: 'ping', asc: true };
+        let activeFilterPill = 'all';
+
+        const countryCoords = {
+            'US': {lat: 39.8, lng: -98.6}, 'CA': {lat: 56.1, lng: -106.3}, 'GB': {lat: 55.4, lng: -3.4},
+            'DE': {lat: 51.2, lng: 10.4}, 'NL': {lat: 52.1, lng: 5.3}, 'FR': {lat: 46.2, lng: 2.2},
+            'SE': {lat: 60.1, lng: 18.6}, 'FI': {lat: 61.9, lng: 25.7}, 'PL': {lat: 51.9, lng: 19.1},
+            'UA': {lat: 48.4, lng: 31.2}, 'RU': {lat: 61.5, lng: 105.3}, 'TR': {lat: 38.9, lng: 35.2},
+            'AE': {lat: 23.4, lng: 53.8}, 'IN': {lat: 20.6, lng: 79.0}, 'SG': {lat: 1.4, lng: 103.8},
+            'HK': {lat: 22.4, lng: 114.1}, 'TW': {lat: 23.7, lng: 121.0}, 'JP': {lat: 36.2, lng: 138.3},
+            'KR': {lat: 35.9, lng: 127.8}, 'AU': {lat: -25.3, lng: 133.8}, 'BR': {lat: -14.2, lng: -51.9},
+            'ZA': {lat: -30.6, lng: 22.9}, 'IT': {lat: 41.9, lng: 12.6}, 'ES': {lat: 40.5, lng: -3.7},
+            'BE': {lat: 50.5, lng: 4.5}, 'CH': {lat: 46.8, lng: 8.2}, 'AT': {lat: 47.5, lng: 14.6},
+            'IE': {lat: 53.1, lng: -8.0}, 'CZ': {lat: 49.8, lng: 15.5}, 'HU': {lat: 47.2, lng: 19.5},
+            'RO': {lat: 45.9, lng: 25.0}, 'BG': {lat: 42.7, lng: 25.5}, 'GR': {lat: 39.1, lng: 21.8},
+            'IL': {lat: 31.0, lng: 34.9}, 'KZ': {lat: 48.0, lng: 68.0}, 'UZ': {lat: 41.4, lng: 64.6},
+            'TH': {lat: 15.9, lng: 100.9}, 'VN': {lat: 14.1, lng: 108.3}, 'ID': {lat: -0.8, lng: 113.9},
+            'PH': {lat: 12.9, lng: 121.8}, 'MY': {lat: 4.2, lng: 101.9}, 'MX': {lat: 23.6, lng: -102.6},
+            'AR': {lat: -38.4, lng: -63.6}, 'NO': {lat: 60.5, lng: 8.5}, 'DK': {lat: 56.3, lng: 9.5},
+            'PT': {lat: 39.4, lng: -8.2}, 'LV': {lat: 56.9, lng: 24.1}, 'LT': {lat: 55.2, lng: 23.9},
+            'EE': {lat: 58.6, lng: 25.0}
         };
-        const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'pesok_singbox_config.json';
-        a.click();
-        showToast('📦 Файл Sing-Box JSON скачан!');
-        closeExportModal();
-    }
 
-    function copyRawList() {
-        const rawLines = allServers.map(s => s.raw || '').filter(Boolean);
-        navigator.clipboard.writeText(rawLines.join('\n')).then(() => {
-            showToast(`📋 Все ${rawLines.length} ссылок скопированы открытым текстом!`);
-            closeExportModal();
-        });
-    }
+        const aiCountries = ['US', 'CA', 'GB', 'DE', 'NL', 'FR', 'SE', 'FI', 'JP', 'SG', 'AU', 'KR', 'CH', 'AT', 'IE', 'NO'];
 
-    // ===== 12. Dynamic Browser Ping =====
-    async function measureSinglePing(server, timeout = 2500) {
-        const start = performance.now();
-        const controller = new AbortController();
-        const timer = setTimeout(() => controller.abort(), timeout);
+        // Theme Management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('vpn_theme') || 'green';
+            setTheme(savedTheme);
 
-        const proto = (server.port === 443 || server.port === 8443) ? 'https:' : 'http:';
-        const url = `${proto}//${server.address}:${server.port}/favicon.ico?_ping=${Date.now()}`;
-
-        try {
-            await fetch(url, {
-                mode: 'no-cors',
-                cache: 'no-store',
-                signal: controller.signal
+            document.querySelectorAll('.theme-dot').forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    setTheme(e.target.dataset.set);
+                });
             });
-            clearTimeout(timer);
-            return Math.round(performance.now() - start);
-        } catch (e) {
-            clearTimeout(timer);
-            const elapsed = Math.round(performance.now() - start);
-            if (e.name !== 'AbortError' && elapsed < timeout) {
-                return elapsed;
-            }
-            return -1;
         }
-    }
 
-    async function measureAllPings() {
-        if (isPinging || allServers.length === 0) return;
-        isPinging = true;
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('vpn_theme', theme);
+            document.querySelectorAll('.theme-dot').forEach(dot => {
+                dot.classList.toggle('active', dot.dataset.set === theme);
+            });
+        }
 
-        const pingBtn = document.getElementById('ping-btn');
-        const pingBtnText = document.getElementById('ping-btn-text');
-        if (pingBtn) pingBtn.disabled = true;
+        // Utility: Toast
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
 
-        showToast('⚡ Начинаем проверку пинга серверов...');
+        // Utility: Modals
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-        try {
-            const resp = await fetch('site_data.json?t=' + Date.now());
-            if (resp.ok) {
-                const fresh = await resp.json();
-                if (fresh.servers && fresh.servers.length) {
-                    const freshMap = new Map(fresh.servers.map(s => [`${s.address}:${s.port}`, s.ping]));
-                    allServers.forEach(s => {
-                        const key = `${s.address}:${s.port}`;
-                        if (freshMap.has(key)) s.ping = freshMap.get(key);
-                    });
+        // Core Functions
+        async function fetchSitesData() {
+            const relativeUrl = `site_data.json?t=${Date.now()}`;
+            const fallbackUrl = `https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/site_data.json`;
+            
+            try {
+                let res = await fetch(relativeUrl);
+                if (!res.ok) throw new Error('Relative fail');
+                return await res.json();
+            } catch (e) {
+                try {
+                    let res = await fetch(fallbackUrl);
+                    if (!res.ok) throw new Error('Fallback fail');
+                    return await res.json();
+                } catch (err) {
+                    console.error("Failed to load data", err);
+                    return null;
                 }
             }
-        } catch (_) {}
+        }
 
-        let processed = 0;
-        const total = allServers.length;
-        const batchSize = 6;
+        function getPingColor(ping) {
+            if (ping < 100) return 'var(--good)';
+            if (ping < 300) return 'var(--warning)';
+            if (ping < 500) return 'var(--ok)';
+            return 'var(--danger)';
+        }
+        
+        function getPingClass(ping) {
+            if (ping < 100) return 'ping-good';
+            if (ping < 300) return 'ping-ok';
+            if (ping < 500) return 'ping-slow';
+            return 'ping-dead';
+        }
 
-        for (let i = 0; i < total; i += batchSize) {
-            const batch = allServers.slice(i, i + batchSize);
-            
-            batch.forEach(s => { s._prevPing = s.ping; s.ping = 'testing'; });
-            renderTable();
+        function initGlobe(servers) {
+            const globeEl = document.getElementById('globeViz');
+            if(!globeEl) return;
+            globeEl.innerHTML = '';
 
-            await Promise.all(batch.map(async s => {
-                const res = await measureSinglePing(s);
-                if (res > 0) {
-                    s.ping = res;
-                } else if (typeof s._prevPing === 'number' && s._prevPing > 0) {
-                    const variance = Math.floor(Math.random() * 9) - 4;
-                    s.ping = Math.max(25, s._prevPing + variance);
-                } else {
-                    s.ping = -1;
+            // Aggregate data by country
+            let countryMap = {};
+            servers.forEach(s => {
+                if(!s.country || !countryCoords[s.country]) return;
+                if(!countryMap[s.country]) {
+                    countryMap[s.country] = {
+                        lat: countryCoords[s.country].lat,
+                        lng: countryCoords[s.country].lng,
+                        country: s.country,
+                        count: 0,
+                        bestPing: 9999
+                    };
                 }
-                delete s._prevPing;
+                countryMap[s.country].count++;
+                if(s.ping < countryMap[s.country].bestPing) {
+                    countryMap[s.country].bestPing = s.ping;
+                }
+            });
+
+            const points = Object.values(countryMap).map(d => ({
+                lat: d.lat,
+                lng: d.lng,
+                size: Math.min(1.5, 0.3 + (d.count * 0.05)),
+                color: getPingColor(d.bestPing),
+                label: `<b>${d.country}</b><br/>Серверов: ${d.count}<br/>Лучший пинг: ${d.bestPing}ms`
             }));
 
-            processed += batch.length;
-            if (pingBtnText) pingBtnText.textContent = `${Math.min(processed, total)}/${total}`;
-            updateStatsHeader();
-            renderTable();
-            renderWorldMap();
+            const world = Globe()(globeEl)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-night.jpg')
+                .backgroundColor('rgba(0,0,0,0)')
+                .pointsData(points)
+                .pointLat('lat')
+                .pointLng('lng')
+                .pointColor('color')
+                .pointAltitude(0.05)
+                .pointRadius('size')
+                .pointLabel('label');
+                
+            world.controls().autoRotate = true;
+            world.controls().autoRotateSpeed = 0.5;
+            world.controls().enableZoom = true;
+
+            // Optional: load topology if available
+            fetch('https://unpkg.com/world-atlas/land-110m.json')
+                .then(res => res.json())
+                .then(landTopo => {
+                    world.polygonsData(topojson.feature(landTopo, landTopo.objects.land).features)
+                         .polygonCapColor(() => 'rgba(200, 200, 200, 0.05)')
+                         .polygonSideColor(() => 'rgba(200, 200, 200, 0.02)')
+                         .polygonStrokeColor(() => '#111');
+                })
+                .catch(e => console.log("TopoJSON load failed, skipping polygons"));
         }
 
-        isPinging = false;
-        if (pingBtn) pingBtn.disabled = false;
-        if (pingBtnText) pingBtnText.textContent = 'Обновить пинг';
-        showToast('✅ Пинг всех серверов обновлен!');
-    }
-
-    // ===== 13. Password Protected Server Rebuild =====
-    function decodeToken(pass) {
-        const hex = '0a071230261c4f200b28580737112f1d1657093a10541637013f3a3c022e155f2f25461a29091e36';
-        let out = '';
-        for (let i = 0; i < hex.length; i += 2) {
-            const byte = parseInt(hex.substr(i, 2), 16);
-            const k = pass.charCodeAt((i / 2) % pass.length);
-            out += String.fromCharCode(byte ^ k);
+        function calculateServices(server) {
+            let services = [];
+            if (server.ping < 260) services.push({ icon: '🎬', name: '4K', val: '4k' });
+            if (aiCountries.includes(server.country)) services.push({ icon: '🤖', name: 'AI', val: 'ai' });
+            if (server.ping < 150) services.push({ icon: '🎧', name: 'Discord', val: 'discord' });
+            if (server.ping < 80) services.push({ icon: '🎮', name: 'LowPing', val: 'gaming' });
+            return services;
         }
-        return out;
-    }
 
-    function openRebuildModal() {
-        const modal = document.getElementById('rebuild-modal');
-        const input = document.getElementById('modal-pass-input');
-        const errMsg = document.getElementById('modal-error-msg');
-        if (input) {
-            input.value = '';
-            input.classList.remove('error');
+        function renderTable(data) {
+            const tbody = document.getElementById('serverTableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach((s, idx) => {
+                const tr = document.createElement('tr');
+                const services = calculateServices(s);
+                const serviceHtml = services.map(svc => `<span class="service-badge">${svc.icon} ${svc.name}</span>`).join('');
+                
+                const pingClass = getPingClass(s.ping);
+                const protoClass = `proto-${s.protocol.toLowerCase()}`;
+
+                tr.innerHTML = `
+                    <td><strong>${s.country || 'UN'}</strong></td>
+                    <td><span class="protocol-badge ${protoClass}">${s.protocol}</span></td>
+                    <td>
+                        <div style="display:flex; align-items:center;">
+                            <span class="ping-dot ${pingClass}"></span>
+                            ${s.ping} мс
+                        </div>
+                    </td>
+                    <td>
+                        <div class="code-font" style="margin-bottom: 5px;">${s.address}:${s.port}</div>
+                        <div style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 5px;">${s.remark || ''}</div>
+                        <div>${serviceHtml}</div>
+                    </td>
+                    <td style="font-size: 0.85rem; color: var(--text-muted);">${s.added_date}</td>
+                    <td>
+                        <div class="action-btns">
+                            <button onclick="copyText('${s.raw}')">📋</button>
+                            <button onclick="showQR('${s.raw}')">📱</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
-        if (errMsg) errMsg.style.display = 'none';
-        if (modal) modal.classList.add('active');
-        if (input) setTimeout(() => input.focus(), 100);
-    }
 
-    function closeRebuildModal() {
-        const modal = document.getElementById('rebuild-modal');
-        if (modal) modal.classList.remove('active');
-    }
-
-    async function confirmRebuild() {
-        const input = document.getElementById('modal-pass-input');
-        const errMsg = document.getElementById('modal-error-msg');
-        const submitBtn = document.getElementById('modal-submit-btn');
-        const pass = input ? input.value.trim() : '';
-
-        if (pass !== 'mobolow') {
-            if (input) input.classList.add('error');
-            if (errMsg) {
-                errMsg.textContent = '❌ Неверный пароль!';
-                errMsg.style.display = 'block';
+        function updateStatsUI(stats) {
+            document.getElementById('statTotal').innerText = stats.total || 0;
+            document.getElementById('statCountries').innerText = Object.keys(stats.countries || {}).length;
+            document.getElementById('statToday').innerText = stats.added_today || 0;
+            
+            if(globalStats.lastUpdate) {
+                document.getElementById('lastUpdateText').innerText = `Обновлено: ${new Date(globalStats.lastUpdate).toLocaleString('ru-RU')}`;
             }
-            return;
         }
 
-        if (input) input.classList.remove('error');
-        if (errMsg) errMsg.style.display = 'none';
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ Запуск...';
+        function recalcDynamicStats() {
+            const online = serversData.filter(s => s.ping < 500).length;
+            let totalPing = 0;
+            let validPings = 0;
+            serversData.forEach(s => {
+                if(s.ping < 500) { totalPing += s.ping; validPings++; }
+            });
+            const avgPing = validPings > 0 ? Math.round(totalPing / validPings) : 0;
+            
+            document.getElementById('statOnline').innerText = online;
+            document.getElementById('statAvgPing').innerText = `${avgPing} мс`;
+            
+            // Update pills
+            document.getElementById('pillAll').innerText = `Все сервера (${serversData.length})`;
+            document.getElementById('pillFast').innerText = `Ultra-Fast <100ms (${serversData.filter(s=>s.ping<100).length})`;
         }
 
-        const token = decodeToken(pass);
+        function applyFiltersAndSort() {
+            let res = [...serversData];
 
-        try {
-            const resp = await fetch('https://api.github.com/repos/sever-xd/pesok_auto_sub/actions/workflows/update.yml/dispatches', {
-                method: 'POST',
-                headers: {
-                    'Authorization': 'token ' + token,
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ ref: 'main' })
+            // Text search
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            if (q) {
+                res = res.filter(s => 
+                    (s.address || '').toLowerCase().includes(q) ||
+                    (s.country || '').toLowerCase().includes(q) ||
+                    String(s.port).includes(q) ||
+                    (s.remark || '').toLowerCase().includes(q)
+                );
+            }
+
+            // Protocol
+            const proto = document.getElementById('protocolFilter').value;
+            if (proto !== 'all') res = res.filter(s => s.protocol.toLowerCase() === proto);
+
+            // Ping
+            const pF = document.getElementById('pingFilter').value;
+            if (pF === 'good') res = res.filter(s => s.ping < 100);
+            else if (pF === 'ok') res = res.filter(s => s.ping < 300);
+            else if (pF === 'slow') res = res.filter(s => s.ping < 500);
+
+            // Services
+            const sF = document.getElementById('serviceFilter').value;
+            if (sF !== 'all') {
+                res = res.filter(s => {
+                    const svcs = calculateServices(s).map(x => x.val);
+                    return svcs.includes(sF);
+                });
+            }
+            
+            // Fast pills logic overrides standard filters if active
+            if (activeFilterPill === 'fast') {
+                res = res.filter(s => s.ping < 100);
+            } else if (activeFilterPill === 'top10') {
+                res.sort((a,b) => a.ping - b.ping);
+                res = res.slice(0, 10);
+            }
+
+            // Sort
+            res.sort((a, b) => {
+                let valA, valB;
+                if (currentSort.field === 'ping') { valA = a.ping; valB = b.ping; }
+                else if (currentSort.field === 'country') { valA = a.country || ''; valB = b.country || ''; }
+                else if (currentSort.field === 'date') { valA = new Date(a.added_date).getTime(); valB = new Date(b.added_date).getTime(); }
+                
+                if (valA < valB) return currentSort.asc ? -1 : 1;
+                if (valA > valB) return currentSort.asc ? 1 : -1;
+                return 0;
             });
 
-            if (resp.status === 204 || resp.status === 200 || resp.ok) {
-                closeRebuildModal();
-                showToast('🚀 Сервера собираются заново в GitHub Actions!');
+            filteredData = res;
+            renderTable(filteredData);
+        }
+
+        // Actions
+        function copyText(txt) {
+            navigator.clipboard.writeText(txt).then(() => showToast('✅ Скопировано в буфер обмена'));
+        }
+
+        function showQR(url) {
+            const qrImg = document.getElementById('qrImage');
+            const display = document.getElementById('qrUrlDisplay');
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(url)}`;
+            display.value = url;
+            openModal('modalQR');
+        }
+
+        // GitHub Token Decode
+        function decodeToken(pass) {
+            const hex = '0a071230261c4f200b28580737112f1d1657093a10541637013f3a3c022e155f2f25461a29091e36';
+            let out = '';
+            for (let i = 0; i < hex.length; i += 2) {
+                const byte = parseInt(hex.substr(i, 2), 16);
+                const k = pass.charCodeAt((i / 2) % pass.length);
+                out += String.fromCharCode(byte ^ k);
+            }
+            return out;
+        }
+
+        // Browser Ping Test
+        async function runClientPingTest() {
+            const btn = document.getElementById('btnPingAll');
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Пингуем...';
+            
+            const total = serversData.length;
+            let tested = 0;
+            const batchSize = 6;
+            
+            for(let i = 0; i < total; i += batchSize) {
+                const batch = serversData.slice(i, i + batchSize);
+                await Promise.all(batch.map(async s => {
+                    if(!s.address) return;
+                    const start = performance.now();
+                    try {
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 2000);
+                        await fetch(`http://${s.address}:${s.port}`, { mode: 'no-cors', signal: controller.signal }).catch(()=>null);
+                        clearTimeout(timeoutId);
+                    } catch(e) {}
+                    let p = Math.floor(performance.now() - start);
+                    if(p > 2000) p = 2000;
+                    if(p < 15) p = s.ping; // Ignore fake too-fast pings
+                    s.ping = p;
+                }));
+                tested += batch.length;
+                btn.innerHTML = `⏳ ${tested}/${total}`;
                 
-                const rebuildBtn = document.getElementById('rebuild-btn');
-                const rebuildBtnText = document.getElementById('rebuild-btn-text');
-                if (rebuildBtnText) rebuildBtnText.textContent = 'Сборка запущена...';
-                if (rebuildBtn) rebuildBtn.disabled = true;
-                
-                setTimeout(() => {
-                    if (rebuildBtnText) rebuildBtnText.textContent = 'Обновить сервера';
-                    if (rebuildBtn) rebuildBtn.disabled = false;
-                    refreshData();
-                }, 60000);
-            } else {
-                const errText = await resp.text();
-                if (errMsg) {
-                    errMsg.textContent = `Ошибка GitHub (${resp.status}): ${errText.slice(0, 100)}`;
-                    errMsg.style.display = 'block';
+                if (i % 12 === 0) {
+                    recalcDynamicStats();
+                    applyFiltersAndSort();
+                    initGlobe(serversData);
                 }
             }
-        } catch (e) {
-            if (errMsg) {
-                errMsg.textContent = `Ошибка: ${e.message}`;
-                errMsg.style.display = 'block';
-            }
-        } finally {
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '🚀 Запустить';
-            }
+            
+            recalcDynamicStats();
+            applyFiltersAndSort();
+            initGlobe(serversData);
+            
+            btn.innerHTML = '⚡ Обновить пинг';
+            btn.disabled = false;
+            showToast('✅ Пинг обновлен');
         }
-    }
 
-    // ===== 14. Utilities =====
-    function copySubUrl() {
-        const subEl = document.getElementById('sub-url');
-        const url = subEl ? subEl.textContent : PAGES_SUB_URL;
-        navigator.clipboard.writeText(url).then(() => showToast('✅ Ссылка подписки скопирована!'));
-    }
+        // Event Listeners Setup
+        document.addEventListener('DOMContentLoaded', async () => {
+            initTheme();
 
-    function showToast(msg) {
-        const t = document.getElementById('toast');
-        if (!t) return;
-        t.textContent = msg;
-        t.classList.add('show');
-        setTimeout(() => t.classList.remove('show'), 2500);
-    }
+            // Fetch Data
+            const data = await fetchSitesData();
+            if(data && data.servers) {
+                serversData = data.servers;
+                globalStats = data.stats || {};
+                globalStats.lastUpdate = data.last_update;
+                
+                updateStatsUI(globalStats);
+                recalcDynamicStats();
+                applyFiltersAndSort();
+                initGlobe(serversData);
+            } else {
+                showToast("❌ Ошибка загрузки данных");
+            }
 
-    function refreshData() {
-        const rebuildBtn = document.getElementById('rebuild-btn');
-        const rebuildBtnText = document.getElementById('rebuild-btn-text');
-        if (rebuildBtnText) rebuildBtnText.textContent = 'Загрузка...';
-        if (rebuildBtn) rebuildBtn.disabled = true;
+            // Filters
+            document.getElementById('searchInput').addEventListener('input', applyFiltersAndSort);
+            document.getElementById('protocolFilter').addEventListener('change', applyFiltersAndSort);
+            document.getElementById('pingFilter').addEventListener('change', applyFiltersAndSort);
+            document.getElementById('serviceFilter').addEventListener('change', applyFiltersAndSort);
 
-        loadData().finally(() => {
-            if (rebuildBtnText) rebuildBtnText.textContent = 'Обновить сервера';
-            if (rebuildBtn) rebuildBtn.disabled = false;
-            showToast('🔄 Список серверов обновлен!');
+            // Sorts
+            document.getElementById('sortPing').addEventListener('click', (e) => {
+                if(currentSort.field === 'ping') currentSort.asc = !currentSort.asc;
+                else { currentSort.field = 'ping'; currentSort.asc = true; }
+                e.target.innerText = `По пингу ${currentSort.asc ? '↑' : '↓'}`;
+                applyFiltersAndSort();
+            });
+            document.getElementById('sortCountry').addEventListener('click', (e) => {
+                if(currentSort.field === 'country') currentSort.asc = !currentSort.asc;
+                else { currentSort.field = 'country'; currentSort.asc = true; }
+                e.target.innerText = `По стране ${currentSort.asc ? '↑' : '↓'}`;
+                applyFiltersAndSort();
+            });
+            document.getElementById('sortDate').addEventListener('click', (e) => {
+                if(currentSort.field === 'date') currentSort.asc = !currentSort.asc;
+                else { currentSort.field = 'date'; currentSort.asc = false; }
+                e.target.innerText = `По дате ${currentSort.asc ? '↑' : '↓'}`;
+                applyFiltersAndSort();
+            });
+
+            // Fast Pills
+            document.querySelectorAll('.filter-pill').forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                    e.target.classList.add('active');
+                    if (e.target.id === 'pillAll') activeFilterPill = 'all';
+                    else if (e.target.id === 'pillFast') activeFilterPill = 'fast';
+                    else if (e.target.id === 'pillTop10') activeFilterPill = 'top10';
+                    applyFiltersAndSort();
+                });
+            });
+
+            // Main Buttons
+            document.getElementById('btnPingAll').addEventListener('click', runClientPingTest);
+            document.getElementById('btnRebuild').addEventListener('click', () => {
+                document.getElementById('rebuildPassword').value = '';
+                openModal('modalRebuild');
+            });
+            document.getElementById('btnExport').addEventListener('click', () => openModal('modalExport'));
+            document.getElementById('btnSubQR').addEventListener('click', () => showQR(SUB_URL));
+            document.getElementById('btnSubCopy').addEventListener('click', () => copyText(SUB_URL));
+            
+            document.getElementById('btnSubCopyInBox').addEventListener('click', () => copyText(SUB_URL));
+            document.getElementById('btnSubQRInBox').addEventListener('click', () => showQR(SUB_URL));
+            document.getElementById('btnCopyFromQR').addEventListener('click', () => {
+                copyText(document.getElementById('qrUrlDisplay').value);
+            });
+
+            // Export Actions
+            document.getElementById('btnExportRaw').addEventListener('click', () => {
+                const rawLinks = serversData.map(s => s.raw).join('\n');
+                copyText(rawLinks);
+                closeModal('modalExport');
+            });
+
+            // Rebuild Action
+            document.getElementById('btnConfirmRebuild').addEventListener('click', async () => {
+                const pass = document.getElementById('rebuildPassword').value;
+                if(!pass) return showToast("⚠️ Введите пароль");
+                
+                const btn = document.getElementById('btnConfirmRebuild');
+                btn.disabled = true;
+                btn.innerText = "⏳ Отправка...";
+
+                try {
+                    const token = decodeToken(pass);
+                    const res = await fetch("https://api.github.com/repos/sever-xd/pesok_auto_sub/actions/workflows/update.yml/dispatches", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `token ${token}`,
+                            "Accept": "application/vnd.github.v3+json",
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ ref: "main" })
+                    });
+                    
+                    if(res.status === 204) {
+                        showToast("🚀 Сервера собираются заново!");
+                        closeModal('modalRebuild');
+                        const rBtn = document.getElementById('btnRebuild');
+                        rBtn.disabled = true;
+                        let sec = 60;
+                        const tId = setInterval(() => {
+                            rBtn.innerText = `🔄 Пересборка... (${sec}s)`;
+                            sec--;
+                            if(sec < 0) {
+                                clearInterval(tId);
+                                rBtn.disabled = false;
+                                rBtn.innerText = `🔄 Обновить сервера`;
+                                location.reload();
+                            }
+                        }, 1000);
+                    } else {
+                        showToast("❌ Неверный пароль или ошибка API");
+                        btn.disabled = false;
+                        btn.innerText = "Запустить сборку";
+                    }
+                } catch(e) {
+                    showToast("❌ Ошибка сети");
+                    btn.disabled = false;
+                    btn.innerText = "Запустить сборку";
+                }
+            });
         });
-    }
-
-    // ===== 15. Safe Initialization =====
-    function initApp() {
-        const subUrlEl = document.getElementById('sub-url');
-        if (subUrlEl) subUrlEl.textContent = PAGES_SUB_URL;
-
-        let savedTheme = 'black';
-        try { savedTheme = localStorage.getItem('vpn_theme') || 'black'; } catch (_) {}
-        setTheme(savedTheme);
-
-        // Events
-        const sInput = document.getElementById('search');
-        if (sInput) sInput.addEventListener('input', renderTable);
-        const pSelect = document.getElementById('filter-proto');
-        if (pSelect) pSelect.addEventListener('change', renderTable);
-        const pingSelect = document.getElementById('filter-ping');
-        if (pingSelect) pingSelect.addEventListener('change', renderTable);
-        const srvSelect = document.getElementById('filter-service');
-        if (srvSelect) srvSelect.addEventListener('change', renderTable);
-
-        // Fetch Data
-        loadData();
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initApp);
-    } else {
-        initApp();
-    }
-</script>
+    </script>
 </body>
 </html>
