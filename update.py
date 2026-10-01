@@ -297,23 +297,15 @@ class ConfigParser:
 # Источники
 # ============================================================
 SOURCES = [
+    ("0xradikal", "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/top100.txt"),
+    ("zhuhaiuk", "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/nodes.txt"),
+    ("epodonios", "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt"),
+    ("mahdibland", "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge_base64.txt"),
+    ("ermaozi", "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt"),
+    ("peasoft", "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list_raw.txt"),
+    ("roosterkid", "https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt"),
     ("freefq", "https://raw.githubusercontent.com/freefq/free/master/v2"),
     ("pawdroid", "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub"),
-    ("ermaozi", "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/v2ray.txt"),
-    ("mahdibland", "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge_base64.txt"),
-    ("mfuu-v2ray", "https://raw.githubusercontent.com/mfuu/v2ray/master/merge/merge_base64.txt"),
-    ("barry-far1", "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt"),
-    ("yebekhe-reality", "https://raw.githubusercontent.com/yebekhe/TelegramV2rayCollector/main/sub/base64/reality"),
-    ("yebekhe-vmess", "https://raw.githubusercontent.com/yebekhe/TelegramV2rayCollector/main/sub/base64/vmess"),
-    ("yebekhe-trojan", "https://raw.githubusercontent.com/yebekhe/TelegramV2rayCollector/main/sub/base64/trojan"),
-    ("soroush-reality", "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/subscribe/base64/reality"),
-    ("soroush-vmess", "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/subscribe/base64/vmess"),
-    ("soroush-vless", "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/subscribe/base64/vless"),
-    ("soroush-trojan", "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/subscribe/base64/trojan"),
-    ("soroush-ss", "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/subscribe/base64/ss"),
-    ("lagzian-ss", "https://raw.githubusercontent.com/lagzian/SS-Collector/main/realss.txt"),
-    ("sashalsk", "https://raw.githubusercontent.com/sashalsk/V2ray/main/V2ray"),
-    ("peasoft", "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list_raw.txt"),
 ]
 
 
@@ -592,8 +584,10 @@ def _diverse_select(configs: list[VPNConfig], n: int) -> list[VPNConfig]:
 
 
 def generate_readme(output_dir: Path, servers: list[dict], stats: dict):
-    """Генерируем красивый README.md."""
+    """Генерируем красивый люксовый README.md."""
     today = stats.get("date", "?")
+    total_servers = stats.get("total", len(servers))
+    countries_count = len(stats.get("countries", {}))
 
     # Таблица стран
     country_rows = []
@@ -602,7 +596,7 @@ def generate_readme(output_dir: Path, servers: list[dict], stats: dict):
         key=lambda x: -x[1]["count"],
     ):
         if info["count"] > 0:
-            country_rows.append(f"| {info['name']} | `{code}` | **{info['count']}** |")
+            country_rows.append(f"| {info['name']} | `{code}` | **{info['count']}** | 🟢 Онлайн |")
 
     # Другие страны
     popular_codes = set(POPULAR_COUNTRIES.keys())
@@ -612,84 +606,161 @@ def generate_readme(output_dir: Path, servers: list[dict], stats: dict):
     }
     if other_countries:
         for code, count in sorted(other_countries.items(), key=lambda x: -x[1]):
-            country_rows.append(f"| {code} | `{code}` | {count} |")
+            flag, name_ru = COUNTRY_NAMES_RU.get(code, ("🌐", code))
+            country_rows.append(f"| {flag} {name_ru} | `{code}` | **{count}** | 🟢 Онлайн |")
 
-    country_table = "\n".join(country_rows) if country_rows else "| — | — | 0 |"
+    country_table = "\n".join(country_rows) if country_rows else "| — | — | 0 | — |"
 
     # Протоколы
     proto_rows = []
     for proto, count in sorted(stats.get("protocols", {}).items(), key=lambda x: -x[1]):
-        proto_rows.append(f"| {proto.upper()} | {count} |")
+        proto_badge = f"`{proto.upper()}`"
+        proto_rows.append(f"| {proto_badge} | **{count}** узлов |")
     proto_table = "\n".join(proto_rows) if proto_rows else "| — | 0 |"
 
-    readme = f"""# 🔐 VPN Auto-Subscription
+    readme = f"""<div align="center">
 
-> Автоматически обновляемая подписка VPN серверов. Новые сервера каждый день!
+# 🔐 PESOK AUTO-SUB
+### Премиальный автоматический агрегатор быстрых VPN-конфигураций
+**Автообновление каждые 12 часов • Проверка задержки TCP Ping • Русские названия узлов**
 
-## 📋 Ссылка подписки
+[![Update VPN Subscription](https://github.com/sever-xd/pesok_auto_sub/actions/workflows/update.yml/badge.svg)](https://github.com/sever-xd/pesok_auto_sub/actions/workflows/update.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online%20Dashboard-10b981?style=flat&logo=github)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Total Servers](https://img.shields.io/badge/Servers-{total_servers}%20Online-3b82f6?style=flat&logo=server)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Countries](https://img.shields.io/badge/Countries-{countries_count}%20Locations-f59e0b?style=flat&logo=googleearth)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Protocols](https://img.shields.io/badge/Protocols-VMess%20%7C%20VLESS%20%7C%20SS%20%7C%20Trojan-8b5cf6?style=flat)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Author](https://img.shields.io/badge/Author-sever--xd-ef4444?style=flat&logo=telegram)](https://github.com/sever-xd)
 
-Скопируй и вставь в **V2RayN / Nekoray / Hiddify / Clash / Remnawave / Streisand**:
-
-```
-https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.txt
-```
-
-> ⚠️ Замени `YOUR_USERNAME` на свой логин GitHub после создания репозитория!
-
-## 📊 Статистика
-
-| Метрика | Значение |
-|---------|----------|
-| 📅 Обновлено | **{today}** |
-| 📦 Всего серверов | **{stats.get('total', 0)}** |
-| ➕ Добавлено сегодня | **{stats.get('added_today', 0)}** |
-| 🗑️ Удалено (устаревших) | **{stats.get('removed_expired', 0)}** |
-| 📌 Из прошлого обновления | **{stats.get('kept_from_previous', 0)}** |
-
-### 🌍 Серверы по странам
-
-| Страна | Код | Кол-во |
-|--------|-----|--------|
-{country_table}
-
-### 🔌 По протоколам
-
-| Протокол | Кол-во |
-|----------|--------|
-{proto_table}
-
-## 🔄 Автообновление
-
-- GitHub Actions запускается **каждый день в 06:00 и 18:00 UTC**
-- Из каждой популярной страны берётся **{SERVERS_PER_COUNTRY} сервера**
-- Серверы старше **{MAX_AGE_DAYS} дней** удаляются автоматически
-- Новые сервера парсятся из **{len(SOURCES)}+ открытых GitHub репозиториев**
-
-## 📱 Как подключить
-
-### V2RayN (Windows)
-1. Подписки → Настройки подписки → ➕
-2. Вставь URL подписки
-3. Нажми «Обновить»
-
-### Hiddify (Android/iOS)
-1. ➕ Добавить профиль → Ссылка на подписку
-2. Вставь URL
-
-### Nekoray (Windows/Linux)
-1. Программа → Подписки → Новая
-2. Вставь URL
-
-### Clash/Mihomo
-Используй `raw_configs.txt` или конвертируй через sub-converter
-
-### Remnawave
-1. Настройки → Подписки → Добавить
-2. Вставь URL подписки
+[🌐 **Открыть Веб-Интерфейс**](https://sever-xd.github.io/pesok_auto_sub/) • [📥 **Ссылка на подписку**](https://sever-xd.github.io/pesok_auto_sub/subscription.txt) • [📋 **Raw конфиги (текст)**](https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/raw_configs.txt)
 
 ---
 
-🤖 *Автоматически сгенерировано [VPN Auto-Subscription Aggregator]()*
+</div>
+
+## 🔗 Быстрое подключение (Ссылка на подписку)
+
+Скопируйте URL и вставьте в ваш VPN-клиент (**Happ**, **Hiddify**, **V2RayNG**, **Nekoray**, **Clash**, **Sing-Box**):
+
+```text
+https://sever-xd.github.io/pesok_auto_sub/subscription.txt
+```
+
+> 💡 **Резервное зеркало (GitHub Raw):**  
+> `https://raw.githubusercontent.com/sever-xd/pesok_auto_sub/main/subscription.txt`
+
+---
+
+## ⚡ Особенности и Преимущества
+
+- 🏷️ **Чистые русские названия:** каждый сервер автоматически назван в формате `[pesok] 🇺🇸 США #01`, `[pesok] 🇩🇪 Германия #01` — больше никаких китайских иероглифов и чужой рекламы!
+- ⚡ **TCP Ping Testing:** все узлы проходят автоматическое измерение пинга перед публикацией;
+- 🔄 **Автоматическая ротация:** GitHub Actions собирает свежие сервера 2 раза в день (в 06:00 и 18:00 UTC);
+- 🛡️ **Мультипротокольность:** поддержка VMess, VLESS, Shadowsocks, Trojan, Hysteria2;
+- 🌍 **Широкая география:** более 40 стран мира (США, Германия, Нидерланды, Япония, Сингапур, Франция, Великобритания и др.);
+- 🎨 **Интерактивный Веб-дашборд:** смена 6 тем оформления, живое измерение задержки в браузере, экспорт в один клик и QR-коды.
+
+---
+
+## 📊 Актуальная статистика
+
+| Метрика | Значение |
+| :--- | :--- |
+| 📅 **Дата обновления** | **`{today}`** |
+| 📦 **Всего серверов в подписке** | **`{total_servers}`** |
+| ➕ **Добавлено сегодня** | **`{stats.get('added_today', 0)}`** |
+| 🌍 **Доступно стран** | **`{countries_count}`** |
+| 🔄 **Частота синхронизации** | **Каждые 12 часов (06:00 / 18:00 UTC)** |
+
+<details open>
+<summary><b>🌍 Список локаций и серверов ({countries_count} стран)</b></summary>
+
+| Страна | Код | Серверов | Статус |
+| :--- | :---: | :---: | :---: |
+{country_table}
+
+</details>
+
+<details>
+<summary><b>🔌 Распределение по протоколам</b></summary>
+
+| Протокол | Количество |
+| :--- | :--- |
+{proto_table}
+
+</details>
+
+---
+
+## 📱 Инструкция по подключению
+
+<details open>
+<summary><b>📱 Happ (iOS / Android / Mac)</b></summary>
+
+1. Откройте приложение **Happ**;
+2. Нажмите **«+»** (Добавить) в верхнем правом углу;
+3. Выберите **«Добавить подписку по ссылке»**;
+4. Вставьте ссылку:
+   ```text
+   https://sever-xd.github.io/pesok_auto_sub/subscription.txt
+   ```
+5. Нажмите **«Сохранить»** и затем **«Обновить подписку»**;
+6. Все сервера сразу появятся с понятными русскими названиями `[pesok]`.
+
+</details>
+
+<details>
+<summary><b>🚀 Hiddify Next (Все платформы)</b></summary>
+
+1. Скачайте и запустите **Hiddify Next**;
+2. Нажмите **«Новый профиль»** ➔ **«Добавить из буфера обмена»** (скопировав ссылку выше);
+3. В настройках профиля включите **«Автообновление подписки»**;
+4. Нажмите большую кнопку подключения.
+
+</details>
+
+<details>
+<summary><b>⚡ V2RayNG (Android) / V2RayN (Windows)</b></summary>
+
+1. В приложении откройте меню подписок ➔ **«Добавить подписку»**;
+2. Вставьте URL подписки и сохраните;
+3. Нажмите кнопку **«Обновить подписку»** в меню;
+4. Серверы отсортируются по пингу.
+
+</details>
+
+<details>
+<summary><b>🐱 Clash / Mihomo / Verge</b></summary>
+
+1. Откройте [Веб-сайт подписки](https://sever-xd.github.io/pesok_auto_sub/);
+2. Нажмите кнопку **«Экспорт»** ➔ **«Clash / Mihomo (.yaml)»**;
+3. Импортируйте скачанный файл конфигурации в ваш Clash-клиент.
+
+</details>
+
+---
+
+## 🛠️ Архитектура
+
+```text
+pesok_auto_sub/
+├── .github/workflows/
+│   ├── update.yml         # GitHub Actions: парсинг, TCP пинг и авто-деплой
+│   └── deploy.yml         # GitHub Actions: деплой страниц при обновлении UI
+├── index.html             # Премиальный веб-дашборд с 6 темами и живым радаром
+├── update.py              # Асинхронный скрапер, TCP пингер и ротатор
+├── subscription.txt       # Base64 подписка для VPN-клиентов
+├── site_data.json         # JSON база данных для веб-интерфейса
+├── raw_configs.txt        # Список ссылок открытым текстом
+└── README.md              # Документация проекта
+```
+
+---
+
+<div align="center">
+
+**[PESOK AUTO-SUB](https://sever-xd.github.io/pesok_auto_sub/)** • Created with ❤️ by **[sever-xd](https://github.com/sever-xd)**
+
+</div>
 """
     readme_path = output_dir / "README.md"
     readme_path.write_text(readme, encoding="utf-8")
