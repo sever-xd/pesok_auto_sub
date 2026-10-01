@@ -78,9 +78,9 @@ https://raw.githubusercontent.com/YOUR_USERNAME/vpn-auto-sub/main/subscription.t
 
 | Протокол | Кол-во |
 |----------|--------|
-| VLESS | 43 |
+| VLESS | 42 |
 | SS | 27 |
-| VMESS | 23 |
+| VMESS | 24 |
 | TROJAN | 13 |
 
 ## 🔄 Автообновление
