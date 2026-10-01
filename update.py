@@ -400,6 +400,46 @@ def save_subscription(path: Path, servers: list[dict], stats: dict):
     generate_readme(path.parent, servers, stats)
 
 
+# Русские названия стран и флаги для красивого нейминга в подписке
+COUNTRY_NAMES_RU = {
+    "US": ("🇺🇸", "США"), "DE": ("🇩🇪", "Германия"), "NL": ("🇳🇱", "Нидерланды"),
+    "FR": ("🇫🇷", "Франция"), "GB": ("🇬🇧", "Великобритания"), "JP": ("🇯🇵", "Япония"),
+    "SG": ("🇸🇬", "Сингапур"), "KR": ("🇰🇷", "Южная Корея"), "HK": ("🇭🇰", "Гонконг"),
+    "TW": ("🇹🇼", "Тайвань"), "CA": ("🇨🇦", "Канада"), "AU": ("🇦🇺", "Австралия"),
+    "FI": ("🇫🇮", "Финляндия"), "SE": ("🇸🇪", "Швеция"), "TR": ("🇹🇷", "Турция"),
+    "IN": ("🇮🇳", "Индия"), "PL": ("🇵🇱", "Польша"), "IT": ("🇮🇹", "Италия"),
+    "ES": ("🇪🇸", "Испания"), "CH": ("🇨🇭", "Швейцария"), "AT": ("🇦🇹", "Австрия"),
+    "NO": ("🇳🇴", "Норвегия"), "AE": ("🇦🇪", "ОАЭ"), "RU": ("🇷🇺", "Россия"),
+    "KZ": ("🇰🇿", "Казахстан"), "UA": ("🇺🇦", "Украина"), "CZ": ("🇨🇿", "Чехия"),
+    "RO": ("🇷🇴", "Румыния"), "BG": ("🇧🇬", "Болгария"), "HU": ("🇭🇺", "Венгрия"),
+    "PT": ("🇵🇹", "Португалия"), "BE": ("🇧🇪", "Бельгия"), "DK": ("🇩🇰", "Дания"),
+    "MY": ("🇲🇾", "Малайзия"), "TH": ("🇹🇭", "Таиланд"), "VN": ("🇻🇳", "Вьетнам"),
+    "ID": ("🇮🇩", "Индонезия"), "PH": ("🇵🇭", "Филиппины"), "IL": ("🇮🇱", "Израиль"),
+    "BR": ("🇧🇷", "Бразилия"), "ZA": ("🇿🇦", "ЮАР"), "MX": ("🇲🇽", "Мексика"),
+    "AR": ("🇦🇷", "Аргентина"), "GR": ("🇬🇷", "Греция"), "LV": ("🇱🇻", "Латвия"),
+    "LT": ("🇱🇹", "Литва"), "EE": ("🇪🇪", "Эстония"), "UZ": ("🇺🇿", "Узбекистан"),
+}
+
+
+def rename_vpn_config(raw: str, new_name: str) -> str:
+    """Переименовывает конфиг внутри протокола (в base64 json для vmess или hash для vless/ss/trojan)."""
+    raw = raw.strip()
+    if raw.startswith("vmess://"):
+        try:
+            b64_part = raw[8:]
+            b64_part += "=" * (-len(b64_part) % 4)
+            data = json.loads(base64.b64decode(b64_part).decode("utf-8", errors="ignore"))
+            data["ps"] = new_name
+            new_b64 = base64.b64encode(json.dumps(data, ensure_ascii=False).encode("utf-8")).decode("utf-8")
+            return f"vmess://{new_b64}"
+        except Exception:
+            return raw
+    elif any(raw.startswith(p) for p in ["vless://", "trojan://", "ss://", "ssr://", "hy2://", "hysteria://", "hysteria2://", "tuic://"]):
+        base_part = raw.split("#", 1)[0] if "#" in raw else raw
+        return f"{base_part}#{urllib.parse.quote(new_name)}"
+    return raw
+
+
 def select_best_servers(
     new_configs: list[VPNConfig],
     existing: list[dict],
@@ -407,49 +447,35 @@ def select_best_servers(
     max_age: int = MAX_AGE_DAYS,
 ) -> tuple[list[dict], dict]:
     """
-    Выбрать лучшие сервера:
-    - Из каждой популярной страны берём по per_country штук
-    - Новые добавляем, старше max_age дней удаляем
-    - Поддерживаем ротацию
+    Выбрать лучшие сервера с ротацией и авто-переименованием в [pesok] 🇺🇸 США #01.
     """
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=max_age)).strftime("%Y-%m-%d")
-
-    # Существующие сервера: убираем устаревшие
-    fresh_existing = []
-    removed_count = 0
-    for s in existing:
-        if s.get("added_date", "2000-01-01") >= cutoff:
-            fresh_existing.append(s)
-        else:
-            removed_count += 1
-
-    # Fingerprints существующих
-    existing_fps = {s["fingerprint"] for s in fresh_existing}
 
     # Группируем новые конфиги по странам
     by_country: dict[str, list[VPNConfig]] = defaultdict(list)
     for c in new_configs:
-        if c.country != "XX" and c.fingerprint not in existing_fps:
+        if c.country != "XX":
             by_country[c.country].append(c)
 
-    # Считаем сколько серверов каждой страны уже есть
-    existing_by_country: dict[str, int] = defaultdict(int)
-    for s in fresh_existing:
-        existing_by_country[s.get("country", "XX")] += 1
+    existing_by_country: dict[str, list[dict]] = defaultdict(list)
+    for s in existing:
+        existing_by_country[s.get("country", "XX")].append(s)
 
-    # Добавляем новые из популярных стран
-    added = []
+    final = []
+    added_count = 0
+    kept_count = 0
+    fps = set()
+
+    # 1. Для популярных стран берём свежие из new_configs, дополняем существующими
     for country_code in POPULAR_COUNTRIES:
-        available = by_country.get(country_code, [])
-        current_count = existing_by_country.get(country_code, 0)
-        need = max(0, per_country - current_count)
+        avail_new = by_country.get(country_code, [])
+        avail_existing = existing_by_country.get(country_code, [])
 
-        if need > 0 and available:
-            # Предпочитаем разные протоколы
-            selected = _diverse_select(available, need)
-            for cfg in selected:
-                server_dict = {
+        take_new = min(len(avail_new), per_country)
+        selected_new = _diverse_select(avail_new, take_new)
+        for cfg in selected_new:
+            if cfg.fingerprint not in fps:
+                final.append({
                     "protocol": cfg.protocol,
                     "raw": cfg.raw,
                     "address": cfg.address,
@@ -458,20 +484,33 @@ def select_best_servers(
                     "country": cfg.country,
                     "fingerprint": cfg.fingerprint,
                     "added_date": today,
-                }
-                added.append(server_dict)
-                existing_fps.add(cfg.fingerprint)
+                })
+                fps.add(cfg.fingerprint)
+                added_count += 1
 
-    # Также добавляем из непопулярных стран (если есть уникальные)
-    other_countries = set(by_country.keys()) - set(POPULAR_COUNTRIES.keys())
-    for cc in sorted(other_countries):
-        available = by_country[cc]
-        current_count = existing_by_country.get(cc, 0)
-        need = max(0, 2 - current_count)  # Для непопулярных — макс 2
-        if need > 0 and available:
-            selected = _diverse_select(available, need)
-            for cfg in selected:
-                server_dict = {
+        remaining = per_country - len(selected_new)
+        if remaining > 0 and avail_existing:
+            for ex in avail_existing:
+                if ex.get("fingerprint") not in fps and remaining > 0:
+                    final.append(ex)
+                    fps.add(ex.get("fingerprint"))
+                    kept_count += 1
+                    remaining -= 1
+
+    # 2. Непопулярные страны: до 2 серверов на страну
+    all_other = (set(by_country.keys()) | set(existing_by_country.keys())) - set(POPULAR_COUNTRIES.keys())
+    all_other.discard("XX")
+
+    for cc in sorted(all_other):
+        avail_new = by_country.get(cc, [])
+        avail_existing = existing_by_country.get(cc, [])
+        limit = 2
+
+        take_new = min(len(avail_new), limit)
+        selected_new = _diverse_select(avail_new, take_new)
+        for cfg in selected_new:
+            if cfg.fingerprint not in fps:
+                final.append({
                     "protocol": cfg.protocol,
                     "raw": cfg.raw,
                     "address": cfg.address,
@@ -480,11 +519,29 @@ def select_best_servers(
                     "country": cfg.country,
                     "fingerprint": cfg.fingerprint,
                     "added_date": today,
-                }
-                added.append(server_dict)
-                existing_fps.add(cfg.fingerprint)
+                })
+                fps.add(cfg.fingerprint)
+                added_count += 1
 
-    final = fresh_existing + added
+        remaining = limit - len(selected_new)
+        if remaining > 0 and avail_existing:
+            for ex in avail_existing:
+                if ex.get("fingerprint") not in fps and remaining > 0:
+                    final.append(ex)
+                    fps.add(ex.get("fingerprint"))
+                    kept_count += 1
+                    remaining -= 1
+
+    # 3. Переименовываем ВСЕ серверы в [pesok] 🇺🇸 США #01
+    country_counters = defaultdict(int)
+    for s in final:
+        c_code = s.get("country", "XX")
+        country_counters[c_code] += 1
+        idx = country_counters[c_code]
+        flag, name_ru = COUNTRY_NAMES_RU.get(c_code, ("🌐", c_code if c_code != "XX" else "Сервер"))
+        new_name = f"[pesok] {flag} {name_ru} #{idx:02d}"
+        s["remark"] = new_name
+        s["raw"] = rename_vpn_config(s["raw"], new_name)
 
     # Статистика
     country_stats = defaultdict(int)
@@ -495,9 +552,9 @@ def select_best_servers(
 
     stats = {
         "total": len(final),
-        "added_today": len(added),
-        "removed_expired": removed_count,
-        "kept_from_previous": len(fresh_existing),
+        "added_today": added_count,
+        "removed_expired": max(0, len(existing) - kept_count),
+        "kept_from_previous": kept_count,
         "date": today,
         "countries": dict(country_stats),
         "protocols": dict(proto_stats),
