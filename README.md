@@ -6,8 +6,8 @@
 
 [![Update VPN Subscription](https://github.com/sever-xd/pesok_auto_sub/actions/workflows/update.yml/badge.svg)](https://github.com/sever-xd/pesok_auto_sub/actions/workflows/update.yml)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Online%20Dashboard-10b981?style=flat&logo=github)](https://sever-xd.github.io/pesok_auto_sub/)
-[![Total Servers](https://img.shields.io/badge/Servers-108%20Online-3b82f6?style=flat&logo=server)](https://sever-xd.github.io/pesok_auto_sub/)
-[![Countries](https://img.shields.io/badge/Countries-48%20Locations-f59e0b?style=flat&logo=googleearth)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Total Servers](https://img.shields.io/badge/Servers-109%20Online-3b82f6?style=flat&logo=server)](https://sever-xd.github.io/pesok_auto_sub/)
+[![Countries](https://img.shields.io/badge/Countries-49%20Locations-f59e0b?style=flat&logo=googleearth)](https://sever-xd.github.io/pesok_auto_sub/)
 [![Protocols](https://img.shields.io/badge/Protocols-VMess%20%7C%20VLESS%20%7C%20SS%20%7C%20Trojan-8b5cf6?style=flat)](https://sever-xd.github.io/pesok_auto_sub/)
 [![Author](https://img.shields.io/badge/Author-sever--xd-ef4444?style=flat&logo=telegram)](https://github.com/sever-xd)
 
@@ -45,14 +45,14 @@ https://sever-xd.github.io/pesok_auto_sub/subscription.txt
 
 | Метрика | Значение |
 | :--- | :--- |
-| 📅 **Дата обновления** | **`2026-10-12`** |
-| 📦 **Всего серверов в подписке** | **`108`** |
-| ➕ **Добавлено сегодня** | **`106`** |
-| 🌍 **Доступно стран** | **`48`** |
+| 📅 **Дата обновления** | **`2026-10-13`** |
+| 📦 **Всего серверов в подписке** | **`109`** |
+| ➕ **Добавлено сегодня** | **`107`** |
+| 🌍 **Доступно стран** | **`49`** |
 | 🔄 **Частота синхронизации** | **Каждые 12 часов (06:00 / 18:00 UTC)** |
 
 <details open>
-<summary><b>🌍 Список локаций и серверов (48 стран)</b></summary>
+<summary><b>🌍 Список локаций и серверов (49 стран)</b></summary>
 
 | Страна | Код | Серверов | Статус |
 | :--- | :---: | :---: | :---: |
@@ -101,6 +101,7 @@ https://sever-xd.github.io/pesok_auto_sub/subscription.txt
 | 🇺🇿 Узбекистан | `UZ` | **2** | 🟢 Онлайн |
 | 🇻🇳 Вьетнам | `VN` | **2** | 🟢 Онлайн |
 | 🇿🇦 ЮАР | `ZA` | **2** | 🟢 Онлайн |
+| 🇦🇷 Аргентина | `AR` | **1** | 🟢 Онлайн |
 | 🇭🇺 Венгрия | `HU` | **1** | 🟢 Онлайн |
 | 🇮🇱 Израиль | `IL` | **1** | 🟢 Онлайн |
 | 🇵🇹 Португалия | `PT` | **1** | 🟢 Онлайн |
@@ -112,10 +113,10 @@ https://sever-xd.github.io/pesok_auto_sub/subscription.txt
 
 | Протокол | Количество |
 | :--- | :--- |
-| `SS` | **31** узлов |
+| `SS` | **33** узлов |
 | `VMESS` | **30** узлов |
 | `VLESS` | **26** узлов |
-| `TROJAN` | **21** узлов |
+| `TROJAN` | **20** узлов |
 
 </details>
 
