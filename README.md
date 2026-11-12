@@ -114,9 +114,9 @@ https://sever-xd.github.io/pesok_auto_sub/subscription.txt
 | Протокол | Количество |
 | :--- | :--- |
 | `VMESS` | **35** узлов |
-| `SS` | **34** узлов |
-| `TROJAN` | **29** узлов |
-| `VLESS` | **14** узлов |
+| `SS` | **33** узлов |
+| `TROJAN` | **28** узлов |
+| `VLESS` | **16** узлов |
 
 </details>
 
